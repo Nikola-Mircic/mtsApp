@@ -17,20 +17,22 @@ public class LocationFinder {
 
     private  AppCompatActivity activity;
 
-    private int LOCATION_PERMISSSION_CODE = 100;
+    private final int LOCATION_PERMISSSION_CODE = 100;
 
     private FusedLocationProviderClient flpClient;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
+
     private Location currentLocation;
 
     public LocationFinder(AppCompatActivity activity){
         this.activity = activity;
+        this.currentLocation = null;
 
         flpClient = LocationServices.getFusedLocationProviderClient(this.activity);
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(5000);
+        locationRequest.setInterval(1000);
 
         locationCallback = new LocationCallback(){
             @Override
@@ -41,11 +43,12 @@ public class LocationFinder {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
+                currentLocation = locationResult.getLastLocation();
             }
         };
     }
 
-    public Location startLocating(){
+    public void startLocating(){
         if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             Toast.makeText(activity, "Geting location...", Toast.LENGTH_SHORT).show();
@@ -66,16 +69,16 @@ public class LocationFinder {
             }catch (Exception e){
                 e.printStackTrace();
             }
-        }else{
-            Toast.makeText(activity,"Permission needed!!", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(activity, "Permission needed!!", Toast.LENGTH_LONG).show();
             ActivityCompat.requestPermissions(activity,
-                                             new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION },
-                                             LOCATION_PERMISSSION_CODE);
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    LOCATION_PERMISSSION_CODE);
         }
+    }
 
-        System.out.println(currentLocation.getLatitude());
-        System.out.println(currentLocation.getLongitude());
-        return  currentLocation;
+    public Location getCurrentLocation(){
+        return  this.currentLocation;
     }
 
     public void stopLocating(){

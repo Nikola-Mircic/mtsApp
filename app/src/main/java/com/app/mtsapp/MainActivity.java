@@ -31,11 +31,12 @@ public class MainActivity extends AppCompatActivity{
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    Location location = finder.startLocating();
-                    tvLatitude.setText(""+location.getLatitude());
-                    tvLongitude.setText(""+location.getLongitude());
-                }catch (Exception e){
+                try {
+                    finder.startLocating();
+                    Location location = finder.getCurrentLocation();
+                    tvLatitude.setText("" + location.getLatitude());
+                    tvLongitude.setText("" + location.getLongitude());
+                }catch (Exception e) {
                     e.printStackTrace();
                 }
             }

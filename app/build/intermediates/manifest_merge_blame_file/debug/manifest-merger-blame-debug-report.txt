@@ -1,0 +1,70 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.app.mtsapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:5:5-78
+11-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:5:22-76
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:6:5-80
+12-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:6:22-78
+13
+14    <application
+14-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:8:5-22:19
+15        android:allowBackup="true"
+15-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:9:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.1.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\fa6d4d8dfa5c2aa19b847d7eb7093978\core-1.1.0\AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:extractNativeLibs="false"
+19        android:icon="@mipmap/ic_launcher"
+19-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:10:9-43
+20        android:label="@string/app_name"
+20-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:11:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:12:9-54
+22        android:supportsRtl="true"
+22-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:13:9-35
+23        android:testOnly="true"
+24        android:theme="@style/AppTheme" >
+24-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:14:9-40
+25        <activity android:name="com.app.mtsapp.MainActivity" >
+25-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:15:9-21:20
+25-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:15:19-47
+26            <intent-filter>
+26-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:16:13-20:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:17:17-69
+27-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:17:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:19:17-77
+29-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:19:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity
+32-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\1d382bfd7d6196a0f123a23d1551518a\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+33            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+33-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\1d382bfd7d6196a0f123a23d1551518a\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+34            android:exported="false"
+34-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\1d382bfd7d6196a0f123a23d1551518a\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+35            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+35-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\1d382bfd7d6196a0f123a23d1551518a\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+36
+37        <meta-data
+37-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\8749471fbc5932d29542f1287e894fa8\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+38            android:name="com.google.android.gms.version"
+38-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\8749471fbc5932d29542f1287e894fa8\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+39            android:value="@integer/google_play_services_version" />
+39-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\8749471fbc5932d29542f1287e894fa8\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+40    </application>
+41
+42</manifest>
