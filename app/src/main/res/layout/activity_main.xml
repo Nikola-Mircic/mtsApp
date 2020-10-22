@@ -37,4 +37,25 @@
         android:layout_below="@id/tvLongitude"
         />
 
+    <Button
+        android:id="@+id/googleMapsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getLocation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="BIRAJ MAPE"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/googleDetectedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/googleMapsButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+
+        android:text="mrmiDetekt"
+        android:textSize="20sp" />
+
 </RelativeLayout>
