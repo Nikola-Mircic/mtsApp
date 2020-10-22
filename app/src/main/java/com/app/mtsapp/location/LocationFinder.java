@@ -51,8 +51,8 @@ public class LocationFinder {
     public void startLocating(){
         if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(activity, "Geting location...", Toast.LENGTH_SHORT).show();
             try {
+                Toast.makeText(activity, "Geting location...", Toast.LENGTH_SHORT).show();
                 flpClient.requestLocationUpdates(locationRequest, locationCallback, activity.getMainLooper());
                 flpClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                     @Override

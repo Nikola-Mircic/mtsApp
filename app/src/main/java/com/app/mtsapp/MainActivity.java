@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity{
                     Location location = finder.getCurrentLocation();
                     tvLatitude.setText("" + location.getLatitude());
                     tvLongitude.setText("" + location.getLongitude());
-                }catch (Exception e) {
+                }catch(Exception e) {
                     e.printStackTrace();
                 }
             }
