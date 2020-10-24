@@ -45,13 +45,10 @@ public class MainActivity extends AppCompatActivity{
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    finder.startLocating();
-                    Location location = finder.getCurrentLocation();
+                Location location = finder.getCurrentLocation();
+                if(location!=null){
                     tvLatitude.setText("" + location.getLatitude());
                     tvLongitude.setText("" + location.getLongitude());
-                }catch(Exception e) {
-                    e.printStackTrace();
                 }
             }
         });
