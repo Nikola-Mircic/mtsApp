@@ -54,15 +54,6 @@ public class LocationFinder implements Runnable{
             }
         };
 
-        for(int i=0;i<20;++i) {
-            Log.d(TAG, "sleeping...: "+i);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
         startLocating();
     }
 
