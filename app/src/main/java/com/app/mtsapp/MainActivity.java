@@ -4,42 +4,49 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.mtsapp.location.LocationFinder;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import java.util.Calendar;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity{
 
     private LocationFinder finder;
 
     private TextView tvLatitude,tvLongitude;
-    private Button getLocation;
 
-    //Mrmi - otvaranje preko gugl mapa
-    private Button googleMapsButton;
-    private TextView googleDetectedText;
+    private TextView googleDetectedText, dailyTipTextView;
     private int PLACE_PICKER_REQUEST = 1;
 
+    private String[] dailyTips = {"Tip one", "Tip two", "Tip three", "Tip four", "Tip five"};
+
+    private Random random = new Random();
+    private int currentTipIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Lock activity into portrait mode
+
         finder = new LocationFinder(this);
         tvLatitude = (TextView) findViewById(R.id.tvLatitude);
         tvLongitude = (TextView) findViewById(R.id.tvLongitude);
-        getLocation = (Button) findViewById(R.id.getLocation);
+        Button getLocation = (Button) findViewById(R.id.getLocation);
 
-        googleMapsButton = findViewById(R.id.googleMapsButton);
+        //Mrmi - otvaranje preko gugl mapa
+        Button googleMapsButton = findViewById(R.id.googleMapsButton);
         googleDetectedText = findViewById(R.id.googleDetectedText);
 
         getLocation.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +73,9 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
+
+        dailyTipTextView = findViewById(R.id.dailyTipText);
+        checkDailyTip();
     }
 
     @Override
@@ -90,5 +100,84 @@ public class MainActivity extends AppCompatActivity{
     protected void onDestroy() {
         super.onDestroy();
         finder.stopLocating();
+    }
+
+    //Proverava da li treba da se promeni prikazani dnevni savet
+    private void checkDailyTip()
+    {
+        //Referenca SharedPreferences-a: lakog nacina cuvanja prostih podataka
+        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+
+        //Uzmi trenutni dan preko Calendar.getInstance() i nadji poslednji sacuvani dan u SharedPreferences
+        int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH), lastSavedDayD = sharedPreferences.getInt("LastSavedDayD", -1);
+
+        System.out.println("[MRMI]: Today: " + currentDay + " Last saved day: " + lastSavedDayD);
+
+        //Ako ne postoji poslednji dan sacuvan na uredjaju
+        if(lastSavedDayD == -1)
+        {
+            changeDailyTip(-1); //Prikazi prvi savet iz niza saveta
+
+            //Sacuvaj trenutni dan na uredjaju
+            lastSavedDayD = currentDay;
+            sharedPreferences.edit().putInt("LastSavedDayD", lastSavedDayD).apply();
+
+            //Takodje sacuvaj indeks trenutnog saveta kako bi se on prikazao pri ponovnom ulazenju u aplikaciju istog dana
+            sharedPreferences.edit().putInt("CurrentTipIndex", currentTipIndex).apply();
+
+            System.out.println("[MRMI]: Last day is -1, current tip index: " + currentTipIndex);
+        }
+        //Ako se sacuvan dan i danas ne poklapaju
+        else if(lastSavedDayD!=currentDay)
+        {
+            //Sacuvaj trenutni dan na uredjaju
+            lastSavedDayD=currentDay;
+            sharedPreferences.edit().putInt("LastSavedDayD", lastSavedDayD).apply();
+
+            //Pronadji indeks trenutnog saveta sa uredjaja i
+            currentTipIndex = sharedPreferences.getInt("CurrentTipIndex", -1);
+
+            //Promeni prikazan savet u nasumican savet indeksa koji nije trenutni
+            changeDailyTip(currentTipIndex);
+
+            //Sacuvaj indeks trenutnog saveta koji promeni funkcija changeDailyTip()
+            sharedPreferences.edit().putInt("CurrentTipIndex", currentTipIndex).apply();
+
+            System.out.println("[MRMI]: Last day is " + lastSavedDayD + ", current tip index: " + currentTipIndex);
+        }
+        //Ako se dani poklapaju
+        else
+        {
+            currentTipIndex = sharedPreferences.getInt("CurrentTipIndex", -1); //Nadji indeks trenutnog saveta
+
+            dailyTipTextView.setText(dailyTips[currentTipIndex]); //I prikazi ga
+
+            System.out.println("[MRMI]: Last day is " + lastSavedDayD + ", current tip index: " + currentTipIndex);
+        }
+    }
+
+    //Menja trenutni savet u zavisnosti od argumenta
+    private void changeDailyTip(int skippedTipIndex)
+    {
+        //Ako je argument -1 prikazi prvi savet iz niza saveta
+        if(skippedTipIndex == -1)
+        {
+            currentTipIndex = 0;
+            dailyTipTextView.setText(dailyTips[0]);
+        }
+        //Ako je argument validan
+        else
+        {
+            int randomIndex; //Indeks nasumicno izabranog saveta
+
+            do
+            {
+                randomIndex = random.nextInt(dailyTips.length); //Uzmi nasumican indeks
+                System.out.println("[MRMI]: Random index: " + randomIndex + " current index: " + skippedTipIndex);
+            }while(randomIndex==skippedTipIndex); //Ponavljaj proces sve dok se ne nadje indeks drugaciji od skippedTipIndex (radi izbegavanja ponavljanja saveta uzastopno)
+
+            currentTipIndex = randomIndex; //Promeni indeks trenutnog saveta
+            dailyTipTextView.setText(dailyTips[randomIndex]); //Prikazi izabran nasumican savet
+        }
     }
 }
