@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity{
         //Ako se dani poklapaju
         else
         {
-            currentTipIndex = sharedPreferences.getInt("CurrentTipIndex", -1); //Nadji indeks trenutnog saveta
+            currentTipIndex = sharedPreferences.getInt("CurrentTipIndex", random.nextInt(dailyTips.length)); //Nadji indeks trenutnog saveta
 
             dailyTipTextView.setText(dailyTips[currentTipIndex]); //I prikazi ga
 
@@ -159,25 +159,17 @@ public class MainActivity extends AppCompatActivity{
     //Menja trenutni savet u zavisnosti od argumenta
     private void changeDailyTip(int skippedTipIndex)
     {
-        //Ako je argument -1 prikazi prvi savet iz niza saveta
-        if(skippedTipIndex == -1)
+        int randomIndex=random.nextInt(dailyTips.length); //Indeks nasumicno izabranog saveta
+        if(skippedTipIndex!=-1) //Ako je indeks validan (!= -1) sve dok se ne nadje indeks drugaciji od datog, uzimaj ga nasumicno
         {
-            currentTipIndex = 0;
-            dailyTipTextView.setText(dailyTips[0]);
-        }
-        //Ako je argument validan
-        else
-        {
-            int randomIndex; //Indeks nasumicno izabranog saveta
-
             do
             {
                 randomIndex = random.nextInt(dailyTips.length); //Uzmi nasumican indeks
                 System.out.println("[MRMI]: Random index: " + randomIndex + " current index: " + skippedTipIndex);
             }while(randomIndex==skippedTipIndex); //Ponavljaj proces sve dok se ne nadje indeks drugaciji od skippedTipIndex (radi izbegavanja ponavljanja saveta uzastopno)
-
-            currentTipIndex = randomIndex; //Promeni indeks trenutnog saveta
-            dailyTipTextView.setText(dailyTips[randomIndex]); //Prikazi izabran nasumican savet
         }
+
+        currentTipIndex = randomIndex; //Promeni indeks trenutnog saveta
+        dailyTipTextView.setText(dailyTips[randomIndex]); //Prikazi izabran nasumican savet
     }
 }
