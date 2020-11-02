@@ -58,4 +58,29 @@
         android:text="mrmiDetekt"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/dailyTipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/googleDetectedText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="100dp"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/notifyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dailyTipText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="140dp"
+        android:text="posalji notifikaciju" />
+
 </RelativeLayout>

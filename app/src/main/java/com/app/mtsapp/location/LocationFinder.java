@@ -72,7 +72,7 @@ public class LocationFinder implements Runnable{
                 e.printStackTrace();
             }
         }else {
-            Toast.makeText(activity, "Permission needed!!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity, "Permission needed!!", Toast.LENGTH_LONG).show();
             ActivityCompat.requestPermissions(activity,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     LOCATION_PERMISSSION_CODE);

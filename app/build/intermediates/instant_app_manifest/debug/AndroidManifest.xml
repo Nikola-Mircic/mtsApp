@@ -52,12 +52,7 @@
         <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
 
         <service android:name="com.google.android.gms.cast.framework.media.MediaNotificationService" />
-        <service android:name="com.google.android.gms.cast.framework.ReconnectionService" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
-        <activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:exported="false"
-            android:theme="@android:style/Theme.Translucent" />
+        <service android:name="com.google.android.gms.cast.framework.ReconnectionService" />
 
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -191,7 +186,12 @@
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="com.app.mtsapp.firebaseinitprovider"
             android:exported="false"
-            android:initOrder="100" />
+            android:initOrder="100" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent" />
 
         <meta-data
             android:name="com.google.android.gms.version"

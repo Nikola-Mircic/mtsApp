@@ -29,10 +29,11 @@ public class MainActivity extends AppCompatActivity{
     private TextView googleDetectedText, dailyTipTextView;
     private int PLACE_PICKER_REQUEST = 1;
 
-    private String[] dailyTips = {"Tip one", "Tip two", "Tip three", "Tip four", "Tip five"};
+    //Dnevni saveti
+    private String[] dailyTips = {"Tip one", "Tip two", "Tip three", "Tip four", "Tip five"}; //Dnevni saveti koji se prikazuju na glavnom ekranu
+    private Random random = new Random(); //Za generisanje nasumicnih brojeva
+    private int currentTipIndex; //Indeks trenutnog saveta u nizu saveta, koriscen za menjanje saveta prikazanog pri promeni datuma
 
-    private Random random = new Random();
-    private int currentTipIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +61,9 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        googleMapsButton.setOnClickListener(new View.OnClickListener()
-        {
+        googleMapsButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
                 try {
                     startActivityForResult(builder.build(MainActivity.this), PLACE_PICKER_REQUEST);
@@ -76,15 +75,22 @@ public class MainActivity extends AppCompatActivity{
 
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
+
+        Button notifyButton = findViewById(R.id.notifyButton);
+        notifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationSender notificationSender = new NotificationSender(MainActivity.this);
+                notificationSender.showNotification();
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PLACE_PICKER_REQUEST)
-        {
-            if(resultCode == RESULT_OK)
-            {
+        if(requestCode == PLACE_PICKER_REQUEST) {
+            if(resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(this, data);
                 String text;
                 String latitude = String.valueOf(place.getLatLng().latitude);
@@ -103,8 +109,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //Proverava da li treba da se promeni prikazani dnevni savet
-    private void checkDailyTip()
-    {
+    private void checkDailyTip() {
         //Referenca SharedPreferences-a: lakog nacina cuvanja prostih podataka
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
 
@@ -114,8 +119,7 @@ public class MainActivity extends AppCompatActivity{
         System.out.println("[MRMI]: Today: " + currentDay + " Last saved day: " + lastSavedDayD);
 
         //Ako ne postoji poslednji dan sacuvan na uredjaju
-        if(lastSavedDayD == -1)
-        {
+        if(lastSavedDayD == -1) {
             changeDailyTip(-1); //Prikazi prvi savet iz niza saveta
 
             //Sacuvaj trenutni dan na uredjaju
@@ -128,8 +132,7 @@ public class MainActivity extends AppCompatActivity{
             System.out.println("[MRMI]: Last day is -1, current tip index: " + currentTipIndex);
         }
         //Ako se sacuvan dan i danas ne poklapaju
-        else if(lastSavedDayD!=currentDay)
-        {
+        else if(lastSavedDayD!=currentDay) {
             //Sacuvaj trenutni dan na uredjaju
             lastSavedDayD=currentDay;
             sharedPreferences.edit().putInt("LastSavedDayD", lastSavedDayD).apply();
@@ -146,8 +149,7 @@ public class MainActivity extends AppCompatActivity{
             System.out.println("[MRMI]: Last day is " + lastSavedDayD + ", current tip index: " + currentTipIndex);
         }
         //Ako se dani poklapaju
-        else
-        {
+        else {
             currentTipIndex = sharedPreferences.getInt("CurrentTipIndex", random.nextInt(dailyTips.length)); //Nadji indeks trenutnog saveta
 
             dailyTipTextView.setText(dailyTips[currentTipIndex]); //I prikazi ga
@@ -157,13 +159,10 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //Menja trenutni savet u zavisnosti od argumenta
-    private void changeDailyTip(int skippedTipIndex)
-    {
+    private void changeDailyTip(int skippedTipIndex) {
         int randomIndex=random.nextInt(dailyTips.length); //Indeks nasumicno izabranog saveta
-        if(skippedTipIndex!=-1) //Ako je indeks validan (!= -1) sve dok se ne nadje indeks drugaciji od datog, uzimaj ga nasumicno
-        {
-            do
-            {
+        if(skippedTipIndex!=-1){ //Ako je indeks validan (!= -1) sve dok se ne nadje indeks drugaciji od datog, uzimaj ga nasumicno
+            do {
                 randomIndex = random.nextInt(dailyTips.length); //Uzmi nasumican indeks
                 System.out.println("[MRMI]: Random index: " + randomIndex + " current index: " + skippedTipIndex);
             }while(randomIndex==skippedTipIndex); //Ponavljaj proces sve dok se ne nadje indeks drugaciji od skippedTipIndex (radi izbegavanja ponavljanja saveta uzastopno)

@@ -4,16 +4,6 @@
             "outputFile": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\b58283c7b9ef64535ef2f56a4b03a9bd\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,125,196",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "120,191,259"
-                    }
-                },
-                {
                     "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\1e5e92f87ebaed1ac06154e434738cd1\\mediarouter-1.0.0-alpha5\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
@@ -28,6 +18,16 @@
                         "startOffsets": "774,849,927",
                         "endColumns": "74,77,74",
                         "endOffsets": "844,922,997"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\33ffa11451d1c7f1ec3638c5872d4695\\appcompat-1.2.0\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
                     }
                 },
                 {
