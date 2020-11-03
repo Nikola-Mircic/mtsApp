@@ -11,9 +11,10 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class NotificationSender {
-    String CHANNEL_ID = "Coro-No";
-    Context context;
-    int notificationId = 02112020; //Id notifikacije - jedinstven za svaku, u nasem slucaju nek se i preklapaju i jednu drugu override-aju
+    private String CHANNEL_ID = "Coro-No";
+    private Context context;
+    private String[] notificationDescriptions = {"Дезинфикуј руке!", "Стави маску!", "Опери руке и проветри маску и одећу!"};
+    //int notificationId = 02112020; //Id notifikacije - jedinstven za svaku, u nasem slucaju nek se i preklapaju i jednu drugu override-aju
 
     //Konstruktor
     public NotificationSender(Context contextArg) {
@@ -42,7 +43,7 @@ public class NotificationSender {
         }
     }
 
-    public void showNotification(){
+    public void showNotification(int notificationId) {
         //Otvori MainActivity kad korisnik pritisne notifikaciju
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -50,16 +51,16 @@ public class NotificationSender {
 
         //Podesavanja notifikacije: naslov, tekst, ikonica, prioritet prikazivanja
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.mr_media_stop_dark)
+                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
                 .setContentTitle("Test title")
-                .setContentText("Test text")
+                .setContentText(notificationDescriptions[notificationId])
                 .setContentIntent(pendingIntent) //Sta se dogodi kad korisnik pritisne notifikaciju
                 .setAutoCancel(true) //Izbrisi notifikaciju kad je korisnik pritisne
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setPriority(NotificationCompat.PRIORITY_MAX);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, builder.build());
-
     }
-
 }

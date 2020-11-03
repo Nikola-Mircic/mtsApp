@@ -1,8 +1,5 @@
 package com.app.mtsapp;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -12,11 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.app.mtsapp.location.LocationFinder;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
+
 import java.util.Calendar;
 import java.util.Random;
 
@@ -26,8 +22,7 @@ public class MainActivity extends AppCompatActivity{
 
     private TextView tvLatitude,tvLongitude;
 
-    private TextView googleDetectedText, dailyTipTextView;
-    private int PLACE_PICKER_REQUEST = 1;
+    private TextView dailyTipTextView;
 
     //Dnevni saveti
     private String[] dailyTips = {"Tip one", "Tip two", "Tip three", "Tip four", "Tip five"}; //Dnevni saveti koji se prikazuju na glavnom ekranu
@@ -46,9 +41,6 @@ public class MainActivity extends AppCompatActivity{
         tvLongitude = (TextView) findViewById(R.id.tvLongitude);
         Button getLocation = (Button) findViewById(R.id.getLocation);
 
-        //Mrmi - otvaranje preko gugl mapa
-        Button googleMapsButton = findViewById(R.id.googleMapsButton);
-        googleDetectedText = findViewById(R.id.googleDetectedText);
 
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,18 +53,6 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        googleMapsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-                try {
-                    startActivityForResult(builder.build(MainActivity.this), PLACE_PICKER_REQUEST);
-                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
 
@@ -81,25 +61,20 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 NotificationSender notificationSender = new NotificationSender(MainActivity.this);
-                notificationSender.showNotification();
+                notificationSender.showNotification(0);
             }
         });
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PLACE_PICKER_REQUEST) {
-            if(resultCode == RESULT_OK) {
-                Place place = PlacePicker.getPlace(this, data);
-                String text;
-                String latitude = String.valueOf(place.getLatLng().latitude);
-                String longitude = String.valueOf(place.getLatLng().longitude);
-                text = "LATITUDE: " + latitude + "\nLONGITUDE: " + longitude;
-
-                googleDetectedText.setText(text);
+        Button button3 = findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationSender notificationSender = new NotificationSender(MainActivity.this);
+                notificationSender.showNotification(1);
+                Intent placesIntent = new Intent(MainActivity.this, PlacesActivity.class);
+                startActivity(placesIntent);
             }
-        }
+        });
     }
 
     @Override

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mtsApp</string>
+    <string name="title_activity_places">Map</string>
 </resources>

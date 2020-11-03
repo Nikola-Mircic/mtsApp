@@ -3,16 +3,16 @@ package com.app.mtsapp.location;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.location.*;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationAvailability;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 
 public class LocationFinder implements Runnable{
     private static final String TAG = "LocationFinder";//Tag koji se koristi za ispisivanje
