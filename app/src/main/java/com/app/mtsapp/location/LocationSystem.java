@@ -61,14 +61,18 @@ public class LocationSystem {
             return;
         }
         Toast.makeText(activity, "Found: "+dir.listFiles().length, Toast.LENGTH_SHORT).show();
-        for(File data : dir.listFiles()){
+        A:for(File data : dir.listFiles()){
             try {
                 SavedLocation sl;
                 FileInputStream fis = activity.openFileInput(data.getName());
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 sl = (SavedLocation) ois.readObject();
-                locations.add(sl);
                 ois.close();
+                for(SavedLocation test : locations){
+                    if(test.getName().equals(sl.getName()))
+                        continue A;
+                }
+                locations.add(sl);
             } catch (Exception e){
                 e.printStackTrace();
             }
