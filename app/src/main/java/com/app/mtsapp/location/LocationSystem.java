@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class LocationSystem {
@@ -28,6 +29,12 @@ public class LocationSystem {
     }
 
     public void addLocation(SavedLocation sl){
+        for(SavedLocation temp : locations){
+            if(sl.getName().equals(sl.getName())) {
+                Toast.makeText(activity, "Location already exists", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
         locations.add(sl);
     }
 
@@ -77,9 +84,80 @@ public class LocationSystem {
                 e.printStackTrace();
             }
         }
+
+        if(locations.size()>1){
+            locations.sort(new Comparator<SavedLocation>() {
+                @Override
+                public int compare(SavedLocation o1, SavedLocation o2) {
+                    return (o1.getLastDate().before(o2.getLastDate())?-1:1);
+                }
+            });
+        }
+    }
+
+    public void removeLocation(String locationName){
+        Log.i("[Remove location] ", "deleting locationn from list... ");
+        SavedLocation temp = null;
+        for(SavedLocation sl : locations){
+            if(sl.getName().equals(locationName)) {
+                temp = sl;
+                break;
+            }
+        }
+        if(temp!=null) {
+            locations.remove(temp);
+        }
+
+        Log.i("[Remove location] ", "deleting location from memory... ");
+        File dir = new File(activity.getFilesDir(), "saved_loc");
+        if(!dir.exists())
+            return;
+        for(File tempFile : dir.listFiles()){
+            if(tempFile.getName().equals("location_"+locationName)){
+                boolean deleted = false;
+                do{
+                    try {
+                        deleted = tempFile.delete();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }while(!deleted);
+                Toast.makeText(activity, "Location deleted", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public List<SavedLocation> getLocations(){
         return this.locations;
+    }
+
+    public SavedLocation getLocation(String name){
+        for(SavedLocation sl : locations){
+            if(sl.getName().equals(name))
+                return sl;
+        }
+        return null;
+    }
+
+    public SavedLocation findNearestLocation(Location current){
+        double dLat,dLong,dAlt;
+        double minDist = -1;
+        SavedLocation near = null;
+
+        for(SavedLocation sl : locations){
+            dLat = sl.getLatitude()-current.getLatitude();
+            dLong = sl.getLongitude()-current.getLongitude();
+            dAlt = sl.getAltitude()-current.getAltitude();
+            if(dist(dLat, dLong, dAlt)<minDist || minDist == -1){
+                minDist = dist(dLat, dLong, dAlt);
+                near = sl;
+            }
+        }
+
+        return near;
+    }
+
+    private double dist(double dLat, double dLong, double dAlt){
+        return Math.sqrt(dLat*dLat + dLong*dLong + dAlt*dAlt);
     }
 }
