@@ -12,4 +12,10 @@
         android:layout_height="match_parent"
         tools:context=".PlacesActivity" />
 
+    <Button
+        android:id="@+id/addMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ДОДАЈ МАРКЕР" />
+
 </RelativeLayout>

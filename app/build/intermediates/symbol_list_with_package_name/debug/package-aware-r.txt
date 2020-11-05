@@ -933,6 +933,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addMarker
 id adjust_height
 id adjust_width
 id alertTitle
