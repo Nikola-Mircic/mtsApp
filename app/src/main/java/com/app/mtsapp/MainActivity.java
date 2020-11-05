@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.mtsapp.location.LocationFinder;
+import com.app.mtsapp.location.LocationSystem;
+import com.app.mtsapp.location.SavedLocation;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -19,6 +22,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity{
 
     private LocationFinder finder;
+    private LocationSystem locationSystem;
 
     private TextView tvLatitude,tvLongitude;
 
@@ -37,19 +41,45 @@ public class MainActivity extends AppCompatActivity{
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Lock activity into portrait mode
 
         finder = new LocationFinder(this);
+        locationSystem = new LocationSystem(this);
         tvLatitude = (TextView) findViewById(R.id.tvLatitude);
         tvLongitude = (TextView) findViewById(R.id.tvLongitude);
         Button getLocation = (Button) findViewById(R.id.getLocation);
-
+        Button checkLocations = (Button) findViewById(R.id.checkLocation);//Proveri da li ima sacuvanih lokacija
+        Button saveLocations = (Button) findViewById(R.id.saveLocation);//Sacuva podatke o imenovanim lokacijama u memoriji telefona
 
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Location location = finder.getCurrentLocation();
                 if(location!=null){
-                    tvLatitude.setText("" + location.getLatitude());
-                    tvLongitude.setText("" + location.getLongitude());
+                    tvLatitude.setText(String.valueOf(location.getLatitude()));
+                    tvLongitude.setText(String.valueOf(location.getLongitude()));
+                    SavedLocation temp = new SavedLocation(location);
+                    locationSystem.addLocation(temp);
                 }
+            }
+        });
+
+        checkLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locationSystem.loadLocations();
+                for(SavedLocation sl : locationSystem.getLocations()){
+                    Log.i("[Loaded location]", sl.getName()+ " "+
+                                                          sl.getLastDate()+" "+
+                                                          sl.getAltitude()+" "+
+                                                          sl.getLatitude()+" "+
+                                                          sl.getLongitude());
+                }
+            }
+        });
+
+        saveLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locationSystem.saveLocations();
+                Log.i("[Location save]", " Locations saved!!");
             }
         });
 

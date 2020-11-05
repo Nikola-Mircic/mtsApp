@@ -62,17 +62,10 @@ public class LocationFinder implements Runnable{
                 ActivityCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             try {
                 flpClient.requestLocationUpdates(locationRequest, locationCallback, activity.getMainLooper());
-                /*flpClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        currentLocation = location;
-                    }
-                });*/
             }catch (Exception e){
                 e.printStackTrace();
             }
         }else {
-            //Toast.makeText(activity, "Permission needed!!", Toast.LENGTH_LONG).show();
             ActivityCompat.requestPermissions(activity,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     LOCATION_PERMISSSION_CODE);
