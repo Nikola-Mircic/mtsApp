@@ -286,14 +286,18 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="536" y="329" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1604568434718" />
-    <state x="609" y="296" key="git4idea.merge.GitMergeDialog" timestamp="1603897030811">
+    <state x="609" y="296" key="git4idea.merge.GitMergeDialog" timestamp="1604579393168">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="609" y="296" key="git4idea.merge.GitMergeDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1603897030811" />
-    <state x="559" y="296" key="git4idea.merge.GitPullDialog" timestamp="1603897201644">
+    <state x="609" y="296" key="git4idea.merge.GitMergeDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1604579393168" />
+    <state x="559" y="296" key="git4idea.merge.GitPullDialog" timestamp="1604579422018">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="559" y="296" key="git4idea.merge.GitPullDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1603897201644" />
+    <state x="559" y="296" key="git4idea.merge.GitPullDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1604579422018" />
+    <state x="618" y="405" key="git4idea.ui.GitStashDialog" timestamp="1604579405634">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="618" y="405" key="git4idea.ui.GitStashDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1604579405634" />
     <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1603908318790">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
