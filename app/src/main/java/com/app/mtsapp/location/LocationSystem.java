@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class LocationSystem {
     private Activity activity;
@@ -29,8 +30,9 @@ public class LocationSystem {
     }
 
     public void addLocation(SavedLocation sl){
-        for(SavedLocation temp : locations){
-            if(sl.getName().equals(sl.getName())) {
+        for(SavedLocation temp : locations) {
+            if (sl.getName().equals(temp.getName())) {
+                //if(sl.getName().equals(sl.getName())) {
                 Toast.makeText(activity, "Location already exists", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -68,15 +70,17 @@ public class LocationSystem {
             return;
         }
         Toast.makeText(activity, "Found: "+dir.listFiles().length, Toast.LENGTH_SHORT).show();
-        A:for(File data : dir.listFiles()){
+        A:
+        for (File data : Objects.requireNonNull(dir.listFiles())) {
             try {
                 SavedLocation sl;
                 FileInputStream fis = activity.openFileInput(data.getName());
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 sl = (SavedLocation) ois.readObject();
                 ois.close();
-                for(SavedLocation test : locations){
-                    if(test.getName().equals(sl.getName()))
+                for (SavedLocation test : locations) {
+                    System.out.println("[МРМИ]: Тест име " + test + " сачувана локација име " + sl);
+                    if (test.getName().equals(sl.getName()))
                         continue A;
                 }
                 locations.add(sl);

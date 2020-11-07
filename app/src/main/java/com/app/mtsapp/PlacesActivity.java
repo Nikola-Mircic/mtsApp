@@ -3,13 +3,18 @@ package com.app.mtsapp;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.app.mtsapp.location.LocationSystem;
+import com.app.mtsapp.location.SavedLocation;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -31,18 +38,28 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.List;
+
 public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallback {
-    private FusedLocationProviderClient flpClient; //Коришћен за добијање тренутне локације уређаја
+
     private int locationRequestCode = 100; //Код за захтевање дозволе коришћења локације уређаја
-    private int gpsRequestCode = 200; //Код за паљење GPS локације уређаја
-    private GoogleMap googleMap;
-    private LatLng currentLatLng = null; //Тренутне координате уређаја
     private String[] locationRequests = {"Manifest.permission.ACCESS_FINE_LOCATION", "Manifest.permission.ACCESS_COARSE_LOCATION"};
+    private int gpsRequestCode = 200; //Код за паљење GPS локације уређаја
+
+    private GoogleMap googleMap;
+    private FusedLocationProviderClient flpClient; //Коришћен за добијање тренутне локације уређаја
+
+    private Location currentLocation; //Тренутна локација уређаја
+    private String currentLocationName;
+
+    private List<SavedLocation> savedLocations;
+    private LocationSystem locationSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +78,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             addMarkerButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    turnOnGPS(); //Упали GPS локацију на уређају
+                    gpsAddLocation(); //Упали GPS локацију на уређају и ако је могуће маркира тренутну локацију на мапи
                 }
             });
         } else {
@@ -74,8 +91,53 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap gMap) {
         flpClient = LocationServices.getFusedLocationProviderClient(PlacesActivity.this); //Референцира провајдер тренутне локације
         googleMap = gMap;
+
+        //Учитај сачуване локације и референцирај листу сачуваних локација
+        locationSystem = new LocationSystem(this);
+        locationSystem.loadLocations();
+        savedLocations = locationSystem.getLocations();
+
+        //Зове се када се неки маркер помера
+        googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker arg0) {
+            }
+
+            //Кад је завршено померање маркера
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                Log.d("System out", "onMarkerDragEnd..." + marker.getPosition().latitude + "..." + marker.getPosition().longitude);
+                System.out.println("[МРМИ]: Стара локација: " + locationSystem.getLocation(marker.getTitle()).getLatitude() + ", " + locationSystem.getLocation(marker.getTitle()).getLongitude());
+                //locationSystem.loadLocations();
+                //Промени координате локације која је сачувана у локцаионом систему користећи нове координате маркера
+                locationSystem.getLocation(marker.getTitle()).setLatitude(marker.getPosition().latitude);
+                locationSystem.getLocation(marker.getTitle()).setLongitude(marker.getPosition().longitude);
+                System.out.println("[МРМИ]: Померам локацију имена " + marker.getTitle());
+                System.out.println("[МРМИ]: Нова локација: " + locationSystem.getLocation(marker.getTitle()).getLatitude() + ", " + locationSystem.getLocation(marker.getTitle()).getLongitude());
+                locationSystem.saveLocations(); //Сачувај локације у систему
+            }
+
+            @Override
+            public void onMarkerDrag(Marker arg0) {
+            }
+        });
+
+        loadMarkersFromSavedLocations(); //Прикажи маркере свих сачуваних локација
+
+        getCurrentLocation(); //Пронађи тренутну локацију уређаја
+
+        //Ако постоји бар 1 сачувана локација, зумирај мапу на њу
+        if (savedLocations.size() > 0) {
+            LatLng currentLatLng = new LatLng(savedLocations.get(0).getLatitude(), savedLocations.get(0).getLongitude()); //Узми тренутне координате
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17)); //Зумирај мапу на тренутну локацију
+        }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        locationSystem.saveLocations();
+    }
 
     //=================== ПРОВЕРАВАЊЕ И ДОБИЈАЊЕ ДОЗВОЛА ЗА ЛОКАЦИЈУ И ПАЉЕЊЕ ЛОКАЦИЈЕ НА УРЕЂАЈУ =============================
 
@@ -108,7 +170,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
     /*Проверава да ли је GPS локација уређаја упаљења. Ако јесте, дода маркер на тренутној локацији а ако није затражи од корисника да дозволи
     апликацији да користи GPS локацију уређаја*/
-    private void turnOnGPS() {
+    private void gpsAddLocation() {
         //Направи захтев за проверу и добијање GPS локације уређаја
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(5000).setFastestInterval(2000);
@@ -125,7 +187,8 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
                     //Ако је GPS локација већ упаљења неће се throw-ати било какав exception
                     System.out.println("[MRMI]: GPS локација је већ упаљена, додајем маркер");
-                    addMarker(); //Додај маркер на тренутној локацији уређаја
+                    showLocationNamePopup();
+                    //addMarker(); //Додај маркер на тренутној локацији уређаја
                 } catch (ApiException apiE) {
                     switch (apiE.getStatusCode()) {
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
@@ -145,6 +208,34 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
             }
         });
+    }
+
+    private void showLocationNamePopup() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Унесите назив локације");
+
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected;
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("Сачувај", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                currentLocationName = input.getText().toString();
+                addMarker();
+            }
+        });
+        builder.setNegativeButton("Откажи", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 
     //Обрађује одлуке корисника при дијалогу за коришћење GPS лоакције уређаја
@@ -173,8 +264,8 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 @Override
                 public void onSuccess(final Location location) {
                     if (location != null) {
-                        currentLatLng = new LatLng(location.getLatitude(), location.getLongitude()); //Узми тренутне координате
-                        System.out.println("[MRMI]: Променио тренутне координате на: " + currentLatLng.latitude + " , " + currentLatLng.longitude);
+                        currentLocation = location;
+                        System.out.println("[MRMI]: Променио тренутне координате на: " + currentLocation.getLatitude() + " , " + currentLocation.getLongitude());
                     }
                 }
             });
@@ -188,12 +279,29 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         getCurrentLocation(); //Пронађи тренутну локацију уређаја
 
         //Ако су пронађене тренутне координате уређаја
-        if (currentLatLng != null) {
+        if (currentLocation != null) {
+            LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); //Узми тренутне координате
+
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17)); //Зумирај мапу на тренутну локацију
-            MarkerOptions markerOptions = new MarkerOptions().position(currentLatLng).title("Тренутна локација").draggable(true); //Постави подешавања маркера
+            MarkerOptions markerOptions = new MarkerOptions().position(currentLatLng).title(currentLocationName).draggable(true); //Постави подешавања маркера
             googleMap.addMarker(markerOptions); //Постави маркер тренутне локације на мапу
+
+            System.out.println("[МРМИ]: Чувам локацију имена " + currentLocationName);
+            locationSystem.addLocation(currentLocationName, currentLocation);
+            locationSystem.saveLocations();
         } else {
             System.out.println("[MRMI]: Не постоје тренутне координате уређаја");
+        }
+    }
+
+    //Прикаже маркере сачуваних локација користећи LocationSystem
+    private void loadMarkersFromSavedLocations() {
+        System.out.println("[MRMI]: Број сачуваних локација: " + savedLocations.size());
+        for (SavedLocation savedLocation : savedLocations) {
+            LatLng currentLatLng = new LatLng(savedLocation.getLatitude(), savedLocation.getLongitude());
+            MarkerOptions markerOptions = new MarkerOptions().position(currentLatLng).title(savedLocation.getName()).draggable(true); //Постави позицију, назив и особине маркера
+            googleMap.addMarker(markerOptions); //Постави маркер учитане локације на мапу
+            System.out.println("[MRMI]: Учитао локацију " + savedLocation.getName() + " на координатама " + savedLocation.getLatitude() + " , " + savedLocation.getLongitude());
         }
     }
 }
