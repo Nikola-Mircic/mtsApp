@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">mtsApp</string>
-    <string name="title_activity_places">Map</string>
+    <string name="app_name" translatable="false">mtsApp</string>
+    <string name="title_activity_places" translatable="false">Map</string>
+    <string name="notifyUser">Notify user</string>
+    <string name="dailyTip">Daily tip</string>
+    <string name="save">Save</string>
+    <string name="getLocation">Get location</string>
+    <string name="openPlaces">Open maps</string>
+    <string name="settings">Settings</string>
+    <string name="addMarker">Add marker</string>
+    <string name="check">Check</string>
+    <string name="english" translatable="false">English</string>
+    <string name="serbianLatin" translatable="false">Srpski</string>
+    <string name="serbianCyrillic" translatable="false">Српски</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="backToMenu">Are you sure you want to go back to the main menu?</string>
+    <string name="quitApp">Are you sure you want to quit the app?</string>
+    <string name="cancel">Cancel</string>
+    <string name="markerName">How do you want to call your current location?</string>
 </resources>

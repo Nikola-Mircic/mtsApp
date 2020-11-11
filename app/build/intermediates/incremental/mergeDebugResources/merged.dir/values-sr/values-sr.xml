@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="dailyTips">
+        <item name="Tip 1">Nemoj ići u krcata mesta.</item>
+        <item name="Tip 2">Ostani bezbedan.</item>
+        <item name="Tip 3">Kontaktiraj se sa lekarom ako misliš da imaš simptom COVID-19-a.</item>
+    </string-array>
+    <string-array name="notificationMessages">
+        <item name="Tip 1">Stavi masku!</item>
+        <item name="Tip 2">Dezinfikuj masku i odeću!</item>
+        <item name="Tip 3">Dezinfikuj ruke!</item>
+    </string-array>
     <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Идите на почетну"</string>
     <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Идите нагоре"</string>
     <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Још опција"</string>
@@ -27,6 +37,10 @@
     <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Делите помоћу"</string>
     <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Делите помоћу апликације <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Скупи"</string>
+    <string name="addMarker">Dodaj obeleživač</string>
+    <string name="backToMenu">Da li ste sigurni da želite da se vratite na glavni meni?</string>
+    <string name="cancel">Otkaži</string>
+    <string name="check">Proveri učitane lokacije</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Омогући"</string>
     <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> неће функционисати ако не омогућите Google Play услуге."</string>
     <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Омогућите Google Play услуге"</string>
@@ -45,6 +59,16 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Отвори на телефону"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Пријави ме"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Пријави ме на Google"</string>
+    <string name="dailyTip">Dnevni savet</string>
+    <string name="getLocation">Uzmi trenutnu lokaciju</string>
+    <string name="markerName">Kako želite da nazovete Vašu trenutnu lokaciju?</string>
+    <string name="no">Ne</string>
+    <string name="notifyUser">Obavesti korisnika</string>
+    <string name="openPlaces">Otvori mape</string>
+    <string name="quitApp">Da li ste sigurni da želite da ugasite aplikaciju?</string>
+    <string name="save">Sačuvaj</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Претражите"</string>
+    <string name="settings">Podešavanja</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="yes">Da</string>
 </resources>

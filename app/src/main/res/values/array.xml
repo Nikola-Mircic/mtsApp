@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="notificationMessages">
+        <item name="Tip 1">Put on your mask!</item>
+        <item name="Tip 2">Disinfect your mask and clothes!</item>
+        <item name="Tip 3">Disinfect your hands!</item>
+    </string-array>
+    <string-array name="dailyTips">
+        <item name="Tip 1">Don\'t go to crowded places.</item>
+        <item name="Tip 2">Stay safe.</item>
+        <item name="Tip 3">Contact your local hospital if you think you have any COVID-19 symptom.</item>
+    </string-array>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="notificationMessages">
+        <item name="Tip 1">Stavi masku!</item>
+        <item name="Tip 2">Dezinfikuj masku i odeću!</item>
+        <item name="Tip 3">Dezinfikuj ruke!</item>
+    </string-array>
+    <string-array name="dailyTips">
+        <item name="Tip 1">Nemoj ići u krcata mesta.</item>
+        <item name="Tip 2">Ostani bezbedan.</item>
+        <item name="Tip 3">Kontaktiraj se sa lekarom ako misliš da imaš simptom COVID-19-a.</item>
+    </string-array>
+</resources>

@@ -10,14 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="No available data"
         android:padding="5dp" />
 
     <TextView
         android:id="@+id/tvLongitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No available data"
         android:layout_below="@id/tvLatitude"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
@@ -27,7 +25,7 @@
         android:id="@+id/getLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get location"
+        android:text="@string/getLocation"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_below="@id/tvLongitude" />
@@ -36,7 +34,7 @@
         android:id="@+id/checkLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check"
+        android:text="@string/check"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:layout_below="@id/getLocation"/>
@@ -45,7 +43,7 @@
         android:id="@+id/saveLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:layout_below="@id/checkLocation" />
@@ -60,7 +58,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="100dp"
-        android:text="TextView" />
+        android:text="@string/dailyTip" />
 
     <Button
         android:id="@+id/notifyButton"
@@ -69,7 +67,7 @@
         android:layout_below="@+id/dailyTipText"
         android:layout_centerHorizontal="true"
 
-        android:text="Пошаљи нотификацију" />
+        android:text="@string/notifyUser" />
 
     <Button
         android:id="@+id/button3"
@@ -77,6 +75,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/notifyButton"
         android:layout_centerHorizontal="true"
-        android:text="ОТВОРИ МАПЕ" />
+        android:text="@string/openPlaces" />
 
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:text="@string/settings" />
 </RelativeLayout>

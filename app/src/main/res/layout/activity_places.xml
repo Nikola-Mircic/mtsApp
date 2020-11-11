@@ -16,6 +16,6 @@
         android:id="@+id/addMarker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ДОДАЈ МАРКЕР" />
+        android:text="@string/addMarker" />
 
 </RelativeLayout>

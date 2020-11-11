@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notifyUser">Обавести корисника</string>
+    <string name="dailyTip">Дневни савет</string>
+    <string name="settings">Подешавања</string>
+    <string name="openPlaces">Отвори мапе</string>
+    <string name="getLocation">Узми тренутну локацију</string>
+    <string name="save">Сачувај</string>
+    <string name="addMarker">Додај обележивач</string>
+    <string name="check">Провери учитане локације</string>
+    <string name="yes">Да</string>
+    <string name="no">Не</string>
+    <string name="backToMenu">Да ли сте сигурни да желите да се вратите на главни мени?</string>
+    <string name="quitApp">Да ли сте сигурни да желите да угасите апликацију?</string>
+    <string name="cancel">Откажи</string>
+    <string name="markerName">Како желите да назовете Вашу тренутну локацију?</string>
+</resources>

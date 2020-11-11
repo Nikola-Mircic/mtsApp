@@ -1,6 +1,7 @@
 package com.app.mtsapp.location;
 
 import android.app.Activity;
+import android.content.Context;
 import android.location.Location;
 import android.os.Build;
 import android.util.Log;
@@ -52,7 +53,7 @@ public class LocationSystem {
                 String filename = "location_"+location.getName();
                 File file = new File(dir,filename);
                 Log.i("File path", ""+file.getAbsolutePath());
-                FileOutputStream fos = activity.openFileOutput(filename,activity.MODE_PRIVATE);
+                FileOutputStream fos = activity.openFileOutput(filename, Context.MODE_PRIVATE);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(location);
                 file.createNewFile();

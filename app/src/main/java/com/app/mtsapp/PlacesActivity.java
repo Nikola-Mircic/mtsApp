@@ -63,6 +63,9 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LanguageManager languageManager = new LanguageManager(PlacesActivity.this);
+        languageManager.checkLocale();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
 
@@ -73,6 +76,11 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             if (supportMapFragment != null) {
                 supportMapFragment.getMapAsync(this);
             }
+
+            //Учитај сачуване локације и референцирај листу сачуваних локација
+            locationSystem = new LocationSystem(this);
+            locationSystem.loadLocations();
+            savedLocations = locationSystem.getLocations();
 
             Button addMarkerButton = findViewById(R.id.addMarker);
             addMarkerButton.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +99,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap gMap) {
         flpClient = LocationServices.getFusedLocationProviderClient(PlacesActivity.this); //Референцира провајдер тренутне локације
         googleMap = gMap;
-
-        //Учитај сачуване локације и референцирај листу сачуваних локација
-        locationSystem = new LocationSystem(this);
-        locationSystem.loadLocations();
-        savedLocations = locationSystem.getLocations();
 
         //Зове се када се неки маркер помера
         googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
@@ -137,6 +140,14 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     protected void onDestroy() {
         super.onDestroy();
         locationSystem.saveLocations();
+    }
+
+    //Кад корисник притисне дугме за враћање назад на уређају
+    @Override
+    public void onBackPressed() {
+        //Прикажи упозорење
+        AlertPopupManager alertPopupManager = new AlertPopupManager(this, getResources().getString(R.string.backToMenu), false);
+        alertPopupManager.showAlertDialog();
     }
 
     //=================== ПРОВЕРАВАЊЕ И ДОБИЈАЊЕ ДОЗВОЛА ЗА ЛОКАЦИЈУ И ПАЉЕЊЕ ЛОКАЦИЈЕ НА УРЕЂАЈУ =============================
@@ -217,21 +228,21 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     //Прикаже прозор за унос имена локације
     private void showLocationNamePopup() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Унесите назив локације");
+        builder.setTitle(getResources().getString(R.string.markerName));
 
         //Текст уноса
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT); //Одреди тип текста уноса
         builder.setView(input);
 
-        builder.setPositiveButton("Сачувај", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.save), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 currentLocationName = input.getText().toString();
                 addMarker();
             }
         });
-        builder.setNegativeButton("Откажи", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
