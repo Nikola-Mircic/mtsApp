@@ -2,6 +2,7 @@ package com.app.mtsapp.location;
 
 import android.app.Activity;
 import android.location.Location;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -89,13 +90,15 @@ public class LocationSystem {
             }
         }
 
-        if(locations.size()>1){
-            locations.sort(new Comparator<SavedLocation>() {
-                @Override
-                public int compare(SavedLocation o1, SavedLocation o2) {
-                    return (o1.getLastDate().before(o2.getLastDate())?-1:1);
-                }
-            });
+        if(locations.size()>1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+                locations.sort(new Comparator<SavedLocation>() {
+                    @Override
+                    public int compare(SavedLocation o1, SavedLocation o2) {
+                        return (o1.getLastDate().before(o2.getLastDate()) ? -1 : 1);
+                    }
+                });
+            }
         }
     }
 

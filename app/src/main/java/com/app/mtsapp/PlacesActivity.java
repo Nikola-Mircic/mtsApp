@@ -187,8 +187,12 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
                     //Ако је GPS локација већ упаљења неће се throw-ати било какав exception
                     System.out.println("[MRMI]: GPS локација је већ упаљена, додајем маркер");
-                    showLocationNamePopup();
-                    //addMarker(); //Додај маркер на тренутној локацији уређаја
+                    if (currentLocation != null) {
+                        showLocationNamePopup();
+                    } else {
+                        Toast.makeText(PlacesActivity.this, "Није пронађена тренутна локација, покушајте поново", Toast.LENGTH_SHORT).show();
+                    }
+
                 } catch (ApiException apiE) {
                     switch (apiE.getStatusCode()) {
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
@@ -210,17 +214,16 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         });
     }
 
+    //Прикаже прозор за унос имена локације
     private void showLocationNamePopup() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Унесите назив локације");
 
-        // Set up the input
+        //Текст уноса
         final EditText input = new EditText(this);
-        // Specify the type of input expected;
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setInputType(InputType.TYPE_CLASS_TEXT); //Одреди тип текста уноса
         builder.setView(input);
 
-        // Set up the buttons
         builder.setPositiveButton("Сачувај", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

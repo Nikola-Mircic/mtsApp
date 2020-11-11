@@ -21,7 +21,7 @@
       "properties": {
         "packageId": "com.app.mtsapp",
         "split": "",
-        "minSdkVersion": "24"
+        "minSdkVersion": "19"
       }
     }
   ]
