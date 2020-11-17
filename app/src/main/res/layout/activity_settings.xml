@@ -3,25 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Settings">
 
-    <Button
-        android:id="@+id/englishButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/english" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/serbianLatinButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/serbianLatin" />
+        <Button
+            android:id="@+id/englishButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english" />
 
-    <Button
-        android:id="@+id/serbianCyrillicButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/serbianCyrillic" />
+        <Button
+            android:id="@+id/serbianLatinButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/serbianLatin" />
+
+        <Button
+            android:id="@+id/serbianCyrillicButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/serbianCyrillic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:id="@+id/notificationOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="Notification 1 OFF"
+            android:textOn="Notification 1 ON" />
+
+        <ToggleButton
+            android:id="@+id/notificationTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="Notification 2 OFF"
+            android:textOn="Notification 2 ON" />
+
+        <ToggleButton
+            android:id="@+id/notificationThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="Notification 3 OFF"
+            android:textOn="Notification 3 ON" />
+    </LinearLayout>
+
+
 </LinearLayout>

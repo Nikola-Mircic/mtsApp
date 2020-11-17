@@ -37,7 +37,7 @@
 24-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
 25
 26    <application
-26-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:13:5-43:19
+26-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:13:5-40:19
 27        android:allowBackup="true"
 27-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:14:9-35
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -51,70 +51,62 @@
 32-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:17:9-54
 33        android:supportsRtl="true"
 33-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:18:9-35
-34        android:testOnly="true"
-35        android:theme="@style/AppTheme" >
-35-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:19:9-40
-36        <activity android:name="com.app.mtsapp.Settings" />
-36-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:20:9-55
-36-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:20:19-43
-37        <!--
-38             The API key for Google Maps-based APIs is defined as a string resource.
-39             (See the file "res/values/google_maps_api.xml").
-40             Note that the API key is linked to the encryption key used to sign the APK.
-41             You need a different API key for each encryption key, including the release key that is used to
-42             sign the APK for publishing.
-43             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-44        -->
-45        <meta-data
-45-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:29:9-31:55
-46            android:name="com.google.android.geo.API_KEY"
-46-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:30:13-58
-47            android:value="@string/google_maps_key" />
-47-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:31:13-52
-48
-49        <activity
-49-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:33:9-35:61
-50            android:name="com.app.mtsapp.PlacesActivity"
-50-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:13-43
-51            android:label="@string/title_activity_places" />
-51-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:35:13-58
-52        <activity android:name="com.app.mtsapp.MainActivity" >
-52-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:36:9-42:20
-52-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:36:19-47
-53            <intent-filter>
-53-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:37:13-41:29
-54                <action android:name="android.intent.action.MAIN" />
-54-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:38:17-69
-54-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:38:25-66
+34        android:theme="@style/AppTheme" >
+34-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:19:9-40
+35        <meta-data
+35-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:21:9-23:52
+36            android:name="com.google.android.geo.API_KEY"
+36-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:22:13-58
+37            android:value="@string/maps_api_key" />
+37-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:23:13-49
+38
+39        <activity android:name="com.app.mtsapp.Settings" />
+39-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:26:9-46
+39-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:26:19-43
+40        <activity
+40-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:28:9-30:61
+41            android:name="com.app.mtsapp.PlacesActivity"
+41-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:29:13-43
+42            android:label="@string/title_activity_places" />
+42-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:30:13-58
+43        <activity android:name="com.app.mtsapp.MainActivity" >
+43-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:32:9-38:20
+43-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:32:19-47
+44            <intent-filter>
+44-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:33:13-37:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:17-69
+45-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:36:17-77
+47-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:36:27-74
+48            </intent-filter>
+49        </activity>
+50
+51        <!-- Needs to be explicitly declared on P+ -->
+52        <uses-library
+52-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+53            android:name="org.apache.http.legacy"
+53-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+54            android:required="false" />
+54-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
 55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:40:17-77
-56-->G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:40:27-74
-57            </intent-filter>
-58        </activity>
-59        <!-- Needs to be explicitly declared on P+ -->
-60        <uses-library
-60-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
-61            android:name="org.apache.http.legacy"
-61-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
-62            android:required="false" />
-62-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\7ae81d063ee502a69e402ebf49106e7a\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
-63
-64        <activity
-64-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:23:9-26:75
-65            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-65-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:24:13-79
-66            android:exported="false"
-66-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:25:13-37
-67            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-67-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:26:13-72
-68
-69        <meta-data
-69-->[com.google.android.gms:play-services-basement:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\21abadd39ac22e4e3e4788b674bd9acc\jetified-play-services-basement-17.3.0\AndroidManifest.xml:23:9-25:69
-70            android:name="com.google.android.gms.version"
-70-->[com.google.android.gms:play-services-basement:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\21abadd39ac22e4e3e4788b674bd9acc\jetified-play-services-basement-17.3.0\AndroidManifest.xml:24:13-58
-71            android:value="@integer/google_play_services_version" />
-71-->[com.google.android.gms:play-services-basement:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\21abadd39ac22e4e3e4788b674bd9acc\jetified-play-services-basement-17.3.0\AndroidManifest.xml:25:13-66
-72    </application>
-73
-74</manifest>
+56        <activity
+56-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:23:9-26:75
+57            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+57-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:24:13-79
+58            android:exported="false"
+58-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:25:13-37
+59            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+59-->[com.google.android.gms:play-services-base:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\6c011ca7ad8c482f0f9157de9b036ba6\jetified-play-services-base-17.3.0\AndroidManifest.xml:26:13-72
+60
+61        <meta-data
+61-->[com.google.android.gms:play-services-basement:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\21abadd39ac22e4e3e4788b674bd9acc\jetified-play-services-basement-17.3.0\AndroidManifest.xml:23:9-25:69
+62            android:name="com.google.android.gms.version"
+62-->[com.google.android.gms:play-services-basement:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\21abadd39ac22e4e3e4788b674bd9acc\jetified-play-services-basement-17.3.0\AndroidManifest.xml:24:13-58
+63            android:value="@integer/google_play_services_version" />
+63-->[com.google.android.gms:play-services-basement:17.3.0] C:\Users\PC\.gradle\caches\transforms-2\files-2.1\21abadd39ac22e4e3e4788b674bd9acc\jetified-play-services-basement-17.3.0\AndroidManifest.xml:25:13-66
+64    </application>
+65
+66</manifest>

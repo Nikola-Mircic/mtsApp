@@ -869,6 +869,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable settings
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -1042,6 +1043,9 @@ id multiply
 id never
 id none
 id normal
+id notificationOne
+id notificationThree
+id notificationTwo
 id notification_background
 id notification_main_column
 id notification_main_column_container
@@ -1255,7 +1259,7 @@ string common_signin_button_text_long
 string dailyTip
 string english
 string getLocation
-string google_maps_key
+string maps_api_key
 string markerName
 string no
 string notifyUser

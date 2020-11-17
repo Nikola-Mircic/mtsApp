@@ -609,7 +609,7 @@
     <string name="dailyTip">Daily tip</string>
     <string name="english" translatable="false">English</string>
     <string name="getLocation">Get location</string>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBu9c7c3j-PaKlWTaXoBrBmh7mhC9BBlHI</string>
+    <string name="maps_api_key" translatable="false">AIzaSyDRsa7z0WoPUA2KIoJAQB5dnQ_zXb0cDsM</string>
     <string name="markerName">How do you want to call your current location?</string>
     <string name="no">No</string>
     <string name="notifyUser">Notify user</string>
