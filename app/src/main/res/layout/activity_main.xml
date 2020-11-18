@@ -1,87 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background_v3"
+    android:orientation="vertical"
+    android:weightSum="1"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvLatitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:padding="5dp" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.62" />
 
     <TextView
-        android:id="@+id/tvLongitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvLatitude"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:padding="5dp"/>
-
-    <Button
-        android:id="@+id/getLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/getLocation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/tvLongitude" />
-
-    <Button
-        android:id="@+id/checkLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/check"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/getLocation"/>
-
-    <Button
-        android:id="@+id/saveLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/checkLocation" />
-
-    <TextView
+        android:layout_width="match_parent"
         android:id="@+id/dailyTipText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/checkLocation"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="100dp"
-        android:text="@string/dailyTip" />
+        android:layout_height="0dp"
+        android:layout_weight="0.32"
+        android:textAlignment="center"
+        android:textSize="25sp" />
 
-    <Button
-        android:id="@+id/notifyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dailyTipText"
-        android:layout_centerHorizontal="true"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.06"
+        android:background="#049f04"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-        android:text="@string/notifyUser" />
+        <ImageButton
+            android:id="@+id/infoButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/info"
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/notifyButton"
-        android:layout_centerHorizontal="true"
-        android:text="@string/openPlaces" />
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rulebook_v2" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/settings" />
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/mapsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.34"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/openPlaces"
+
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/open_maps_v2" />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/settings"
+
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings_v2" />
+
+    </LinearLayout>
+
+</LinearLayout>

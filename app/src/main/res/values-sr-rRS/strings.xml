@@ -14,4 +14,5 @@
     <string name="quitApp">Да ли сте сигурни да желите да угасите апликацију?</string>
     <string name="cancel">Откажи</string>
     <string name="markerName">Како желите да назовете Вашу тренутну локацију?</string>
+    <string name="info">Информације</string>
 </resources>

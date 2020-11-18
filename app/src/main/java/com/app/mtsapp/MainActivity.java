@@ -3,28 +3,19 @@ package com.app.mtsapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.mtsapp.location.LocationFinder;
-import com.app.mtsapp.location.LocationSystem;
-import com.app.mtsapp.location.SavedLocation;
 
 import java.util.Calendar;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
-    private LocationFinder finder;
-    private LocationSystem locationSystem;
-
-    private TextView tvLatitude, tvLongitude;
 
     //Дневни савети
     private TextView dailyTipTextView;
@@ -44,77 +35,43 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
 
-        finder = new LocationFinder(this);
-        locationSystem = new LocationSystem(this);
-        tvLatitude = findViewById(R.id.tvLatitude);
-        tvLongitude = findViewById(R.id.tvLongitude);
-        Button getLocation = findViewById(R.id.getLocation);
-        Button checkLocations = findViewById(R.id.checkLocation);//Proveri da li ima sacuvanih lokacija
-        Button saveLocations = findViewById(R.id.saveLocation);//Sacuva podatke o imenovanim lokacijama u memoriji telefona
+        LocationFinder locationFinder = new LocationFinder(this);
+        locationFinder.run();
+        //Toast.makeText(this, locationFinder.getCurrentLocation().getLatitude() + " " + locationFinder.getCurrentLocation().getLongitude(), Toast.LENGTH_SHORT).show();
 
-        getLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Location location = finder.getCurrentLocation();
-                if (location != null) {
-                    tvLatitude.setText(String.valueOf(location.getLatitude()));
-                    tvLongitude.setText(String.valueOf(location.getLongitude()));
-                    SavedLocation temp = new SavedLocation(location);
-                    locationSystem.addLocation(temp);
-                }
-            }
-        });
-
-        checkLocations.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                locationSystem.loadLocations();
-                for(SavedLocation sl : locationSystem.getLocations()){
-                    Log.i("[Loaded location]", sl.getName()+ " "+
-                                                          sl.getLastDate()+" "+
-                                                          sl.getAltitude()+" "+
-                                                          sl.getLatitude()+" "+
-                                                          sl.getLongitude());
-                }
-            }
-        });
-
-        saveLocations.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                locationSystem.saveLocations();
-                Log.i("[Location save]", " Locations saved!!");
-            }
-        });
-
+        //Ако је потребно, промени дневни савет приказан на екрану
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
 
-        Button notifyButton = findViewById(R.id.notifyButton);
-        notifyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NotificationSender notificationSender = new NotificationSender(MainActivity.this);
-                notificationSender.showNotification(0);
-            }
-        });
+        //Дугмићи и њихова функционалност
+        ImageButton mapsButton, settingsButton, infoButton;
 
-        Button button3 = findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener() {
+        //Упали активити са мапом сачуваних локација
+        mapsButton = findViewById(R.id.mapsButton);
+        mapsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationSender notificationSender = new NotificationSender(MainActivity.this);
-                notificationSender.showNotification(1);
                 Intent placesIntent = new Intent(MainActivity.this, PlacesActivity.class);
                 startActivity(placesIntent);
             }
         });
 
-        Button settingsButton = findViewById(R.id.settingsButton);
+        //Упали активити са подешавањима
+        settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Settings.class));
+            }
+        });
+
+        //Прикаже прозор информација и правила понашања везаних за ковид-19
+        infoButton = findViewById(R.id.infoButton);
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoPopup infoPopup = new InfoPopup();
+                infoPopup.show(getSupportFragmentManager(), "Info popup");
             }
         });
     }
@@ -122,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        finder.stopLocating();
     }
 
     //Кад корисник притисне дугме за враћање назад на уређају
@@ -139,17 +95,17 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
 
         //Узми тренутни дан преко и нађи последњи сачувани дан у уређају
-        int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH), lastSavedDayD = sharedPreferences.getInt("LastSavedDayD", -1);
+        int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH), lastSavedDay = sharedPreferences.getInt("LastSavedDay", -1);
 
-        System.out.println("[MRMI]: Today: " + currentDay + " Last saved day: " + lastSavedDayD);
+        System.out.println("[MRMI]: Today: " + currentDay + " Last saved day: " + lastSavedDay);
 
         //Ако не постоји последњи дан сачуван у уређају
-        if(lastSavedDayD == -1) {
+        if (lastSavedDay == -1) {
             changeDailyTip(-1); //Прикажи насумичан савет из низа савета
 
             //Сачувај тренутни дан на уређају
-            lastSavedDayD = currentDay;
-            sharedPreferences.edit().putInt("LastSavedDayD", lastSavedDayD).apply();
+            lastSavedDay = currentDay;
+            sharedPreferences.edit().putInt("LastSavedDay", lastSavedDay).apply();
 
             //Такође сачувај индекс тренутног савета како би се он приказао при поноцном улажењу у апликацију истог дана
             sharedPreferences.edit().putInt("CurrentTipIndex", currentTipIndex).apply();
@@ -157,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("[MRMI]: Last day is -1, current tip index: " + currentTipIndex);
         }
         //Ако се сачуван дан и данас не поклапају
-        else if(lastSavedDayD!=currentDay) {
+        else if (lastSavedDay != currentDay) {
             //Сачувај тренутни дан у уређају
-            lastSavedDayD=currentDay;
-            sharedPreferences.edit().putInt("LastSavedDayD", lastSavedDayD).apply();
+            lastSavedDay = currentDay;
+            sharedPreferences.edit().putInt("LastSavedDay", lastSavedDay).apply();
 
             //Пронађи индекс тренутног савета са уређаја
             currentTipIndex = sharedPreferences.getInt("CurrentTipIndex", -1);
@@ -171,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             //Сачувај индекс тренутног савета који промени функција changeDailyTip()
             sharedPreferences.edit().putInt("CurrentTipIndex", currentTipIndex).apply();
 
-            System.out.println("[MRMI]: Last day is " + lastSavedDayD + ", current tip index: " + currentTipIndex);
+            System.out.println("[MRMI]: Last day is " + lastSavedDay + ", current tip index: " + currentTipIndex);
         }
         //Ако се дани поклапају
         else {
@@ -179,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
             dailyTipTextView.setText(dailyTips[currentTipIndex]); //Прикажи савет
 
-            System.out.println("[MRMI]: Last day is " + lastSavedDayD + ", current tip index: " + currentTipIndex);
+            System.out.println("[MRMI]: Last day is " + lastSavedDay + ", current tip index: " + currentTipIndex);
         }
     }
 

@@ -12,10 +12,14 @@
         android:layout_height="match_parent"
         tools:context=".PlacesActivity" />
 
-    <Button
+    <ImageButton
         android:id="@+id/addMarker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addMarker" />
-
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/addMarker"
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_location" />
 </RelativeLayout>

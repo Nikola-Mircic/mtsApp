@@ -3,39 +3,28 @@ package com.app.mtsapp.location;
 import android.location.Location;
 
 import java.io.Serializable;
-import java.security.Provider;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class SavedLocation implements Serializable{
     private static int id = 1;
-    private SimpleDateFormat formater = new SimpleDateFormat("E MMM dd HH:mm:ss zzz yyyy");
 
     private String name;
-    private Date lastDate;
     private double altitude,latitude,longitude;
 
     public SavedLocation() {
-        this("#" + id, new Date(),0, 0, 0);
+        this("#" + id, 0, 0, 0);
     }
 
     public SavedLocation(Location location) {
-        this("#" + id, new Date(), location.getAltitude(), location.getLatitude(), location.getLongitude());
+        this("#" + id, location.getAltitude(), location.getLatitude(), location.getLongitude());
     }
 
     public SavedLocation(String name,Location location){
-        this(name, new Date(), location.getAltitude(), location.getLatitude(), location.getLongitude());
+        this(name, location.getAltitude(), location.getLatitude(), location.getLongitude());
     }
 
-    public SavedLocation(String name,Date lastDate,Location location){
-        this(name, lastDate, location.getAltitude(), location.getLatitude(), location.getLongitude());
-    }
-
-    public SavedLocation(String name, Date lastDate, double altitude, double latitude, double longitude){
+    public SavedLocation(String name, double altitude, double latitude, double longitude) {
         ++this.id;
         this.setName(name);
-        this.setLastDate(lastDate);
         this.setAltitude(altitude);
         this.setLatitude(latitude);
         this.setLongitude(longitude);
@@ -47,14 +36,6 @@ public class SavedLocation implements Serializable{
 
     public void setName(String name){
         this.name = name;
-    }
-
-    public Date getLastDate(){
-        return this.lastDate;
-    }
-
-    public void setLastDate(Date lastDate){
-        this.lastDate = lastDate;
     }
 
     public double getAltitude() {

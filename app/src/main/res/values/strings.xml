@@ -18,4 +18,5 @@
     <string name="quitApp">Are you sure you want to quit the app?</string>
     <string name="cancel">Cancel</string>
     <string name="markerName">How do you want to call your current location?</string>
+    <string name="info">Info</string>
 </resources>

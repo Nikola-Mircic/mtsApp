@@ -3,7 +3,6 @@ package com.app.mtsapp.location;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
-import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -91,7 +89,7 @@ public class LocationSystem {
             }
         }
 
-        if(locations.size()>1) {
+       /* if(locations.size()>1) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
                 locations.sort(new Comparator<SavedLocation>() {
                     @Override
@@ -100,7 +98,7 @@ public class LocationSystem {
                     }
                 });
             }
-        }
+        }*/
     }
 
     public void removeLocation(String locationName){
