@@ -1,16 +1,13 @@
 package com.app.mtsapp.location;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.location.Location;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.app.mtsapp.MainActivity;
+import com.app.mtsapp.location.service.Tracker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,8 +19,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class LocationSystem {
-    public static LocationSystem lastInstance = null;
-
     private Activity activity;
     private List<SavedLocation> locations;
     private List<List<SavedLocation>> distance;
@@ -31,8 +26,6 @@ public class LocationSystem {
     public LocationSystem(Activity activity){
         this.locations = new ArrayList<>();
         this.activity = activity;
-
-        lastInstance = this;
     }
 
     public void addLocation(String name,Location location){
@@ -89,10 +82,12 @@ public class LocationSystem {
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 sl = (SavedLocation) ois.readObject();
                 ois.close();
-                for (SavedLocation test : locations) {
-                    System.out.println("[МРМИ]: Тест име " + test + " сачувана локација име " + sl);
-                    if (test.getName().equals(sl.getName()))
+                for (int i=0;i<locations.size();++i) {
+                    System.out.println("[МРМИ]: Тест име " + locations.get(i).getName() + " сачувана локација име " + sl.getName());
+                    if (locations.get(i).getName().equals(sl.getName())) {
+                        locations.set(i,sl);
                         continue A;
+                    }
                 }
                 locations.add(sl);
             } catch (Exception e){

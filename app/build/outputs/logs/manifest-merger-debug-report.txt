@@ -157,10 +157,10 @@ category#android.intent.category.LAUNCHER
 ADDED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
 		ADDED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:31:27-74
-service#com.app.mtsapp.location.Tracker
-ADDED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:9-54
+service#com.app.mtsapp.location.service.Tracker
+ADDED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:9-62
 	android:name
-		ADDED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:18-52
+		ADDED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:18-60
 uses-sdk
 INJECTED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml

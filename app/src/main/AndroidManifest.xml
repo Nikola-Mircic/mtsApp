@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name = ".location.Tracker"/>
+        <service android:name = ".location.service.Tracker"/>
     </application>
 
 </manifest>

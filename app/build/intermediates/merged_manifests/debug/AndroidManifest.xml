@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.app.mtsapp.location.Tracker" />
+        <service android:name="com.app.mtsapp.location.service.Tracker" />
         <!-- Needs to be explicitly declared on P+ -->
         <uses-library
             android:name="org.apache.http.legacy"

@@ -94,9 +94,9 @@
 50            </intent-filter>
 51        </activity>
 52
-53        <service android:name="com.app.mtsapp.location.Tracker" />
-53-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:9-54
-53-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:18-52
+53        <service android:name="com.app.mtsapp.location.service.Tracker" />
+53-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:9-62
+53-->E:\Programing\Projects\mtsApp\app\src\main\AndroidManifest.xml:35:18-60
 54        <!-- Needs to be explicitly declared on P+ -->
 55        <uses-library
 55-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Nikola\.gradle\caches\transforms-2\files-2.1\4756cdf3dd39e75084da35c59039ffb4\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40

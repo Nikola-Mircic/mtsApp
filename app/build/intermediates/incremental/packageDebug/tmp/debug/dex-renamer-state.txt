@@ -1,4 +1,4 @@
-#Fri Dec 04 01:10:39 CET 2020
+#Fri Dec 04 21:56:43 CET 2020
 base.0=E\:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
