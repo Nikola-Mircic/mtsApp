@@ -4,16 +4,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.ListenableWorker;
+import androidx.work.Operation;
+import androidx.work.WorkManager;
 
 import com.app.mtsapp.location.LocationFinder;
+import com.app.mtsapp.location.LocationSystem;
+import com.app.mtsapp.location.Tracker;
 
 import java.util.Calendar;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Учитај језик активитија
+        WorkManager workManager = WorkManager.getInstance(this);
+        Operation cancel = workManager.cancelAllWork();
+        if(cancel.getResult().isDone()){
+            Toast.makeText(this,"Stoped all trackers!",Toast.LENGTH_SHORT).show();
+        }
         LanguageManager languageManager = new LanguageManager(MainActivity.this);
         languageManager.checkLocale();
         dailyTips = getResources().getStringArray(R.array.dailyTips);
@@ -35,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
 
+
         LocationFinder locationFinder = new LocationFinder(this);
         locationFinder.run();
+        LocationSystem temp = new LocationSystem(this);
+        temp.startTracking();
         //Toast.makeText(this, locationFinder.getCurrentLocation().getLatitude() + " " + locationFinder.getCurrentLocation().getLongitude(), Toast.LENGTH_SHORT).show();
 
         //Ако је потребно, промени дневни савет приказан на екрану

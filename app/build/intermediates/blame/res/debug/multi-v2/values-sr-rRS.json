@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr-rRS\\values-sr-rRS.xml",
+            "map": [
+                {
+                    "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\values-sr-rRS\\array.xml",
+                    "from": {
+                        "startLines": "7,2",
+                        "startColumns": "4,4",
+                        "startOffsets": "287,57",
+                        "endLines": "11,6",
+                        "endColumns": "19,19",
+                        "endOffsets": "552,281"
+                    },
+                    "to": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,321",
+                        "endLines": "6,11",
+                        "endColumns": "19,19",
+                        "endOffsets": "316,541"
+                    }
+                },
+                {
+                    "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\values-sr-rRS\\strings.xml",
+                    "from": {
+                        "startLines": "8,12,14,9,3,6,16,15,11,2,5,13,7,4,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "374,561,747,430,116,268,878,790,526,57,216,659,332,167,490",
+                        "endColumns": "54,96,41,58,49,62,44,86,33,57,50,86,40,47,34",
+                        "endOffsets": "424,653,784,484,161,326,918,872,555,110,262,741,368,210,520"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,15,16,17,18,19,20,21,22,23,24,25,26",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "546,601,698,740,799,849,912,957,1044,1078,1136,1187,1274,1315,1363",
+                        "endColumns": "54,96,41,58,49,62,44,86,33,57,50,86,40,47,34",
+                        "endOffsets": "596,693,735,794,844,907,952,1039,1073,1131,1182,1269,1310,1358,1393"
+                    }
+                }
+            ]
+        }
+    ]
+}

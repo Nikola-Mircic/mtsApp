@@ -1,6 +1,7 @@
 package com.app.mtsapp.location;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.location.Location;
 
@@ -14,9 +15,11 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
-public class LocationFinder implements Runnable{
+public class LocationFinder implements Runnable {
     private static final String TAG = "LocationFinder";//Tag koji se koristi za ispisivanje
-    private  AppCompatActivity activity;//Pamti vrednost aktivitija koji koristi location finder
+
+    public static LocationFinder lastInstance = null;
+    private AppCompatActivity activity;//Pamti vrednost aktivitija koji koristi location finder
 
     private final int LOCATION_PERMISSSION_CODE = 100;//
 
@@ -26,9 +29,11 @@ public class LocationFinder implements Runnable{
 
     private Location currentLocation;//Trenutna lokacija
 
-    public LocationFinder(AppCompatActivity activity){
+    public LocationFinder(AppCompatActivity activity) {
         this.activity = activity;//Pamti se gde je LocationFinder kreiran(u kom aktivitiju)
         this.currentLocation = null;//Lokacija jos uvek nije pronadjena
+
+        lastInstance = this;
 
         Thread t = new Thread(this);//Kreira se nov zaseban proces za LocatinoFinder
         t.start();
@@ -41,7 +46,7 @@ public class LocationFinder implements Runnable{
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(5000);
 
-        locationCallback = new LocationCallback(){
+        locationCallback = new LocationCallback() {
             @Override
             public void onLocationAvailability(LocationAvailability locationAvailability) {
                 super.onLocationAvailability(locationAvailability);
@@ -54,21 +59,24 @@ public class LocationFinder implements Runnable{
             }
         };
 
-        startLocating();
-    }
-
-    public void startLocating(){
-        if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            try {
-                flpClient.requestLocationUpdates(locationRequest, locationCallback, activity.getMainLooper());
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }else {
+        while (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(activity,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     LOCATION_PERMISSSION_CODE);
+        }
+
+        startLocating();
+    }
+
+    public void startLocating() {
+        try {
+            if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                flpClient.requestLocationUpdates(locationRequest, locationCallback, activity.getMainLooper());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -76,8 +84,11 @@ public class LocationFinder implements Runnable{
         return  currentLocation;
     }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
     public void stopLocating(){
         flpClient.removeLocationUpdates(locationCallback);
     }
-
 }
