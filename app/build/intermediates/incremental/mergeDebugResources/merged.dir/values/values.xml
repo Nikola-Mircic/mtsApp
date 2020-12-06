@@ -299,6 +299,11 @@
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_allow_stacked_button_bar">false</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
+    <bool name="enable_gcm_scheduler_default">true</bool>
+    <bool name="enable_system_alarm_service_default">true</bool>
+    <bool name="enable_system_foreground_service_default">true</bool>
+    <bool name="enable_system_job_service_default">false</bool>
+    <bool name="workmanager_test_configuration">false</bool>
     <color name="abc_decor_view_status_guard">#ff000000</color>
     <color name="abc_decor_view_status_guard_light">#ffffffff</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
@@ -608,6 +613,7 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="dailyTip">Daily tip</string>
     <string name="english" translatable="false">English</string>
+    <string name="gcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="getLocation">Get location</string>
     <string name="info">Info</string>
     <string name="maps_api_key" translatable="false">AIzaSyDRsa7z0WoPUA2KIoJAQB5dnQ_zXb0cDsM</string>

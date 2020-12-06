@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.work:work-gcm:2.4.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4f19dab4de34fc97c34431c443ea9111/jetified-work-gcm-2.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4f19dab4de34fc97c34431c443ea9111/jetified-work-gcm-2.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4f19dab4de34fc97c34431c443ea9111/jetified-work-gcm-2.4.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.work/work-gcm/2.4.0/ed3d99bc6554c77fbb222516910471b291065fae/work-gcm-2.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

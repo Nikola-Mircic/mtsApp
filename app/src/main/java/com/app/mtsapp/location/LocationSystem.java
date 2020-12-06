@@ -2,9 +2,12 @@ package com.app.mtsapp.location;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.app.mtsapp.location.service.Tracker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +21,7 @@ import java.util.Objects;
 public class LocationSystem {
     private Activity activity;
     private List<SavedLocation> locations;
+    private List<List<SavedLocation>> distance;
 
     public LocationSystem(Activity activity){
         this.locations = new ArrayList<>();
@@ -78,27 +82,18 @@ public class LocationSystem {
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 sl = (SavedLocation) ois.readObject();
                 ois.close();
-                for (SavedLocation test : locations) {
-                    System.out.println("[МРМИ]: Тест име " + test + " сачувана локација име " + sl);
-                    if (test.getName().equals(sl.getName()))
+                for (int i=0;i<locations.size();++i) {
+                    System.out.println("[МРМИ]: Тест име " + locations.get(i).getName() + " сачувана локација име " + sl.getName());
+                    if (locations.get(i).getName().equals(sl.getName())) {
+                        locations.set(i,sl);
                         continue A;
+                    }
                 }
                 locations.add(sl);
             } catch (Exception e){
                 e.printStackTrace();
             }
         }
-
-       /* if(locations.size()>1) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-                locations.sort(new Comparator<SavedLocation>() {
-                    @Override
-                    public int compare(SavedLocation o1, SavedLocation o2) {
-                        return (o1.getLastDate().before(o2.getLastDate()) ? -1 : 1);
-                    }
-                });
-            }
-        }*/
     }
 
     public void removeLocation(String locationName){
@@ -133,6 +128,16 @@ public class LocationSystem {
         }
     }
 
+    public void startTracking(){
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                activity.startService(new Intent(activity, Tracker.class));
+            }
+        });
+        t.start();
+    }
+
     public List<SavedLocation> getLocations(){
         return this.locations;
     }
@@ -163,7 +168,14 @@ public class LocationSystem {
         return near;
     }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
     private double dist(double dLat, double dLong, double dAlt){
-        return Math.sqrt(dLat*dLat + dLong*dLong + dAlt*dAlt);
+        double dist = Math.sqrt(dLat*dLat + dLong*dLong)*6371000;
+
+        return Math.sqrt(dist*dist + dAlt*dAlt);
     }
 }
+

@@ -38,4 +38,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    //42-59 potrebno za WorkManager koji organizuje pozadinske procese
+    def work_version = "2.4.0"
+
+    implementation "androidx.work:work-runtime:$work_version"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    implementation "androidx.work:work-rxjava2:$work_version"
+    implementation "androidx.work:work-gcm:$work_version"
+    androidTestImplementation "androidx.work:work-testing:$work_version"
 }
