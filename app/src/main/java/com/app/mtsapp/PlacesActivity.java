@@ -2,8 +2,7 @@ package com.app.mtsapp;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -11,17 +10,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -50,9 +49,9 @@ import java.util.List;
 
 public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowLongClickListener {
 
-    private int locationRequestCode = 100; //Код за захтевање дозволе коришћења локације уређаја
-    private String[] locationRequests = new String[]{"Manifest.permission.ACCESS_FINE_LOCATION", "Manifest.permission.ACCESS_COARSE_LOCATION"};
-    private int gpsRequestCode = 200; //Код за паљење GPS локације уређаја
+    private final int locationRequestCode = 100; //Код за захтевање дозволе коришћења локације уређаја
+    private final String[] locationRequests = new String[]{"Manifest.permission.ACCESS_FINE_LOCATION", "Manifest.permission.ACCESS_COARSE_LOCATION"};
+    private final int gpsRequestCode = 200; //Код за паљење GPS локације уређаја
 
     private GoogleMap googleMap;
     //private FusedLocationProviderClient flpClient; //Коришћен за добијање тренутне локације уређаја
@@ -165,12 +164,12 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         locationSystem.saveLocations();
     }
 
-    //Кад корисник притисне дугме за враћање назад на уређају
+    //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        AlertPopupManager alertPopupManager = new AlertPopupManager(this, getResources().getString(R.string.backToMenu), false);
-        alertPopupManager.showAlertDialog();
+        InfoPopup infoPopup = new InfoPopup(PlacesActivity.this, false, false);
+        infoPopup.showDialog();
     }
 
     //=================== ПРОВЕРАВАЊЕ И ДОБИЈАЊЕ ДОЗВОЛА ЗА ЛОКАЦИЈУ И ПАЉЕЊЕ ЛОКАЦИЈЕ НА УРЕЂАЈУ =============================
@@ -250,38 +249,44 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
     //Прикаже прозор за унос имена локације
     private void showLocationNamePopup() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.markerName));
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.add_location_popup);
 
-        //Поље за унос назива локације
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT); //Одреди тип текста уноса
-        builder.setView(input);
+        final EditText locationNameInput = dialog.findViewById(R.id.locationNameInput); //Текст за унос имена локације
+        //final ToggleButton isHomeLocationButton = dialog.findViewById(R.id.isHomeLocationToggleButton); //Дугме које одређује да ли је локација која се чува кућна или не
+        final SwitchCompat isHomeLocationSwitch = dialog.findViewById(R.id.isHomeLocationSwitch);
 
-        //Дугме које обележава да ли је локација кућна или не (кућна је само 1, избрише стару кућну ако постоји и има другачију икону)
-        final ToggleButton isHomeButton = new ToggleButton(this);
-        builder.setView(isHomeButton);
-
-        builder.setPositiveButton(getResources().getString(R.string.save), new DialogInterface.OnClickListener() {
+        //Дугме за отказивање додавања локације
+        ImageButton cancelButton = dialog.findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                currentLocationName = input.getText().toString();
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        //Дугме за чување изабране локације
+        ImageButton yesButton = dialog.findViewById(R.id.yesButton);
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentLocationName = locationNameInput.getText().toString();
+
                 //Стави назив на ? ако корисник није унео назив
                 if (currentLocationName.equals("")) {
                     currentLocationName = "?";
                 }
-                settingHomeLocation = isHomeButton.isChecked();
-                addMarker();
-            }
-        });
-        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
+
+                settingHomeLocation = isHomeLocationSwitch.isChecked(); //Провери да ли је локација која се уноси кућна
+                addMarker(); //Додај маркер нове унете локације
+
+                dialog.dismiss();
             }
         });
 
-        builder.show();
+        dialog.show();
     }
 
     //Обрађује одлуке корисника при дијалогу за коришћење GPS лоакције уређаја
@@ -385,6 +390,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         }
     }
 
+    //Преувелича иконицу маркера за локацију
     public Bitmap resizeMapIcons(String iconName, int width, int height) {
         Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(iconName, "drawable", getPackageName()));
         return Bitmap.createScaledBitmap(imageBitmap, width, height, false);

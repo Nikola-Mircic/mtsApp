@@ -83,11 +83,11 @@ public class Settings extends AppCompatActivity {
         notificationThree.setChecked(sharedPreferences.getBoolean("notificationThree", true));
     }
 
-    //Кад корисник притисне дугме за враћање назад на уређају
+    //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        AlertPopupManager alertPopupManager = new AlertPopupManager(this, getResources().getString(R.string.backToMenu), false);
-        alertPopupManager.showAlertDialog();
+        InfoPopup infoPopup = new InfoPopup(Settings.this, false, false);
+        infoPopup.showDialog();
     }
 }

@@ -19,4 +19,6 @@
     <string name="cancel">Cancel</string>
     <string name="markerName">How do you want to call your current location?</string>
     <string name="info">Info</string>
+    <string name="homeLocation">Is this your home location?</string>
+    <string name="rulebookTitle">Behaviour advice</string>
 </resources>

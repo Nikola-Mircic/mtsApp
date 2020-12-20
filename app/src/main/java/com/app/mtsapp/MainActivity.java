@@ -13,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.work.Operation;
 import androidx.work.WorkManager;
 
-import com.app.mtsapp.location.LocationFinder;
-import com.app.mtsapp.location.LocationSystem;
 import com.app.mtsapp.location.service.ServiceHandler;
 import com.app.mtsapp.location.service.Tracker;
 
@@ -26,17 +24,20 @@ public class MainActivity extends AppCompatActivity {
     //Дневни савети
     private TextView dailyTipTextView;
     private String[] dailyTips; //Дневни савети који се приказују
-    private Random random = new Random(); //За генерисање насумичних бројева
+    private final Random random = new Random(); //За генерисање насумичних бројева
     private int currentTipIndex; //Индекс тренутног савета у низу савета, коришћен за мењање савета приказаон при промени датума
+    private NotificationSender notificationSender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Учитај језик активитија
+
         WorkManager workManager = WorkManager.getInstance(this);
         Operation cancel = workManager.cancelAllWork();
-        if(cancel.getResult().isDone()){
-            Toast.makeText(this,"Stoped all trackers!",Toast.LENGTH_SHORT).show();
+        if (cancel.getResult().isDone()) {
+            Toast.makeText(this, "Stoped all trackers!", Toast.LENGTH_SHORT).show();
         }
+
+        //Учитај језик активитија
         LanguageManager languageManager = new LanguageManager(MainActivity.this);
         languageManager.checkLocale();
         dailyTips = getResources().getStringArray(R.array.dailyTips);
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
 
-
+        notificationSender = new NotificationSender(this);
         /*LocationFinder locationFinder = new LocationFinder(this);
         locationFinder.start();*/
         ServiceHandler.lastActivityInstance = this;
@@ -84,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InfoPopup infoPopup = new InfoPopup();
-                infoPopup.show(getSupportFragmentManager(), "Info popup");
+                InfoPopup infoPopup = new InfoPopup(MainActivity.this, true, false);
+                infoPopup.showDialog();
             }
         });
     }
@@ -95,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    //Кад корисник притисне дугме за враћање назад на уређају
+    //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        AlertPopupManager alertPopupManager = new AlertPopupManager(this, getResources().getString(R.string.quitApp), true);
-        alertPopupManager.showAlertDialog();
+        InfoPopup infoPopup = new InfoPopup(MainActivity.this, false, true);
+        infoPopup.showDialog();
     }
 
     //Проверава да ли треба да се промени приказани дневни савет

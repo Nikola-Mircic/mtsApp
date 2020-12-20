@@ -22,4 +22,5 @@
         android:contentDescription="@string/addMarker"
         android:scaleType="fitCenter"
         android:src="@drawable/add_location" />
+
 </RelativeLayout>

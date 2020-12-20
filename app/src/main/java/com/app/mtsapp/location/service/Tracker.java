@@ -2,6 +2,7 @@ package com.app.mtsapp.location.service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.IBinder;
 import android.os.SystemClock;
@@ -36,14 +37,18 @@ public class Tracker extends IntentService {
         LocationSystem tlsystem = new LocationSystem(ServiceHandler.lastActivityInstance);
         LocationFinder tfinder = new LocationFinder(ServiceHandler.lastActivityInstance);
         tfinder.start();
-        while(true){
-            Log.i("HandleIntent", "--> Seconds: "+(sec++)*15);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE); //Референца SharedPreferences-a: лаког начина чувања простих података
+        String lastSavedLocationName; //Служи за одређивање нотификације која ће се послати (корисник је био код куће и сада није - обавести га да носи маску итд)
+
+        while (true) {
+            Log.i("HandleIntent", "--> Seconds: " + (sec++) * 15);
             tlsystem.loadLocations();
 
-            if(tlsystem==null || tfinder==null) {
-                if(tlsystem==null)
+            if (tlsystem == null || tfinder == null) {
+                if (tlsystem == null)
                     Log.i("Tracker", "doWork: LocationSystem is null");
-                if(tfinder==null)
+                if (tfinder == null)
                     Log.i("Tracker", "doWork: LocationFinder is null");
                 return;
             }
@@ -57,17 +62,34 @@ public class Tracker extends IntentService {
             }
 
             SavedLocation sl = tlsystem.findNearestLocation(current);
-            if(sl==null){
-                sl = new SavedLocation("Test location",0 ,0, 0);
+            if (sl == null) {
+                sl = new SavedLocation("Test location", 0, 0, 0);
             }
 
             String tempName = sl.getName();
             double tempDistance = sl.distanceTo(current);
-            if(lastDistance != -1.0){
-                if(tempName.equals(locationName) && Math.abs(tempDistance-lastDistance)<100){
+
+            String currentLocationName = sl.getName();
+
+            if (lastDistance != -1.0) {
+                if (tempName.equals(locationName) && Math.abs(tempDistance - lastDistance) < 100) {
                     //UKOLIKO SE LOKACIJA NIJE PROMENILA ZA VISE OD OKO STO METARA ZA 10 MIN
                     //KORISNIK JE VEROVATNO STAO ILI USPORIO
                     NotificationSender test = new NotificationSender(tlsystem.getActivity());
+
+                    lastSavedLocationName = sharedPreferences.getString("LastSavedLocationName", ""); //Пронађи последњу сачувану локацију на уређају
+
+                    if ((lastSavedLocationName.equals("") || lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
+                        test.showNotification(0); //Покажи нотификацију за стављање маске кад корисник изађе из куће
+                        sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
+                    } else if (!lastSavedLocationName.equals("home") && currentLocationName.equals("home")) {
+                        test.showNotification(1); //Покажи нотификацију за дезинфекцију одеће и маске кад се корисник врати кући
+                        sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
+                    } else if (!lastSavedLocationName.equals("home") && !currentLocationName.equals("home") && !lastSavedLocationName.equals(currentLocationName)) {
+                        test.showNotification(2); //Покажи нотификацију за дезинфекцију руку кад пређе из објекта у објекат
+                        sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
+                    }
+
                     test.showNotification("Coro-No official app", sl.getName());
                 }
             }

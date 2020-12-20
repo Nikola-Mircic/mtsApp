@@ -832,6 +832,7 @@ drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable add_location
+drawable border
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -859,6 +860,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable disinfect_clothes
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable home_location
@@ -877,11 +879,9 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable open_maps
 drawable open_maps_v2
-drawable rulebook
-drawable rulebook_v2
-drawable settings
+drawable put_on_mask
+drawable rulebook_v3
 drawable settings_v2
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -972,6 +972,7 @@ id bottom
 id bounce
 id buttonPanel
 id cache_measures
+id cancelButton
 id center
 id center_vertical
 id chain
@@ -993,6 +994,7 @@ id decor_content_parent
 id default_activity_button
 id deltaRelative
 id dependency_ordering
+id dialogTitle
 id dialog_button
 id dimensions
 id direct
@@ -1011,6 +1013,7 @@ id easeOut
 id edit_query
 id end
 id englishButton
+id englishButtonTextView
 id expand_activities_button
 id expanded_menu
 id flip
@@ -1035,6 +1038,7 @@ id image
 id info
 id infoButton
 id invisible
+id isHomeLocationSwitch
 id italic
 id jumpToEnd
 id jumpToStart
@@ -1046,8 +1050,10 @@ id line3
 id linear
 id listMode
 id list_item
+id locationNameInput
 id map
 id mapsButton
+id markerName
 id message
 id middle
 id motion_base
@@ -1055,8 +1061,11 @@ id multiply
 id never
 id none
 id normal
+id notifcationIcon
 id notificationOne
+id notificationText
 id notificationThree
+id notificationTitle
 id notificationTwo
 id notification_background
 id notification_main_column
@@ -1082,6 +1091,8 @@ id reverseSawtooth
 id right
 id right_icon
 id right_side
+id rulebookText
+id rulebookTitle
 id satellite
 id sawtooth
 id screen
@@ -1100,7 +1111,9 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id serbianCyrillicButton
+id serbianCyrillicButtonTextView
 id serbianLatinButton
+id serbianLatinButtonTextView
 id settingsButton
 id shortcut
 id showCustom
@@ -1158,6 +1171,7 @@ id wide
 id withText
 id wrap
 id wrap_content
+id yesButton
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer cancel_button_image_alpha
@@ -1202,13 +1216,17 @@ layout abc_tooltip
 layout activity_main
 layout activity_places
 layout activity_settings
+layout add_location_popup
+layout back_alert_dialog
 layout custom_dialog
 layout notification_action
 layout notification_action_tombstone
+layout notification_layout
 layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout rulebook_info_popup
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1269,6 +1287,7 @@ string dailyTip
 string english
 string gcm_fallback_notification_channel_label
 string getLocation
+string homeLocation
 string info
 string maps_api_key
 string markerName
@@ -1276,6 +1295,7 @@ string no
 string notifyUser
 string openPlaces
 string quitApp
+string rulebookTitle
 string save
 string search_menu_title
 string serbianCyrillic
@@ -1446,6 +1466,7 @@ style Base_Widget_AppCompat_TextView
 style Base_Widget_AppCompat_TextView_SpinnerItem
 style Base_Widget_AppCompat_Toolbar
 style Base_Widget_AppCompat_Toolbar_Button_Navigation
+style EditTextStyle
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_ThemeOverlay_AppCompat

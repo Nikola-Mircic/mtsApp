@@ -15,4 +15,6 @@
     <string name="cancel">Откажи</string>
     <string name="markerName">Како желите да назовете Вашу тренутну локацију?</string>
     <string name="info">Информације</string>
+    <string name="homeLocation">Да ли је ово Ваша кућна локација?</string>
+    <string name="rulebookTitle">Савети понашања</string>
 </resources>
