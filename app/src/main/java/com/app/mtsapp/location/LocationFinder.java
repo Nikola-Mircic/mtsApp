@@ -2,13 +2,16 @@ package com.app.mtsapp.location;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
+import androidx.core.location.LocationManagerCompat;
 
-import com.app.mtsapp.NotificationSender;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
@@ -17,12 +20,14 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.security.Permission;
+
 public class LocationFinder implements Runnable {
     private static final String TAG = "LocationFinder";//Tag koji se koristi za ispisivanje
 
-    private AppCompatActivity activity;//Pamti vrednost aktivitija koji koristi location finder
+    private Context context;//Pamti vrednost konteksta kojeg koristi za trazenje lokacije
 
-    private final int LOCATION_PERMISSSION_CODE = 100;//
+    private final int LOCATION_PERMISSSION_CODE = 100;
 
     private FusedLocationProviderClient flpClient;//Objekat koji pokrece pretragu lokacije
     private LocationRequest locationRequest;//Objekat koji salje zahtev za dobijanje lokacije i prosledjuje je do objekta povratnog poziva
@@ -30,15 +35,21 @@ public class LocationFinder implements Runnable {
 
     private Location currentLocation;//Trenutna lokacija
 
+    private LocationEventUpdate eventUpdate;
+
     private Thread t;//Thread koji pokrece rad findera
     private boolean running;//True ukoliko je finder pokrenut
 
-    public LocationFinder(AppCompatActivity activity) {
-        this.activity = activity;//Pamti se gde je LocationFinder kreiran(u kom aktivitiju)
+    public boolean locating;
+
+    public LocationFinder(Context context) {
+        this.context = context;//Pamti se gde je LocationFinder kreiran(u kom aktivitiju)
         this.currentLocation = null;//Lokacija jos uvek nije pronadjena
+        this.locating = false;
+        eventUpdate = null;
     }
 
-    public synchronized void start() {
+    public void start() {
         if (!running) {
             this.t = new Thread(this);//Kreira se nov zaseban proces za LocatinoFinder
             t.start();
@@ -46,8 +57,9 @@ public class LocationFinder implements Runnable {
         }
     }
 
-    public synchronized void stop() {
+    public void stop() {
         if (running) {
+            flpClient.removeLocationUpdates(locationCallback);
             flpClient = null;
             locationRequest = null;
             locationCallback = null;
@@ -62,10 +74,10 @@ public class LocationFinder implements Runnable {
 
     @Override
     public void run() {
-        flpClient = LocationServices.getFusedLocationProviderClient(this.activity);
-        locationRequest = LocationRequest.create();
+        locationRequest = new LocationRequest();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(5000);
+        locationRequest.setInterval(10 * 1000);
+        locationRequest.setFastestInterval(5 * 1000);
 
         locationCallback = new LocationCallback() {
             @Override
@@ -75,56 +87,32 @@ public class LocationFinder implements Runnable {
 
             @Override
             public void onLocationResult(LocationResult locationResult) {
-                super.onLocationResult(locationResult);
                 currentLocation = locationResult.getLastLocation();
+                if(eventUpdate!=null){
+                    eventUpdate.onUpdate(currentLocation);
+                }
+                super.onLocationResult(locationResult);
             }
         };
 
-        while (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    LOCATION_PERMISSSION_CODE);
+        flpClient = LocationServices.getFusedLocationProviderClient(context);
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            flpClient.requestLocationUpdates(locationRequest, locationCallback, context.getMainLooper());
+        }else{
+            if(context instanceof Activity){
+                Activity temp = (Activity) context;
+                ActivityCompat.requestPermissions(temp, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_PERMISSSION_CODE);
+            }
         }
 
-        startLocating();
     }
 
-    public void startLocating() {
-        try {
-            if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                    ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                flpClient.requestLocationUpdates(locationRequest, locationCallback, activity.getMainLooper());
-                flpClient.getLastLocation().addOnSuccessListener(activity, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        currentLocation = location;
-                    }
-                });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setOnUpdateEvent(LocationEventUpdate event){
+        this.eventUpdate = event;
     }
 
     public Location getCurrentLocation() {
-        if (running) {
-            if (currentLocation == null) {
-                if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                    return flpClient.getLastLocation().getResult();
-                }
-            }
-        }
         return  currentLocation;
-    }
-
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public void stopLocating(){
-        flpClient.removeLocationUpdates(locationCallback);
     }
 }

@@ -866,6 +866,7 @@ drawable googleg_standard_color_18
 drawable home_location
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_six_feet
 drawable main_background_v3
 drawable notification_action_background
 drawable notification_bg

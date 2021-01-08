@@ -1,27 +1,33 @@
 package com.app.mtsapp.location.service;
 
-import android.app.IntentService;
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.app.mtsapp.MainActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 public class ServiceHandler {
-    public static AppCompatActivity lastActivityInstance = null;
 
-    /**
-     * Pokrene servis za pracenje lokcaije korisnika.
-     * Sistem je pokrenut na zasebno procesu, jer bi inace ometao normalan rad aplikacije
-     * @param ServiceName Ime klase servisa koji se pokrece
+    /**Pokrene servis za pracenje korisnikove lokacije.
+     * Servis ne pocinje sa radom onog momenta kada je pokrenut posto je potrebno
+     * neko vreme da bi zapocelo GPS lociranje
+     *
+     * @param instance Referenca na neki postojeci activity
      * */
-    public static void startService(final Class ServiceName){
-       /* Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {*/
-                Intent service = new Intent(lastActivityInstance, ServiceName);
-                ServiceHandler.lastActivityInstance.startService(service);
-           /* }
-        });
-        t.start();*/
+    public static void startTrackingService(@NotNull Activity instance){
+        Intent service = new Intent(instance.getApplicationContext(), Tracker.class);
+        instance.startService(service);
+    }
+
+    /**Zaustavlja servis za pracenje korisnikove lokacije.
+     * Moguce je da servis odradi jos jedan apdejt lokacije i nakon gasenja <u>mada
+     * se nije desavalo prilikom poslednjih promena</u>
+     *
+     * @param instance Referenca na neki postojeci activity
+     * */
+    public static void stopTrackingService(@NotNull Activity instance){
+        Intent service = new Intent(instance.getApplicationContext(), Tracker.class);
+        instance.stopService(service);
     }
 }

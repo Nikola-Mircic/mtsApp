@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">mtsApp</string>
+    <string name="app_name" translatable="false">Coro-No</string>
     <string name="title_activity_places" translatable="false">Map</string>
     <string name="notifyUser">Notify user</string>
     <string name="dailyTip">Daily tip</string>

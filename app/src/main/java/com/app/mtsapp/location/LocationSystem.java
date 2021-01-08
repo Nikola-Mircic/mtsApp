@@ -70,10 +70,9 @@ public class LocationSystem {
         Log.i("[Load location] ", "getting locations... ");
         File dir = new File(activity.getFilesDir(), "saved_loc");
         if(!dir.exists()){
-            Toast.makeText(activity, "Dir not found", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(activity, "Found: "+dir.listFiles().length, Toast.LENGTH_SHORT).show();
+
         A:
         for (File data : Objects.requireNonNull(dir.listFiles())) {
             try {
@@ -94,6 +93,29 @@ public class LocationSystem {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static List<SavedLocation> loadLocations(Context context){
+        Log.i("[Load location] ", "getting locations... ");
+        List<SavedLocation> list = new ArrayList<>();
+
+        File dir = new File(context.getFilesDir(), "saved_loc");
+        if(!dir.exists())
+            return list;
+
+        for (File data : Objects.requireNonNull(dir.listFiles())) {
+            try {
+                SavedLocation sl;
+                FileInputStream fis = context.openFileInput(data.getName());
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                sl = (SavedLocation) ois.readObject();
+                ois.close();
+                list.add(sl);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 
     public void removeLocation(String locationName){
@@ -128,16 +150,6 @@ public class LocationSystem {
         }
     }
 
-    public void startTracking(){
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                activity.startService(new Intent(activity, Tracker.class));
-            }
-        });
-        t.start();
-    }
-
     public List<SavedLocation> getLocations(){
         return this.locations;
     }
@@ -168,11 +180,25 @@ public class LocationSystem {
         return near;
     }
 
-    public Activity getActivity() {
-        return activity;
+    public static SavedLocation findNearestLocation(Context context, List<SavedLocation> locations, Location current){
+        double dLat,dLong,dAlt;
+        double minDist = -1;
+        SavedLocation near = null;
+
+        for(SavedLocation sl : locations){
+            dLat = sl.getLatitude()-current.getLatitude();
+            dLong = sl.getLongitude()-current.getLongitude();
+            dAlt = sl.getAltitude()-current.getAltitude();
+            if(dist(dLat, dLong, dAlt)<minDist || minDist == -1){
+                minDist = dist(dLat, dLong, dAlt);
+                near = sl;
+            }
+        }
+
+        return near;
     }
 
-    private double dist(double dLat, double dLong, double dAlt){
+    private static double dist(double dLat, double dLong, double dAlt){
         double dist = Math.sqrt(dLat*dLat + dLong*dLong)*6371000;
 
         return Math.sqrt(dist*dist + dAlt*dAlt);
