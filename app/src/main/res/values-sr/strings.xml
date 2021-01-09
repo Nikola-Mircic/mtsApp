@@ -17,4 +17,6 @@
     <string name="info">Informacije</string>
     <string name="homeLocation">Da li je ovo Vaša kućna lokacija?</string>
     <string name="rulebookTitle">Saveti ponašanja</string>
+    <string name="rulebookText">Nosite masku kada ste sa drugima ili napolju.<br /><br />Dezinfikujte ruke nakon ljudskog kontakta.<br /><br />Dezinfikujte ruke kada promenite lokaciju.<br /><br />Izbegavajte krcata mesta.<br /><br />Držite distancu od barem 2 metra od drugih ljudi.</string>
+    <string name="setAppLanguage">Izaberite jezik aplikacije</string>
 </resources>

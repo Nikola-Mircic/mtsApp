@@ -6,7 +6,7 @@
         <item name="Tip 3">Disinfect your hands!</item>
     </string-array>
     <string-array name="dailyTips">
-        <item name="Tip 1">Don\'t go to crowded places.</item>
+        <item name="Tip 1">Don&apos;t go to crowded places.</item>
         <item name="Tip 2">Stay safe.</item>
         <item name="Tip 3">Contact your local hospital if you think you have any COVID-19 symptom.</item>
     </string-array>

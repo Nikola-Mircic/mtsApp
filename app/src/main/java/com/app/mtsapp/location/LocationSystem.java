@@ -83,7 +83,6 @@ public class LocationSystem {
                 sl = (SavedLocation) ois.readObject();
                 ois.close();
                 for (int i=0;i<locations.size();++i) {
-                    System.out.println("[МРМИ]: Тест име " + locations.get(i).getName() + " сачувана локација име " + sl.getName());
                     if (locations.get(i).getName().equals(sl.getName())) {
                         locations.set(i,sl);
                         continue A;

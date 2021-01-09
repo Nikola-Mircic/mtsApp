@@ -43,32 +43,36 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <ImageButton
             android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
 
             android:layout_alignParentStart="true"
             android:contentDescription="@string/no"
 
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:scaleType="fitCenter"
 
-            android:textSize="22sp" />
+            android:src="@drawable/cross" />
 
         <ImageButton
             android:id="@+id/yesButton"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
 
             android:layout_alignParentEnd="true"
             android:contentDescription="@string/yes"
 
-            android:src="@android:drawable/ic_menu_save"
-            android:textSize="22sp" />
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:scaleType="fitCenter"
+
+            android:src="@drawable/checkmark" />
     </RelativeLayout>
 
 </LinearLayout>

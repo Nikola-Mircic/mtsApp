@@ -3,48 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/border"
+    android:background="@drawable/rulebook_background"
     android:orientation="vertical"
-    android:padding="10dp">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/rulebookTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:text="@string/rulebookTitle"
-            android:textSize="24sp" />
-
-        <ImageButton
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="@string/no"
-
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-            tools:ignore="RelativeOverlap" />
-    </RelativeLayout>
+    android:weightSum="1">
 
     <TextView
+        android:id="@+id/rulebookTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.12"
+        android:gravity="center"
+        android:text="@string/rulebookTitle"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_height="100dp"
+        android:layout_weight="0.86"
         android:id="@+id/rulebookText"
         android:layout_width="wrap_content"
 
-        android:layout_height="wrap_content"
+        android:padding="10dp"
 
         android:scrollbars="vertical"
-        android:text="OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEOREOREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEOREOREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEOREOREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEOREOREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEOREOREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-OREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEOREOREOROEROEORELREORLEORLEORLEORLEORLEREORLEORLEORE
-"
+        android:text="@string/rulebookText"
         android:textSize="22sp" />
+
+    <ImageButton
+        android:id="@+id/cancelButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+
+        android:layout_gravity="end"
+        android:layout_weight="0.02"
+
+        android:adjustViewBounds="true"
+
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/no"
+        android:scaleType="fitCenter"
+
+        android:src="@drawable/cross"
+        tools:ignore="RelativeOverlap" />
 </LinearLayout>

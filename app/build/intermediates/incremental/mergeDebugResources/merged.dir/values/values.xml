@@ -589,7 +589,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="addMarker">Add marker</string>
-    <string name="app_name" translatable="false">mtsApp</string>
+    <string name="app_name" translatable="false">Coro-No</string>
     <string name="backToMenu">Are you sure you want to go back to the main menu?</string>
     <string name="cancel">Cancel</string>
     <string name="check">Check</string>
@@ -623,6 +623,7 @@
     <string name="notifyUser">Notify user</string>
     <string name="openPlaces">Open maps</string>
     <string name="quitApp">Are you sure you want to quit the app?</string>
+    <string name="rulebookText">Wear a mask when with others or outside.<br/><br/>Disinfect your hands after human contact.<br/><br/>Disinfect your hands when changing locations.<br/><br/>Avoid crowded places.<br/><br/>Keep a distance of at least 2 meters with others.</string>
     <string name="rulebookTitle">Behaviour advice</string>
     <string name="save">Save</string>
     <string name="search_menu_title">Search</string>

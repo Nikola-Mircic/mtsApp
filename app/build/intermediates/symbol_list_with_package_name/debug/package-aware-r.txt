@@ -841,6 +841,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable checkmark
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -860,13 +861,18 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable cross
 drawable disinfect_clothes
+drawable disinfect_hands
+drawable disinfect_hands_small_icon
+drawable disinfect_small_icon
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable home_location
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable main_background_v3
+drawable mask_small_icon
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -881,7 +887,9 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable open_maps_v2
 drawable put_on_mask
+drawable rulebook_background
 drawable rulebook_v3
+drawable settings_background
 drawable settings_v2
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1232,6 +1240,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1295,6 +1304,7 @@ string no
 string notifyUser
 string openPlaces
 string quitApp
+string rulebookText
 string rulebookTitle
 string save
 string search_menu_title
