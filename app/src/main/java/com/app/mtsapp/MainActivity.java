@@ -1,15 +1,19 @@
 package com.app.mtsapp;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.work.Operation;
 import androidx.work.WorkManager;
 
@@ -20,22 +24,19 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     //Дневни савети
     private TextView dailyTipTextView;
     private String[] dailyTips; //Дневни савети који се приказују
     private final Random random = new Random(); //За генерисање насумичних бројева
     private int currentTipIndex; //Индекс тренутног савета у низу савета, коришћен за мењање савета приказаон при промени датума
-    private NotificationSender notificationSender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        WorkManager workManager = WorkManager.getInstance(this);
-        Operation cancel = workManager.cancelAllWork();
-        if (cancel.getResult().isDone()) {
-            Toast.makeText(this, "Stoped all trackers!", Toast.LENGTH_SHORT).show();
-        }
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                100);
 
         //Учитај језик активитија
         LanguageManager languageManager = new LanguageManager(MainActivity.this);
@@ -46,13 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
-
-        notificationSender = new NotificationSender(this);
-        /*LocationFinder locationFinder = new LocationFinder(this);
-        locationFinder.start();*/
-        ServiceHandler.lastActivityInstance = this;
-        ServiceHandler.startService(Tracker.class);
-        //Toast.makeText(this, locationFinder.getCurrentLocation().getLatitude() + " " + locationFinder.getCurrentLocation().getLongitude(), Toast.LENGTH_SHORT).show();
 
         //Ако је потребно, промени дневни савет приказан на екрану
         dailyTipTextView = findViewById(R.id.dailyTipText);
