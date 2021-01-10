@@ -5,20 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.work.Operation;
-import androidx.work.WorkManager;
 
 import com.app.mtsapp.location.service.ServiceHandler;
-import com.app.mtsapp.location.service.Tracker;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -31,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] dailyTips; //Дневни савети који се приказују
     private final Random random = new Random(); //За генерисање насумичних бројева
     private int currentTipIndex; //Индекс тренутног савета у низу савета, коришћен за мењање савета приказаон при промени датума
+
+    private SharedPreferences sharedPreferences; //Референца SharedPreferences-a: лаког начина чувања простих података
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
+
+        sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
 
         //Ако је потребно, промени дневни савет приказан на екрану
         dailyTipTextView = findViewById(R.id.dailyTipText);
@@ -83,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 infoPopup.showDialog();
             }
         });
+
+        if (sharedPreferences.getBoolean("trackerSwitch", true)) {
+            ServiceHandler.startTrackingService(MainActivity.this);
+
+            sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
+        }
     }
 
     @Override
@@ -100,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
     //Проверава да ли треба да се промени приказани дневни савет
     private void checkDailyTip() {
-        //Референца SharedPreferences-a: лаког начина чувања простих података
-        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-
         //Узми тренутни дан преко и нађи последњи сачувани дан у уређају
         int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH), lastSavedDay = sharedPreferences.getInt("LastSavedDay", -1);
 

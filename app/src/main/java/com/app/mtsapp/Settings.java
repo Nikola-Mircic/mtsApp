@@ -4,16 +4,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
+import com.app.mtsapp.location.service.ServiceHandler;
 
 public class Settings extends AppCompatActivity {
 
     private LanguageManager languageManager;
 
-    private ToggleButton notificationOne, notificationTwo, notificationThree;
-    private SharedPreferences sharedPreferences;
+    private static int[] notificationToggleIcons;
+    private ToggleButton notificationOne, notificationTwo, notificationThree; //Паљење и гашење појединачних нотификација
+    private SharedPreferences.Editor sharedPreferencesEditor;
+    private SwitchCompat trackerSwitch; //ПКонтролише праћења локације и слања нотифиакција
+    private SwitchCompat dailyNotificationsSwitch; //Контролише слање дневних нотификација са саветима
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,41 +53,79 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        notificationToggleIcons = new int[]{
+                R.drawable.put_on_mask,
+                R.drawable.disinfect_clothes,
+                R.drawable.disinfect_hands,
+                R.drawable.mask_notification_disabled,
+                R.drawable.clothes_notification_disabled,
+                R.drawable.hands_notification_disabled
+        };
+
         //Референцирај шерд префс и тогл дугмиће за нотификације
-        sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        sharedPreferencesEditor = sharedPreferences.edit();
         notificationOne = findViewById(R.id.notificationOne);
         notificationTwo = findViewById(R.id.notificationTwo);
         notificationThree = findViewById(R.id.notificationThree);
+        trackerSwitch = findViewById(R.id.trackerSwitch);
+        dailyNotificationsSwitch = findViewById(R.id.dailyNotificationsSwitch);
 
-        loadEnabledNotifications(); //Учита сачувана стања дугмића за нотификације сачувана у уређају
+        loadButtonStates(); //Учита сачувана стања дугмића за нотификације сачувана у уређају
 
-        //Сачувај промене стања коришћења нотификација у уређају
+        //Сачувај промене стања коришћења нотификација у уређају и промени иконицу одговарајућег дугмета
         notificationOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferences.edit().putBoolean("notificationOne", notificationOne.isChecked()).apply();
+                sharedPreferencesEditor.putBoolean("notificationOne", notificationOne.isChecked()).apply();
+                setNotificationIcons();
             }
         });
         notificationTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferences.edit().putBoolean("notificationTwo", notificationTwo.isChecked()).apply();
+                sharedPreferencesEditor.putBoolean("notificationTwo", notificationTwo.isChecked()).apply();
+                setNotificationIcons();
             }
         });
         notificationThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferences.edit().putBoolean("notificationThree", notificationThree.isChecked()).apply();
+                sharedPreferencesEditor.putBoolean("notificationThree", notificationThree.isChecked()).apply();
+                setNotificationIcons();
+            }
+        });
+
+        //Покрени/заустави сервис за праћење локације и слање нотификација везаних за локацију
+        trackerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    ServiceHandler.startTrackingService(Settings.this);
+                } else {
+                    ServiceHandler.stopTrackingService(Settings.this);
+                }
+                sharedPreferencesEditor.putBoolean("trackerSwitch", isChecked).apply();
+            }
+        });
+
+        dailyNotificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sharedPreferencesEditor.putBoolean("sendDailyNotifications", isChecked).apply();
             }
         });
     }
 
-    //Учита сачувана стања дугмића за нотификације сачувана у уређају и промени стања дугмића
-    private void loadEnabledNotifications() {
+    //Учита сачувана стања дугмића за нотификације сачувана у уређају и промени стања дугмића, као и прекидача за сервис за праћење
+    private void loadButtonStates() {
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+
         notificationOne.setChecked(sharedPreferences.getBoolean("notificationOne", true));
         notificationTwo.setChecked(sharedPreferences.getBoolean("notificationTwo", true));
         notificationThree.setChecked(sharedPreferences.getBoolean("notificationThree", true));
+        setNotificationIcons();
+
+        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", true));
+        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", true));
     }
 
     //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
@@ -89,5 +134,26 @@ public class Settings extends AppCompatActivity {
         //Прикажи упозорење
         InfoPopup infoPopup = new InfoPopup(Settings.this, false, false);
         infoPopup.showDialog();
+    }
+
+    //Постави одговарајуће иконице за слике дугмића за паљење и гашење одређених обавештења
+    private void setNotificationIcons() {
+        if (notificationOne.isChecked()) {
+            notificationOne.setBackgroundResource(notificationToggleIcons[0]);
+        } else {
+            notificationOne.setBackgroundResource(notificationToggleIcons[3]);
+        }
+
+        if (notificationTwo.isChecked()) {
+            notificationTwo.setBackgroundResource(notificationToggleIcons[1]);
+        } else {
+            notificationTwo.setBackgroundResource(notificationToggleIcons[4]);
+        }
+
+        if (notificationThree.isChecked()) {
+            notificationThree.setBackgroundResource(notificationToggleIcons[2]);
+        } else {
+            notificationThree.setBackgroundResource(notificationToggleIcons[5]);
+        }
     }
 }

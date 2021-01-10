@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="notificationMessages">
-        <item name="Tip 1">Put on your mask!</item>
-        <item name="Tip 2">Disinfect your mask and clothes!</item>
-        <item name="Tip 3">Disinfect your hands!</item>
+        <item>Put on your mask!</item>
+        <item>Disinfect your mask and clothes!</item>
+        <item>Disinfect your hands!</item>
     </string-array>
     <string-array name="dailyTips">
-        <item name="Tip 1">Don&apos;t go to crowded places.</item>
-        <item name="Tip 2">Stay safe.</item>
-        <item name="Tip 3">Contact your local hospital if you think you have any COVID-19 symptom.</item>
+        <item>Do not go to crowded places.</item>
+        <item>Stay safe.</item>
+        <item>Contact your local hospital if you think you have any COVID-19 symptom.</item>
+        <item>Refrain from using taxis or public transport.</item>
+        <item>Disinfect your hands after coming into contact with anything.</item>
+        <item>Always bring a backup mask.</item>
+        <item>Do not share glasses/bottles/cutlery with others.</item>
+        <item>Be patient, vaccines are coming soon.</item>
     </string-array>
 </resources>

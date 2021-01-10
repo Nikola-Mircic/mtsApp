@@ -26,7 +26,7 @@
 
         android:scrollbars="vertical"
         android:text="@string/rulebookText"
-        android:textSize="22sp" />
+        android:textSize="26sp" />
 
     <ImageButton
         android:id="@+id/cancelButton"

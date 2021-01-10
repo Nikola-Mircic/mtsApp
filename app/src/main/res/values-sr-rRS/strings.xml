@@ -17,6 +17,9 @@
     <string name="info">Информације</string>
     <string name="homeLocation">Да ли је ово Ваша кућна локација?</string>
     <string name="rulebookTitle">Савети понашања</string>
-    <string name="rulebookText">Носите маску када сте са другима или напољу.<br /><br />Дезинфикујте руке након људског контакта.<br /><br />Дезинфикујте руке када промените локацију.<br /><br />Избегавајте крцата места.<br /><br />Држите дистанцу од барем 2 метра од других људи.</string>
+    <string name="rulebookText">Носите маску када сте са другима или напољу.\n\nДезинфикујте руке након људског контакта.\n\nДезинфикујте руке када промените локацију.\n\nИзбегавајте крцата места.\n\nДржите дистанцу од барем 2 метра од других људи.</string>
     <string name="setAppLanguage">Изаберите језик апликације</string>
+    <string name="toggleNotifications">Подесите обавештења</string>
+    <string name="trackLocation">Прати локацију уређаја</string>
+    <string name="sendDailyNotifications">Шаљи свакодневна обавештења са предлозима и саветима</string>
 </resources>

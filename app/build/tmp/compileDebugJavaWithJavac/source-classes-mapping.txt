@@ -17,6 +17,7 @@ com/app/mtsapp/PlacesActivity.java
  com.app.mtsapp.PlacesActivity$3
  com.app.mtsapp.PlacesActivity$4
  com.app.mtsapp.PlacesActivity$5
+ com.app.mtsapp.PlacesActivity$6
 com/app/mtsapp/BuildConfig.java
  com.app.mtsapp.BuildConfig
 com/app/mtsapp/location/service/ServiceHandler.java
@@ -26,13 +27,15 @@ com/app/mtsapp/location/service/Tracker.java
  com.app.mtsapp.location.service.Tracker$1
 com/app/mtsapp/location/LocationEventUpdate.java
  com.app.mtsapp.location.LocationEventUpdate
+com/app/mtsapp/location/SavedLocation.java
+ com.app.mtsapp.location.SavedLocation
+com/app/mtsapp/location/LocationSystem.java
+ com.app.mtsapp.location.LocationSystem
 com/app/mtsapp/MainActivity.java
  com.app.mtsapp.MainActivity
  com.app.mtsapp.MainActivity$1
  com.app.mtsapp.MainActivity$2
  com.app.mtsapp.MainActivity$3
-com/app/mtsapp/location/LocationSystem.java
- com.app.mtsapp.location.LocationSystem
 com/app/mtsapp/Settings.java
  com.app.mtsapp.Settings
  com.app.mtsapp.Settings$1
@@ -41,5 +44,5 @@ com/app/mtsapp/Settings.java
  com.app.mtsapp.Settings$4
  com.app.mtsapp.Settings$5
  com.app.mtsapp.Settings$6
-com/app/mtsapp/location/SavedLocation.java
- com.app.mtsapp.location.SavedLocation
+ com.app.mtsapp.Settings$7
+ com.app.mtsapp.Settings$8

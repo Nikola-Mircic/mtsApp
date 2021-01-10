@@ -9,4 +9,9 @@
         <item name="colorControlActivated">@color/colorAccent</item>
     </style>
 
+    <style name="SwitchStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorSwitchThumbNormal">#035903</item>
+        <item name="android:colorForeground">#035903</item>
+    </style>
 </resources>

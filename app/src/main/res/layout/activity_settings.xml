@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/settings_background"
     android:padding="10dp"
+    android:orientation="vertical"
     tools:context=".Settings">
 
     <TextView
@@ -14,22 +14,23 @@
         android:layout_height="wrap_content"
         android:text="@string/settings"
         android:textAlignment="center"
-        android:textSize="34sp" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/setLanguage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="100dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="15sp"
         android:text="@string/setAppLanguage"
         android:textAlignment="center"
         android:textSize="34sp" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
+        android:orientation="horizontal"
+        android:paddingTop="20sp"
         android:weightSum="1">
 
         <Button
@@ -59,8 +60,8 @@
         android:id="@+id/setNotifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="100dp"
-        android:text="Turn notifications on and off"
+        android:paddingTop="15sp"
+        android:text="@string/toggleNotifications"
         android:textAlignment="center"
         android:textSize="34sp" />
 
@@ -68,33 +69,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="20dp"
-        android:weightSum="1">
+        android:paddingTop="20sp">
 
         <ToggleButton
             android:id="@+id/notificationOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Notification 1 OFF"
-            android:layout_weight="0.33"
-            android:textOn="Notification 1 ON" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:textOff=""
+            android:textOn="" />
 
         <ToggleButton
             android:id="@+id/notificationTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Notification 2 OFF"
-            android:layout_weight="0.34"
-            android:textOn="Notification 2 ON" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:textOff=""
+            android:textOn="" />
 
         <ToggleButton
             android:id="@+id/notificationThree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Notification 3 OFF"
-            android:layout_weight="0.33"
-            android:textOn="Notification 3 ON" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:textOff=""
+            android:textOn="" />
 
     </LinearLayout>
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/trackerSwitch"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:paddingTop="20sp"
+
+        android:text="@string/trackLocation"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:theme="@style/SwitchStyle" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/dailyNotificationsSwitch"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:paddingTop="20sp"
+
+        android:text="@string/sendDailyNotifications"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:theme="@style/SwitchStyle" />
 </LinearLayout>

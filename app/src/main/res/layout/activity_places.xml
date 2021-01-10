@@ -13,6 +13,7 @@
         tools:context=".PlacesActivity" />
 
     <ImageButton
+        android:layout_alignParentBottom="true"
         android:id="@+id/addMarker"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -23,4 +24,16 @@
         android:scaleType="fitCenter"
         android:src="@drawable/add_location" />
 
+    <ImageButton
+        android:id="@+id/currentLocationButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/addMarker"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_mylocation" />
 </RelativeLayout>

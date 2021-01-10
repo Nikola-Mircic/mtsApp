@@ -12,8 +12,16 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mask_notification_disabled.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\mask_notification_disabled.png"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_clothes_notification_disabled.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\clothes_notification_disabled.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_add_location_popup.xml.flat",
@@ -96,6 +104,10 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\open_maps_v2.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_six_feet.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_six_feet.png"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_back_alert_dialog.xml.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\back_alert_dialog.xml"
     },
@@ -108,12 +120,12 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mask_small_icon.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\mask_small_icon.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
@@ -122,6 +134,14 @@
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_six_feet.xml.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_six_feet.xml"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hands_notification_disabled.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\hands_notification_disabled.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_location.png.flat",
@@ -136,8 +156,16 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_clothes.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_six_feet.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_six_feet.png"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_small_icon.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_small_icon.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_six_feet.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-hdpi\\ic_six_feet.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_location.png.flat",
@@ -180,8 +208,16 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_six_feet.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_six_feet.png"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings_background.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\settings_background.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_six_feet.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-mdpi\\ic_six_feet.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
@@ -190,6 +226,10 @@
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rulebook_v3.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\rulebook_v3.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_six_feet.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_six_feet.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",

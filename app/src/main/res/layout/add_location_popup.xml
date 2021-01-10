@@ -39,7 +39,8 @@
 
         android:text="@string/homeLocation"
         android:textColor="@color/colorAccent"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:theme="@style/SwitchStyle" />
 
     <RelativeLayout
         android:layout_width="match_parent"

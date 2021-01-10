@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Coro-No</string>
     <string name="title_activity_places" translatable="false">Map</string>
@@ -21,6 +22,9 @@
     <string name="info">Info</string>
     <string name="homeLocation">Is this your home location?</string>
     <string name="rulebookTitle">Behaviour advice</string>
-    <string name="rulebookText">Wear a mask when with others or outside. Disinfect your hands after human contact. \\n\nDisinfect your hands when changing locations. \\n\nAvoid crowded places. \\n\n Keep a distance of at least 2 meters with others.</string>
-    <string name="setAppLanguage">Choose the app&apos;s language</string>
+    <string name="rulebookText">Wear a mask when with others or outside.\n\nDisinfect your hands after human contact.\n\nDisinfect your hands when changing locations.\n\nAvoid crowded places.\n\nKeep a distance of at least 2 meters with others.</string>
+    <string name="setAppLanguage">Set the language of the app</string>
+    <string name="toggleNotifications">Toggle notifications</string>
+    <string name="trackLocation">Track the device\'s location</string>
+    <string name="sendDailyNotifications">Send daily notifications with suggestions and tips</string>
 </resources>

@@ -95,6 +95,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                     gpsAddLocation(); //Упали GPS локацију на уређају и ако је могуће маркира тренутну локацију на мапи
                 }
             });
+
         } else {
             //Ако нема, затражи их
             requestLocationPermissions();
@@ -108,18 +109,31 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
         loadMarkersFromSavedLocations(); //Прикажи маркере свих сачуваних локација
 
-        //Ако постоји бар 1 сачувана локација, зумирај на кућну лоакцију или ако она не постоји на прву сачувану локацију
-        if (savedLocations.size() > 0) {
-            LatLng zoomLatLng;
-            SavedLocation homeLocation = locationSystem.getLocation("home");
-            if (homeLocation != null) {
-                zoomLatLng = new LatLng(homeLocation.getLatitude(), homeLocation.getLongitude()); //Координате сачуване кућне локације
-            } else {
-                zoomLatLng = new LatLng(savedLocations.get(0).getLatitude(), savedLocations.get(0).getLongitude()); //Координате прве сачуване локације
-            }
+        getAndZoomCurrentLocation();
+        //Ако није детектована тренутна локација, зумирај на кућну лоакцију или ако она не постоји на прву сачувану локацију
+        if (currentLocation == null) {
+            //Ако постоји бар 1 сачувана локација
+            if (savedLocations.size() > 0) {
+                LatLng zoomLatLng;
+                SavedLocation homeLocation = locationSystem.getLocation("home");
+                if (homeLocation != null) {
+                    zoomLatLng = new LatLng(homeLocation.getLatitude(), homeLocation.getLongitude()); //Координате сачуване кућне локације
+                } else {
+                    zoomLatLng = new LatLng(savedLocations.get(0).getLatitude(), savedLocations.get(0).getLongitude()); //Координате прве сачуване локације
+                }
 
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(zoomLatLng, 17)); //Зумирај мапу на изабрану локацијуу
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(zoomLatLng, 17)); //Зумирај мапу на изабрану локацијуу
+            }
         }
+
+        ImageButton currentLocationButton = findViewById(R.id.currentLocationButton);
+        currentLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAndZoomCurrentLocation();
+            }
+        });
+
 
         //Зове се када се неки маркер помера
         googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
@@ -307,26 +321,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
     //=================== ДОДАВАЊЕ МАРКЕРА И ДОБИЈАЊЕ ТРЕНУТНЕ ЛОКАЦИЈЕ =============================
 
-    //Пронађе тренутну локацију и смести је у променљиву currentLatLng
-    /*
-    private void getCurrentLocation() {
-        try {
-            @SuppressLint("MissingPermission")
-            Task<Location> task = flpClient.getLastLocation();
-            task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(final Location location) {
-                    if (location != null) {
-                        currentLocation = location;
-                        System.out.println("[MRMI]: Променио тренутне координате на: " + currentLocation.getLatitude() + " , " + currentLocation.getLongitude());
-                    }
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, "Неуспело тражење тренутне локације", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-    }*/
     private void getCurrentLocation() {
         currentLocation = locationFinder.getCurrentLocation();
     }
@@ -394,5 +388,13 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     public Bitmap resizeMapIcons(String iconName, int width, int height) {
         Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(iconName, "drawable", getPackageName()));
         return Bitmap.createScaledBitmap(imageBitmap, width, height, false);
+    }
+
+    private void getAndZoomCurrentLocation() {
+        getCurrentLocation();
+        if (currentLocation != null) {
+            //Зумирај мапу на тренутну локацију
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 17));
+        }
     }
 }

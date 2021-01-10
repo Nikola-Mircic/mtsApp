@@ -842,6 +842,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable checkmark
+drawable clothes_notification_disabled
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -868,11 +869,13 @@ drawable disinfect_hands_small_icon
 drawable disinfect_small_icon
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable hands_notification_disabled
 drawable home_location
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_six_feet
 drawable main_background_v3
+drawable mask_notification_disabled
 drawable mask_small_icon
 drawable notification_action_background
 drawable notification_bg
@@ -993,8 +996,10 @@ id collapseActionView
 id content
 id contentPanel
 id cos
+id currentLocationButton
 id custom
 id customPanel
+id dailyNotificationsSwitch
 id dailyTipText
 id dark
 id decelerate
@@ -1022,7 +1027,6 @@ id easeOut
 id edit_query
 id end
 id englishButton
-id englishButtonTextView
 id expand_activities_button
 id expanded_menu
 id flip
@@ -1120,10 +1124,11 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id serbianCyrillicButton
-id serbianCyrillicButtonTextView
 id serbianLatinButton
-id serbianLatinButtonTextView
+id setLanguage
+id setNotifications
 id settingsButton
+id settingsTitle
 id shortcut
 id showCustom
 id showHome
@@ -1168,6 +1173,7 @@ id title_template
 id toggle
 id top
 id topPanel
+id trackerSwitch
 id transitionToEnd
 id transitionToStart
 id triangle
@@ -1309,11 +1315,15 @@ string rulebookText
 string rulebookTitle
 string save
 string search_menu_title
+string sendDailyNotifications
 string serbianCyrillic
 string serbianLatin
+string setAppLanguage
 string settings
 string status_bar_notification_info_overflow
 string title_activity_places
+string toggleNotifications
+string trackLocation
 string yes
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -1505,6 +1515,7 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style SwitchStyle
 style TextAppearance_AppCompat
 style TextAppearance_AppCompat_Body1
 style TextAppearance_AppCompat_Body2

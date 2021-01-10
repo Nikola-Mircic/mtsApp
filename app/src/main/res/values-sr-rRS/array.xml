@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="notificationMessages">
-        <item name="Tip 1">Стави маску!</item>
-        <item name="Tip 2">Дезинфикуј маску и одећу!</item>
-        <item name="Tip 3">Дезинфикуј руке!</item>
+        <item>Стави маску!</item>
+        <item>Дезинфикуј маску и одећу!</item>
+        <item>Дезинфикуј руке!</item>
     </string-array>
     <string-array name="dailyTips">
-        <item name="Tip 1">Немој ићи у крцата места.</item>
-        <item name="Tip 2">Остани безбедан.</item>
-        <item name="Tip 3">Контактирај се са лекаром ако мислиш да имаш симптом COVID-19-a.</item>
+        <item>Немојте ићи у крцата места.</item>
+        <item>Останите безбедни.</item>
+        <item>Контактирајте се са лекаром ако мислите да имате симптом COVID-19-a.</item>
+        <item>Избегавајте коришћење таксија и јавног превоза.</item>
+        <item>Дезинфикујте руке након доласка у контакт за било чиме.</item>
+        <item>Увек носите резервну маску.</item>
+        <item>Не делите чаше/флашице/есцајг са другима.</item>
+        <item>Будите стрпљиви, вакцине ускоро стижу.</item>
     </string-array>
 </resources>

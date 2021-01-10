@@ -72,7 +72,7 @@ public class NotificationSender {
         SharedPreferences sharedPreferences = context.getSharedPreferences("SharedPreferences", MODE_PRIVATE);
         if ((notificationId == 0 && !sharedPreferences.getBoolean("notificationOne", true)) ||
                 (notificationId == 1 && !sharedPreferences.getBoolean("notificationTwo", true)) ||
-                (notificationId == 1 && !sharedPreferences.getBoolean("notificationThree", true))) {
+                (notificationId == 2 && !sharedPreferences.getBoolean("notificationThree", true))) {
             return;
         }
 
@@ -101,26 +101,5 @@ public class NotificationSender {
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(notificationId, builder.build());
-    }
-
-    public void showNotification(String title , String text) {
-        //Отвори MainActivity кад корисник притисне нотификацију
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-
-        //Подешавања обавештења
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
-                .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
-                .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setPriority(NotificationCompat.PRIORITY_MAX);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-
-        notificationManager.notify(5, builder.build());
     }
 }
