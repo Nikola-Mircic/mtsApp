@@ -84,7 +84,6 @@ public class Tracker extends Service implements LocationListener {
             }
         });
         finder.start();
-        Toast.makeText(context, "Finder is started!", Toast.LENGTH_SHORT).show();
 
         /*Posto je android uveo odredjena pravila i ogranicenja za pozadinske servise koji rade van aplikacije
          * kada se servis pokrene, pokrene se i ona notifikacija koja ne moze da se skloni
