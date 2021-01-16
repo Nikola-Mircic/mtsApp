@@ -13,6 +13,8 @@ import android.location.LocationListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -20,23 +22,20 @@ import androidx.core.app.NotificationCompat;
 import com.app.mtsapp.MainActivity;
 import com.app.mtsapp.NotificationSender;
 import com.app.mtsapp.R;
-import com.app.mtsapp.location.LocationEventUpdate;
+import com.app.mtsapp.location.EventHandler;
 import com.app.mtsapp.location.LocationFinder;
 import com.app.mtsapp.location.LocationSystem;
 import com.app.mtsapp.location.SavedLocation;
+import com.google.android.gms.location.LocationRequest;
 
 import java.util.List;
 
 public class Tracker extends Service implements LocationListener {
     private boolean shouldStop = false;
 
-    /*Lokacija se moze traziti i preko location findera tako da
-     * je ceo kod jednostavniji
-     * */
     private LocationFinder finder;
 
-    public static double lastDistance = -1.0;
-    public static String locationName = "";
+    private SavedLocation lastLocation;
 
     //Референца SharedPreferences-a: лаког начина чувања простих података, овде због слања адекватне нотификације при промени локације
     private SharedPreferences sharedPreferences;
@@ -49,7 +48,7 @@ public class Tracker extends Service implements LocationListener {
 
         //Program kreira odvojeni kanal za notifikacije poslate sa servisa
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("trackingchannel", "TrackChannel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("trackingchannel", "TrackChannel", NotificationManager.IMPORTANCE_HIGH);
             NotificationManager manager = getApplicationContext().getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
@@ -68,18 +67,27 @@ public class Tracker extends Service implements LocationListener {
                 .setSmallIcon(R.drawable.ic_six_feet)
                 .build();
 
+        //Promenljiva za pracenje brzine kretanja korisnika
+        lastLocation = null;
+
+        sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
+
         //Program pokrene LocationFinder koji pri svakom apdejtu lokacije obavestava korisnika
         finder = new LocationFinder(context);
-        finder.setOnUpdateEvent(new LocationEventUpdate() {
+        finder.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        finder.setInterval(20 * 1000);
+        finder.setFastInterval(15 * 1000);
+        finder.setOnUpdateEvent(new EventHandler() {
             @Override
-            public void onUpdate(Location location) {
+            public void handle(Location location) {
                 notifyUser(location);
             }
         });
         finder.start();
+        Toast.makeText(context, "Finder is started!", Toast.LENGTH_SHORT).show();
 
         /*Posto je android uveo odredjena pravila i ogranicenja za pozadinske servise koji rade van aplikacije
-        * kada se servis pokrene, pokrene se i ona notifikacija koja ne moze da se skloni
+         * kada se servis pokrene, pokrene se i ona notifikacija koja ne moze da se skloni
         * */
         startForeground(4, notification);
         return Service.START_NOT_STICKY;
@@ -97,37 +105,37 @@ public class Tracker extends Service implements LocationListener {
     }
 
     private void notifyUser(Location location) {
+        Log.i("Tracker", "----> Updated location!!");
         Context context = getApplicationContext();
+
+        //Ako ne moze da dobije trenutnu lokaciju samo izadje iz funkcije
+        if (location == null)
+            return;
+
+        //Ako se korisnik i dalje krece ili je servis tek poceo sa radom promeni poslednju zapamcenu lokaciju i izadje iz funkcije
+        if (lastLocation != null) {
+            if (lastLocation.distanceTo(location) > 60) {
+                lastLocation = new SavedLocation("last", location);
+                return;
+            }
+        }
+        lastLocation = new SavedLocation("last", location);
 
         List<SavedLocation> list = LocationSystem.loadLocations(context);
         SavedLocation nearestLocation = LocationSystem.findNearestLocation(context, list, location);
 
-        if (nearestLocation == null) {
-            nearestLocation = new SavedLocation("Test", 0, 0, 0);
-        }
+        //Ukoliko nema sacuvanih lokacija,nearestLocation je null pa ce izaci iz funkcije
+        if (nearestLocation == null)
+            return;
 
-        double dist = nearestLocation.distanceTo(finder.getCurrentLocation());
+        double dist = nearestLocation.distanceTo(location);
         System.out.println("[MRMI]: udaljenost:" + dist);
-        if (dist < 500) {
+
+        //Ukoliko je korisnik stao u blizini neke sacuvane lokacije salje se notifikacija sa podsetnikom
+        if (dist < 50)
             sendAdequateNotification(nearestLocation.getName());
-        }
-
-
-        Intent nIntent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nIntent, 0);
-        double latData = ((int) (location.getLatitude() * 10000)) / 10000.0;
-        double longData = ((int) (location.getLongitude() * 10000)) / 10000.0;
-        Notification notification = new NotificationCompat.Builder(context, "trackingchannel")
-                .setContentTitle("Coro-No Official app")
-                .setContentText("" + latData + ", " + longData + " [" + nearestLocation.getName() + "]")
-                .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.ic_six_feet)
-                .build();
-
-        //Promeni notifikaciju (tekst notifikacije koji je na pocetku bi 'Test') u latitude i longitude lokacije
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.notify(4, notification);
+        else {
+            sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
         }
     }
 
@@ -156,7 +164,8 @@ public class Tracker extends Service implements LocationListener {
         //Pri prekidu servisa,gasi se kanal napravljen na pocetku i prekida se periodicno lociranje (linija 134)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.deleteNotificationChannel("trackingchannel");
+            NotificationChannel channel = manager.getNotificationChannel("trackingchannel");
+            channel.setImportance(NotificationManager.IMPORTANCE_NONE);
         }
         finder.stop();
         super.onDestroy();

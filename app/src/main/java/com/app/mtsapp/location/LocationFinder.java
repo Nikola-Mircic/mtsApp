@@ -5,12 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
-import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
-import androidx.core.location.LocationManagerCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
@@ -18,9 +14,6 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
-
-import java.security.Permission;
 
 public class LocationFinder implements Runnable {
     private static final String TAG = "LocationFinder";//Tag koji se koristi za ispisivanje
@@ -33,9 +26,13 @@ public class LocationFinder implements Runnable {
     private LocationRequest locationRequest;//Objekat koji salje zahtev za dobijanje lokacije i prosledjuje je do objekta povratnog poziva
     private LocationCallback locationCallback;//Objekat koji obradjuje adresu kada je dobije
 
+    private int interval;
+    private int fastInterval;
+    private int priority;
+
     private Location currentLocation;//Trenutna lokacija
 
-    private LocationEventUpdate eventUpdate;
+    private EventHandler eventUpdate;
 
     private Thread t;//Thread koji pokrece rad findera
     private boolean running;//True ukoliko je finder pokrenut
@@ -47,6 +44,9 @@ public class LocationFinder implements Runnable {
         this.currentLocation = null;//Lokacija jos uvek nije pronadjena
         this.locating = false;
         eventUpdate = null;
+        interval = 10 * 1000;
+        fastInterval = 5 * 1000;
+        priority = LocationRequest.PRIORITY_HIGH_ACCURACY;
     }
 
     public void start() {
@@ -75,9 +75,9 @@ public class LocationFinder implements Runnable {
     @Override
     public void run() {
         locationRequest = new LocationRequest();
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(10 * 1000);
-        locationRequest.setFastestInterval(5 * 1000);
+        locationRequest.setPriority(this.priority);
+        locationRequest.setInterval(this.interval);
+        locationRequest.setFastestInterval(this.fastInterval);
 
         locationCallback = new LocationCallback() {
             @Override
@@ -89,7 +89,7 @@ public class LocationFinder implements Runnable {
             public void onLocationResult(LocationResult locationResult) {
                 currentLocation = locationResult.getLastLocation();
                 if(eventUpdate!=null){
-                    eventUpdate.onUpdate(currentLocation);
+                    eventUpdate.handle(currentLocation);
                 }
                 super.onLocationResult(locationResult);
             }
@@ -108,11 +108,35 @@ public class LocationFinder implements Runnable {
 
     }
 
-    public void setOnUpdateEvent(LocationEventUpdate event){
+    public void setOnUpdateEvent(EventHandler event) {
         this.eventUpdate = event;
     }
 
     public Location getCurrentLocation() {
-        return  currentLocation;
+        return currentLocation;
+    }
+
+    public int getInterval() {
+        return interval;
+    }
+
+    public void setInterval(int interval) {
+        this.interval = interval;
+    }
+
+    public int getFastInterval() {
+        return fastInterval;
+    }
+
+    public void setFastInterval(int fastInterval) {
+        this.fastInterval = fastInterval;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

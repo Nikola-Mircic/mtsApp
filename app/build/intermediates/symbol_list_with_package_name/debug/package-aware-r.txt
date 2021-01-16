@@ -867,6 +867,7 @@ drawable disinfect_clothes
 drawable disinfect_hands
 drawable disinfect_hands_small_icon
 drawable disinfect_small_icon
+drawable get_current_location
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable hands_notification_disabled

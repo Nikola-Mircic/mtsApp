@@ -31,29 +31,34 @@ public class SavedLocation implements Serializable{
     }
 
     public double distanceTo(Location location){
-        if(location==null){
+        if (location == null) {
             return -1.0;
         }
-        double dLat = this.latitude - location.getLatitude();
-        double dLong = this.longitude - location.getLongitude();
-        double dAlt = this.altitude - location.getAltitude();
 
-        double dist = Math.sqrt(dLat*dLat + dLong*dLong)*6371000;
+        Location temp = new Location("temp");
+        temp.setLatitude(this.latitude);
+        temp.setLongitude(this.longitude);
+        temp.setAltitude(this.altitude);
 
-        return Math.sqrt(dist*dist + dAlt*dAlt);
+        return temp.distanceTo(location);
     }
 
     public double distanceToSL(SavedLocation location) {
         if (location == null) {
             return -1.0;
         }
-        double dLat = this.latitude - location.getLatitude();
-        double dLong = this.longitude - location.getLongitude();
-        double dAlt = this.altitude - location.getAltitude();
 
-        double dist = Math.sqrt(dLat * dLat + dLong * dLong) * 6371000;
+        Location temp = new Location("temp");
+        temp.setLatitude(this.latitude);
+        temp.setLongitude(this.longitude);
+        temp.setAltitude(this.altitude);
 
-        return Math.sqrt(dist * dist + dAlt * dAlt);
+        Location temp2 = new Location("temp2");
+        temp2.setLatitude(this.latitude);
+        temp2.setLongitude(this.longitude);
+        temp2.setAltitude(this.altitude);
+
+        return temp.distanceTo(temp2);
     }
 
     public String getName(){

@@ -34,7 +34,12 @@
             </intent-filter>
         </activity>
 
-        <service android:name = ".location.service.Tracker" />
+        <service android:name=".location.service.Tracker" />
+
+        <receiver
+            android:name=".NotificationBroadcast"
+            android:enabled="true"
+            android:exported="false" />
 
     </application>
 
