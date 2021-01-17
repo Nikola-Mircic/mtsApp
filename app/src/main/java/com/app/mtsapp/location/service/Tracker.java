@@ -66,6 +66,7 @@ public class Tracker extends Service implements LocationListener {
                 .setContentText("Service is running...")//Ovo pise pre nego sto se pronadje prva lokacija
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_six_feet)
+                .setNotificationSilent()
                 .build();
 
         //Program pokrene LocationFinder koji pri svakom apdejtu lokacije obavestava korisnika
@@ -122,6 +123,7 @@ public class Tracker extends Service implements LocationListener {
                 .setContentText("" + latData + ", " + longData + " [" + nearestLocation.getName() + "]")
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_six_feet)
+                .setNotificationSilent()
                 .build();
 
         //Promeni notifikaciju (tekst notifikacije koji je na pocetku bi 'Test') u latitude i longitude lokacije

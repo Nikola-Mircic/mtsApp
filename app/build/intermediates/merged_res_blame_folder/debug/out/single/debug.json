@@ -88,6 +88,10 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\main_background_v3.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_serbian_flag.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\serbian_flag.png"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border.xml.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\border.xml"
     },
@@ -168,6 +172,10 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-hdpi\\ic_six_feet.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_get_current_location.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\get_current_location.png"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_location.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\home_location.png"
     },
@@ -210,6 +218,10 @@
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_six_feet.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_six_feet.png"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_uk_flag.jpg.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\uk_flag.jpg"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings_background.png.flat",

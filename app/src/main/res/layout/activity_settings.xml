@@ -20,8 +20,7 @@
         android:id="@+id/setLanguage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingTop="15sp"
+        android:paddingTop="40sp"
         android:text="@string/setAppLanguage"
         android:textAlignment="center"
         android:textSize="34sp" />
@@ -33,26 +32,41 @@
         android:paddingTop="20sp"
         android:weightSum="1">
 
-        <Button
+        <ImageButton
             android:id="@+id/englishButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_weight="0.33"
-            android:text="@string/english" />
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/english"
+            android:scaleType="fitCenter"
+            android:src="@drawable/uk_flag" />
 
         <Button
             android:id="@+id/serbianLatinButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_weight="0.34"
-            android:text="@string/serbianLatin" />
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/serbian_flag"
+            android:scaleType="fitCenter"
+            android:text="@string/serbianLatin"
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/serbianCyrillicButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.33"
-            android:text="@string/serbianCyrillic" />
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.34"
+            android:adjustViewBounds="true"
+            android:background="@drawable/serbian_flag"
+            android:scaleType="fitCenter"
+            android:text="@string/serbianCyrillic"
+            android:textColor="#000000" />
 
     </LinearLayout>
 

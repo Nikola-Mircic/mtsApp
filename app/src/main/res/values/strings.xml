@@ -11,8 +11,8 @@
     <string name="addMarker">Add marker</string>
     <string name="check">Check</string>
     <string name="english" translatable="false">English</string>
-    <string name="serbianLatin" translatable="false">Srpski</string>
-    <string name="serbianCyrillic" translatable="false">Српски</string>
+    <string name="serbianLatin" translatable="false">Latinica</string>
+    <string name="serbianCyrillic" translatable="false">Ћирилица</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="backToMenu">Are you sure you want to go back to the main menu?</string>
@@ -23,7 +23,7 @@
     <string name="homeLocation">Is this your home location?</string>
     <string name="rulebookTitle">Behaviour advice</string>
     <string name="rulebookText">Wear a mask when with others or outside.\n\nDisinfect your hands after human contact.\n\nDisinfect your hands when changing locations.\n\nAvoid crowded places.\n\nKeep a distance of at least 2 meters with others.</string>
-    <string name="setAppLanguage">Set the language of the app</string>
+    <string name="setAppLanguage">Change the app\'s language</string>
     <string name="toggleNotifications">Toggle notifications</string>
     <string name="trackLocation">Track the device\'s location</string>
     <string name="sendDailyNotifications">Send daily notifications with suggestions and tips</string>
