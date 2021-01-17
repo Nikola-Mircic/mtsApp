@@ -88,7 +88,7 @@ public class NotificationSender {
         notificationLayout.setImageViewBitmap(R.id.notifcationIcon, notificationIcons[notificationId]);
 
         //Подешавања обавештења
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "trackingchannel")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(smallNotificationIcons[notificationId]) //Мала иконица нотификације (бела са провидном позадином)
                 .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
                 .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
