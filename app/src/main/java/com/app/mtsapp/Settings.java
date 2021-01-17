@@ -137,8 +137,8 @@ public class Settings extends AppCompatActivity {
                 if (isChecked) {
                     Calendar c = Calendar.getInstance();
 
-                    c.set(Calendar.HOUR_OF_DAY, 20);
-                    c.set(Calendar.MINUTE, 0);
+                    c.set(Calendar.HOUR_OF_DAY, 17);
+                    c.set(Calendar.MINUTE, 45);
                     c.set(Calendar.SECOND, 0);
 
                     AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
