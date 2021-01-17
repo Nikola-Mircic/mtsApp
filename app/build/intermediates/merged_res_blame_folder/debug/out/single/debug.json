@@ -1,254 +1,254 @@
 [
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_six_feet.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable-hdpi\\ic_six_feet.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mask_notification_disabled.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\mask_notification_disabled.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mask_notification_disabled.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\mask_notification_disabled.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_background_v3.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\main_background_v3.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_clothes_notification_disabled.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\clothes_notification_disabled.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_add_location_popup.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\add_location_popup.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_six_feet.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_six_feet.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_checkmark.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\checkmark.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_rulebook_info_popup.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\rulebook_info_popup.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_get_current_location.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\get_current_location.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hands_notification_disabled.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\hands_notification_disabled.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_layout.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\notification_layout.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_put_on_mask.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\put_on_mask.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_six_feet.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_six_feet.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_clothes_notification_disabled.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\clothes_notification_disabled.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rulebook_v3.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\rulebook_v3.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_layout.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\notification_layout.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_background_v3.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\main_background_v3.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_clothes.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_clothes.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_serbian_flag.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\serbian_flag.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\border.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\border.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_hands.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_hands.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_uk_flag.jpg.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\uk_flag.jpg"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_places.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\activity_places.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_six_feet.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable-mdpi\\ic_six_feet.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_open_maps_v2.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\open_maps_v2.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_six_feet.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_six_feet.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_back_alert_dialog.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\back_alert_dialog.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mask_small_icon.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\mask_small_icon.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_settings.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\activity_settings.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_six_feet.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_six_feet.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mask_small_icon.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\mask_small_icon.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_location.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\home_location.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\settings_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings_v2.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\settings_v2.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_six_feet.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_six_feet.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hands_notification_disabled.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\hands_notification_disabled.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_settings.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\activity_settings.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_location.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\add_location.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_places.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\activity_places.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings_v2.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\settings_v2.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rulebook_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\rulebook_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_clothes.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_clothes.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_six_feet.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_six_feet.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_small_icon.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_small_icon.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_small_icon.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_small_icon.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_six_feet.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-hdpi\\ic_six_feet.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_location.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\add_location.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_get_current_location.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\get_current_location.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_hands.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_hands.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_location.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\home_location.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_open_maps_v2.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\open_maps_v2.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rulebook_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\rulebook_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cross.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\cross.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cross.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\cross.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_hands_small_icon.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_hands_small_icon.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_put_on_mask.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\put_on_mask.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_back_alert_dialog.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\back_alert_dialog.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_disinfect_hands_small_icon.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\disinfect_hands_small_icon.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_checkmark.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\checkmark.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_six_feet.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_six_feet.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_six_feet.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_six_feet.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_uk_flag.jpg.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\uk_flag.jpg"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_six_feet.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_six_feet.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\settings_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_help_popup.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\help_popup.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_help_popup.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\help_popup.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_rulebook_info_popup.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\rulebook_info_popup.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_six_feet.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-mdpi\\ic_six_feet.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rulebook_v3.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\rulebook_v3.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_add_location_popup.xml.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\layout\\add_location_popup.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_six_feet.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_six_feet.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+        "merged": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_serbian_flag.png.flat",
+        "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\drawable\\serbian_flag.png"
     }
 ]
