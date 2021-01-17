@@ -14,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -31,11 +30,12 @@ import com.google.android.gms.location.LocationRequest;
 import java.util.List;
 
 public class Tracker extends Service implements LocationListener {
-    private boolean shouldStop = false;
 
     private LocationFinder finder;
 
     private SavedLocation lastLocation;
+
+    private String serviceNotificationText;
 
     //Референца SharedPreferences-a: лаког начина чувања простих података, овде због слања адекватне нотификације при промени локације
     private SharedPreferences sharedPreferences;
@@ -45,6 +45,8 @@ public class Tracker extends Service implements LocationListener {
         super.onCreate();
 
         sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+
+        serviceNotificationText = this.getResources().getString(R.string.serviceNotificationText);
 
         //Program kreira odvojeni kanal za notifikacije poslate sa servisa
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -61,8 +63,8 @@ public class Tracker extends Service implements LocationListener {
         Intent nIntent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nIntent, 0);
         final Notification notification = new NotificationCompat.Builder(context, "trackingchannel")
-                .setContentTitle("Coro-No Official app")
-                .setContentText("Service is running...")//Ovo pise pre nego sto se pronadje prva lokacija
+                .setContentTitle("Coro-No")
+                .setContentText(serviceNotificationText)//Ovo pise pre nego sto se pronadje prva lokacija
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_six_feet)
                 .build();
@@ -132,14 +134,14 @@ public class Tracker extends Service implements LocationListener {
 
         //Ukoliko je korisnik stao u blizini neke sacuvane lokacije salje se notifikacija sa podsetnikom
         if (dist < 50)
-            sendAdequateNotification(nearestLocation.getName());
+            sendAdequateNotification(nearestLocation.getName(), location);
         else {
             sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
         }
     }
 
     //Пошаље одговарајућу нотификацију зависно од тренутне и претходне сачуване локације
-    private void sendAdequateNotification(String currentLocationName) {
+    private void sendAdequateNotification(String currentLocationName, Location location) {
         String lastSavedLocationName = sharedPreferences.getString("LastSavedLocationName", ""); //Пронађи последњу сачувану локацију на уређају
         NotificationSender notificationSender = new NotificationSender(Tracker.this);
 
@@ -148,10 +150,12 @@ public class Tracker extends Service implements LocationListener {
             notificationSender.showNotification(0); //Покажи нотификацију за стављање маске кад корисник изађе из куће
             sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
         }
+
         if (currentLocationName.equals("home") && !lastSavedLocationName.equals("home")) {
             notificationSender.showNotification(1); //Покажи нотификацију за дезинфекцију одеће и маске кад се корисник врати кући
             sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
         }
+
         if (!lastSavedLocationName.equals("home") && !currentLocationName.equals("home") && !lastSavedLocationName.equals(currentLocationName)) {
             notificationSender.showNotification(2); //Покажи нотификацију за дезинфекцију руку кад пређе из објекта у објекат
             sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације

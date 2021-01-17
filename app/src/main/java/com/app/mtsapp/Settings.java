@@ -27,7 +27,7 @@ public class Settings extends AppCompatActivity {
     private static int[] notificationToggleIcons;
     private ToggleButton notificationOne, notificationTwo, notificationThree; //Паљење и гашење појединачних нотификација
     private SharedPreferences.Editor sharedPreferencesEditor;
-    private SwitchCompat trackerSwitch; //ПКонтролише праћења локације и слања нотифиакција
+    private SwitchCompat trackerSwitch; //Контролише праћење локације и слања нотифиакција
     private SwitchCompat dailyNotificationsSwitch; //Контролише слање дневних нотификација са саветима
 
     @Override
@@ -87,21 +87,33 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sharedPreferencesEditor.putBoolean("notificationOne", notificationOne.isChecked()).apply();
-                setNotificationIcons();
+                if (notificationOne.isChecked()) {
+                    notificationOne.setBackgroundResource(notificationToggleIcons[0]);
+                } else {
+                    notificationOne.setBackgroundResource(notificationToggleIcons[3]);
+                }
             }
         });
         notificationTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sharedPreferencesEditor.putBoolean("notificationTwo", notificationTwo.isChecked()).apply();
-                setNotificationIcons();
+                if (notificationTwo.isChecked()) {
+                    notificationTwo.setBackgroundResource(notificationToggleIcons[1]);
+                } else {
+                    notificationTwo.setBackgroundResource(notificationToggleIcons[4]);
+                }
             }
         });
         notificationThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sharedPreferencesEditor.putBoolean("notificationThree", notificationThree.isChecked()).apply();
-                setNotificationIcons();
+                if (notificationThree.isChecked()) {
+                    notificationThree.setBackgroundResource(notificationToggleIcons[2]);
+                } else {
+                    notificationThree.setBackgroundResource(notificationToggleIcons[5]);
+                }
             }
         });
 
@@ -149,9 +161,8 @@ public class Settings extends AppCompatActivity {
         notificationTwo.setChecked(sharedPreferences.getBoolean("notificationTwo", true));
         notificationThree.setChecked(sharedPreferences.getBoolean("notificationThree", true));
         setNotificationIcons();
-
-        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", false));
-        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", false));
+        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", true));
+        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", true));
     }
 
     //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
@@ -162,20 +173,18 @@ public class Settings extends AppCompatActivity {
         infoPopup.showDialog();
     }
 
-    //Постави одговарајуће иконице за слике дугмића за паљење и гашење одређених обавештења
+    //Постави иконице сва 3 дугмета за нотификације
     private void setNotificationIcons() {
         if (notificationOne.isChecked()) {
             notificationOne.setBackgroundResource(notificationToggleIcons[0]);
         } else {
             notificationOne.setBackgroundResource(notificationToggleIcons[3]);
         }
-
         if (notificationTwo.isChecked()) {
             notificationTwo.setBackgroundResource(notificationToggleIcons[1]);
         } else {
             notificationTwo.setBackgroundResource(notificationToggleIcons[4]);
         }
-
         if (notificationThree.isChecked()) {
             notificationThree.setBackgroundResource(notificationToggleIcons[2]);
         } else {

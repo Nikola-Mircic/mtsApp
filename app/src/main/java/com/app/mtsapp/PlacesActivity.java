@@ -54,10 +54,16 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     private final int gpsRequestCode = 200; //Код за паљење GPS локације уређаја
 
     private GoogleMap googleMap;
-    //private FusedLocationProviderClient flpClient; //Коришћен за добијање тренутне локације уређаја
 
     private Location currentLocation; //Тренутна локација уређаја
     private String currentLocationName; //Име које се чува на маркеру при чувању локације
+    private String unnamedLocationName; //Име које се додели локацији када корисник не унесе ниједно
+
+    //Toast упозорења
+    private String noLocationNameToast;
+    private String deniedLocationPermsToast;
+    private String retryCurrentLocationToast;
+    private String gpsToast;
 
     private List<SavedLocation> savedLocations;
     private LocationSystem locationSystem;
@@ -72,6 +78,12 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
+
+        unnamedLocationName = this.getResources().getString(R.string.unnamedLocation);
+        noLocationNameToast = this.getResources().getString(R.string.noLocationNameToast);
+        deniedLocationPermsToast = this.getResources().getString(R.string.deniedLocationPermissionsToast);
+        retryCurrentLocationToast = this.getResources().getString(R.string.retryCurrentLocationToast);
+        gpsToast = this.getResources().getString(R.string.gpsToast);
 
         //Ако апликација има дозволе потребне за узимање локације
         if (hasLocationPermission()) {
@@ -104,7 +116,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onMapReady(GoogleMap gMap) {
-        //flpClient = LocationServices.getFusedLocationProviderClient(PlacesActivity.this); //Референцира провајдер тренутне локације
         googleMap = gMap;
 
         loadMarkersFromSavedLocations(); //Прикажи маркере свих сачуваних локација
@@ -208,7 +219,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 //Ако су дозвољене
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     //Обавести корисника да је одбио захтев за дозволе локације и врати га на главни екран (MainActivity)
-                    Toast.makeText(this, "Одбијена дозвола за локацију", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, deniedLocationPermsToast, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, MainActivity.class));
                 }
             }
@@ -237,7 +248,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                     if (currentLocation != null) {
                         showLocationNamePopup();
                     } else {
-                        Toast.makeText(PlacesActivity.this, "Није пронађена тренутна локација, покушајте поново", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlacesActivity.this, retryCurrentLocationToast, Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (ApiException apiE) {
@@ -256,7 +267,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                             break;
                     }
                 }
-
             }
         });
     }
@@ -269,8 +279,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         dialog.setContentView(R.layout.add_location_popup);
 
         final EditText locationNameInput = dialog.findViewById(R.id.locationNameInput); //Текст за унос имена локације
-        //final ToggleButton isHomeLocationButton = dialog.findViewById(R.id.isHomeLocationToggleButton); //Дугме које одређује да ли је локација која се чува кућна или не
-        final SwitchCompat isHomeLocationSwitch = dialog.findViewById(R.id.isHomeLocationSwitch);
+        final SwitchCompat isHomeLocationSwitch = dialog.findViewById(R.id.isHomeLocationSwitch); //Дугме које одређује да ли је локација која се чува кућна или не
 
         //Дугме за отказивање додавања локације
         ImageButton cancelButton = dialog.findViewById(R.id.cancelButton);
@@ -290,13 +299,14 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 //Стави назив на ? ако корисник није унео назив
                 if (currentLocationName.equals("")) {
-                    currentLocationName = "?";
+                    currentLocationName = unnamedLocationName;
+                    Toast.makeText(PlacesActivity.this, noLocationNameToast, Toast.LENGTH_SHORT).show();
+                } else {
+                    settingHomeLocation = isHomeLocationSwitch.isChecked(); //Провери да ли је локација која се уноси кућна
+                    addMarker(); //Додај маркер нове унете локације
+
+                    dialog.dismiss();
                 }
-
-                settingHomeLocation = isHomeLocationSwitch.isChecked(); //Провери да ли је локација која се уноси кућна
-                addMarker(); //Додај маркер нове унете локације
-
-                dialog.dismiss();
             }
         });
 
@@ -310,7 +320,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         if (requestCode == gpsRequestCode) {
             //Ако је корисник одбио коришћење GPS локације обавести га о неопходности коришћења њих за додавање тренутне локације
             if (resultCode != Activity.RESULT_OK) {
-                Toast.makeText(this, "Коришћење GPSа је обавезно за додавање тренутне локације", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, gpsToast, Toast.LENGTH_LONG).show();
             } else {
                 //Ако је пристао мораће да сачека пар секунди да се GPS повеже са уређајем и да поново стисне дугме за додавање тренутне локације
                 System.out.println("[MRMI]: Упаљена GPS локациај уређаја");

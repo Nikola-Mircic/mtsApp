@@ -2,12 +2,11 @@ package com.app.mtsapp.location;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.app.mtsapp.location.service.Tracker;
+import com.app.mtsapp.R;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -144,7 +143,7 @@ public class LocationSystem {
                         e.printStackTrace();
                     }
                 }while(!deleted);
-                Toast.makeText(activity, "Location deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, activity.getResources().getString(R.string.locationDeletedToast), Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -22,4 +22,11 @@
     <string name="toggleNotifications">Подесите обавештења</string>
     <string name="trackLocation">Прати локацију уређаја</string>
     <string name="sendDailyNotifications">Шаљи свакодневна обавештења са предлозима и саветима</string>
+    <string name="unnamedLocation">Неименована локација</string>
+    <string name="serviceNotificationText">Бринемо о Вашем здрављу...</string>
+    <string name="noLocationNameToast">Унесите назив локације!</string>
+    <string name="deniedLocationPermissionsToast">Дозволе за лоакције су одбијене</string>
+    <string name="retryCurrentLocationToast">Тренутна локација није пронађена, покушајте поново</string>
+    <string name="gpsToast">GPS локација је неопходна за додавање нове локације</string>
+    <string name="locationDeletedToast">Избрисана локација</string>
 </resources>

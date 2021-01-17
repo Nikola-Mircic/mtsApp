@@ -40,12 +40,12 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_rulebook_info_popup.xml.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\rulebook_info_popup.xml"
+    },
+    {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",

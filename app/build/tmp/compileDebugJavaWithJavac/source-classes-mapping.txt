@@ -3,11 +3,15 @@ com/app/mtsapp/InfoPopup.java
  com.app.mtsapp.InfoPopup$1
  com.app.mtsapp.InfoPopup$2
  com.app.mtsapp.InfoPopup$3
+com/app/mtsapp/NotificationBroadcast.java
+ com.app.mtsapp.NotificationBroadcast
 com/app/mtsapp/location/LocationFinder.java
  com.app.mtsapp.location.LocationFinder
  com.app.mtsapp.location.LocationFinder$1
 com/app/mtsapp/NotificationSender.java
  com.app.mtsapp.NotificationSender
+com/app/mtsapp/location/EventHandler.java
+ com.app.mtsapp.location.EventHandler
 com/app/mtsapp/LanguageManager.java
  com.app.mtsapp.LanguageManager
 com/app/mtsapp/PlacesActivity.java
@@ -25,8 +29,6 @@ com/app/mtsapp/location/service/ServiceHandler.java
 com/app/mtsapp/location/service/Tracker.java
  com.app.mtsapp.location.service.Tracker
  com.app.mtsapp.location.service.Tracker$1
-com/app/mtsapp/location/LocationEventUpdate.java
- com.app.mtsapp.location.LocationEventUpdate
 com/app/mtsapp/MainActivity.java
  com.app.mtsapp.MainActivity
  com.app.mtsapp.MainActivity$1

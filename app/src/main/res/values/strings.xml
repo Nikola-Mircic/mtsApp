@@ -21,10 +21,17 @@
     <string name="markerName">How do you want to call your current location?</string>
     <string name="info">Info</string>
     <string name="homeLocation">Is this your home location?</string>
-    <string name="rulebookTitle">Behaviour advice</string>
+    <string name="rulebookTitle">Pandemic behaviour advice</string>
     <string name="rulebookText">Wear a mask when with others or outside.\n\nDisinfect your hands after human contact.\n\nDisinfect your hands when changing locations.\n\nAvoid crowded places.\n\nKeep a distance of at least 2 meters with others.</string>
     <string name="setAppLanguage">Change the app\'s language</string>
     <string name="toggleNotifications">Toggle notifications</string>
     <string name="trackLocation">Track the device\'s location</string>
     <string name="sendDailyNotifications">Send daily notifications with suggestions and tips</string>
+    <string name="unnamedLocation">Unnamed location</string>
+    <string name="serviceNotificationText">Caring about your health...</string>
+    <string name="noLocationNameToast">Input the name of the location!</string>
+    <string name="deniedLocationPermissionsToast">Denied location permissions</string>
+    <string name="retryCurrentLocationToast">Current location not found, try again</string>
+    <string name="gpsToast">GPS location is required for adding a new location</string>
+    <string name="locationDeletedToast">Location deleted</string>
 </resources>

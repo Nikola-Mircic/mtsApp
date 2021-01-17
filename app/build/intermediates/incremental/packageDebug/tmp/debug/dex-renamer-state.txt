@@ -1,4 +1,4 @@
-#Mon Jan 11 12:52:47 CET 2021
+#Sun Jan 17 14:58:50 CET 2021
 base.0=G\:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

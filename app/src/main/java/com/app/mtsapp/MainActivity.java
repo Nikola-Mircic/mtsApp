@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 ServiceHandler.startTrackingService(MainActivity.this);
                 sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
             }
+        } else {
+            ServiceHandler.startTrackingService(MainActivity.this);
+            sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
         }
     }
 
