@@ -16,17 +16,21 @@ public class InfoPopup extends Dialog {
     Context context;
     private boolean isRulebookDialog;
     private boolean shouldQuitApp;
+    private boolean isHelpDialog;
 
-    public InfoPopup(@NonNull Context contextArg, boolean isRulebookDialogArg, boolean shouldQuitAppArg) {
+    public InfoPopup(@NonNull Context contextArg, boolean isRulebookDialogArg, boolean shouldQuitAppArg, boolean isHelpDialogArg) {
         super(contextArg);
         context = contextArg;
         isRulebookDialog = isRulebookDialogArg;
         shouldQuitApp = shouldQuitAppArg;
+        isHelpDialog = isHelpDialogArg;
     }
 
     public void showDialog() {
         if (isRulebookDialog)
             showRulebookDialog();
+        else if (isHelpDialog)
+            showHelpDialog();
         else
             showBackButtonDialog();
     }
@@ -40,6 +44,23 @@ public class InfoPopup extends Dialog {
 
         TextView rulebookText = dialog.findViewById(R.id.rulebookText);
         rulebookText.setMovementMethod(new ScrollingMovementMethod());
+
+        ImageButton dismissButton = dialog.findViewById(R.id.cancelButton);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void showHelpDialog() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.help_popup);
 
         ImageButton dismissButton = dialog.findViewById(R.id.cancelButton);
         dismissButton.setOnClickListener(new View.OnClickListener() {

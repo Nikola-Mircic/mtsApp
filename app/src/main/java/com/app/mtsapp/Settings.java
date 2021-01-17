@@ -169,7 +169,7 @@ public class Settings extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        InfoPopup infoPopup = new InfoPopup(Settings.this, false, false);
+        InfoPopup infoPopup = new InfoPopup(Settings.this, false, false, false);
         infoPopup.showDialog();
     }
 

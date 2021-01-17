@@ -14,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -40,11 +39,15 @@ public class Tracker extends Service implements LocationListener {
     //Референца SharedPreferences-a: лаког начина чувања простих података, овде због слања адекватне нотификације при промени локације
     private SharedPreferences sharedPreferences;
 
+    private String serviceNotificationText;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+
+        serviceNotificationText = this.getResources().getString(R.string.serviceNotificationText);
 
         //Program kreira odvojeni kanal za notifikacije poslate sa servisa
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -61,8 +64,8 @@ public class Tracker extends Service implements LocationListener {
         Intent nIntent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nIntent, 0);
         final Notification notification = new NotificationCompat.Builder(context, "trackingchannel")
-                .setContentTitle("Coro-No Official app")
-                .setContentText("Service is running...")//Ovo pise pre nego sto se pronadje prva lokacija
+                .setContentTitle("Coro-No")
+                .setContentText(serviceNotificationText)//Ovo pise pre nego sto se pronadje prva lokacija
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_six_feet)
                 .build();
@@ -137,6 +140,7 @@ public class Tracker extends Service implements LocationListener {
             sendAdequateNotification(nearestLocation.getName());
         else {
             sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
+            sendAdequateNotification("");
         }
     }
 
@@ -146,7 +150,7 @@ public class Tracker extends Service implements LocationListener {
         NotificationSender notificationSender = new NotificationSender(Tracker.this);
 
         System.out.println("[MRMI]: Претходна: " + lastSavedLocationName + " Тренутна: " + currentLocationName);
-        if ((lastSavedLocationName.equals("") || lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
+        if ((lastSavedLocationName.equals("home") && !currentLocationName.equals("home"))) {
             notificationSender.showNotification(0); //Покажи нотификацију за стављање маске кад корисник изађе из куће
             sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
         }

@@ -1,12 +1,16 @@
 package com.app.mtsapp;
 
 import android.Manifest;
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -52,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
 
+        setDailyNotifications();
+
         //Дугмићи и њихова функционалност
         ImageButton mapsButton, settingsButton, infoButton;
 
@@ -79,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InfoPopup infoPopup = new InfoPopup(MainActivity.this, true, false);
+                InfoPopup infoPopup = new InfoPopup(MainActivity.this, true, false, false);
                 infoPopup.showDialog();
             }
         });
@@ -106,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        InfoPopup infoPopup = new InfoPopup(MainActivity.this, false, true);
+        InfoPopup infoPopup = new InfoPopup(MainActivity.this, false, true, false);
         infoPopup.showDialog();
     }
 
@@ -161,13 +167,28 @@ public class MainActivity extends AppCompatActivity {
     private void changeDailyTip(int skippedTipIndex) {
         int randomIndex = random.nextInt(dailyTips.length); //Индекс насумично изабарног савета
         if (skippedTipIndex != -1) { //Ако је индекс валидан (!= -1) све док се не нађе индекс другачији од датог, узимај га насумично
-            do {
+            while (randomIndex == skippedTipIndex) {
                 randomIndex = random.nextInt(dailyTips.length); //Узми насумичан индекс
-                System.out.println("[MRMI]: Random index: " + randomIndex + " current index: " + skippedTipIndex);
-            } while (randomIndex == skippedTipIndex); //Понављај процес све док се не нађе индекс другачији од skippedTipIndex (ради избегавања понављања савета)
+            }
         }
 
         currentTipIndex = randomIndex; //Промени индекс тренутног савета
         dailyTipTextView.setText(dailyTips[randomIndex]); //Прикажи изабран насумичан савет
+    }
+
+    //Упали дневне нотификације
+    private void setDailyNotifications() {
+        sharedPreferences.edit().putBoolean("sendDailyNotifications", true).apply();
+        Intent temp = new Intent(getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, temp, 0);
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, 12);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+
+        AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        Log.i("AlarmSchedule", "Alarm manager is set!!");
     }
 }

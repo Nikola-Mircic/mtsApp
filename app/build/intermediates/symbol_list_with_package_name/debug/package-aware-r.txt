@@ -1040,6 +1040,8 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id help
+id helpButton
 id home
 id homeAsUp
 id honorRequest
@@ -1237,6 +1239,7 @@ layout activity_settings
 layout add_location_popup
 layout back_alert_dialog
 layout custom_dialog
+layout help_popup
 layout notification_action
 layout notification_action_tombstone
 layout notification_layout
@@ -1308,6 +1311,8 @@ string english
 string gcm_fallback_notification_channel_label
 string getLocation
 string gpsToast
+string help
+string helpText
 string homeLocation
 string info
 string locationDeletedToast

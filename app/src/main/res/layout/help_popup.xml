@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rulebook_background"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.12"
+        android:gravity="center"
+        android:text="@string/help"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/rulebookText"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_weight="0.86"
+
+        android:padding="10dp"
+
+        android:scrollbars="vertical"
+        android:text="@string/helpText"
+        android:textSize="26sp" />
+
+    <ImageButton
+        android:id="@+id/cancelButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+
+        android:layout_gravity="end"
+        android:layout_weight="0.02"
+
+        android:adjustViewBounds="true"
+
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/no"
+        android:scaleType="fitCenter"
+
+        android:src="@drawable/cross"
+        tools:ignore="RelativeOverlap" />
+</LinearLayout>

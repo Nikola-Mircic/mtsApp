@@ -29,4 +29,5 @@
     <string name="retryCurrentLocationToast">Trenutna lokacija nije pronađena, pokušajte ponovo</string>
     <string name="gpsToast">GPS lokacija je neophodna za dodavanje nove lokacije</string>
     <string name="locationDeletedToast">Izbrisana lokacija</string>
+    <string name="help">Pomoć</string>
 </resources>

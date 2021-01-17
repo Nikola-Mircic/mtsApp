@@ -228,6 +228,10 @@
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable\\settings_background.png"
     },
     {
+        "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_help_popup.xml.flat",
+        "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\layout\\help_popup.xml"
+    },
+    {
         "merged": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_six_feet.png.flat",
         "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\drawable-mdpi\\ic_six_feet.png"
     },

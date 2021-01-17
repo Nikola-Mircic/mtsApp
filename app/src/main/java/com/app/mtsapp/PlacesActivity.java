@@ -108,6 +108,16 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 }
             });
 
+            ImageButton helpButton = findViewById(R.id.helpButton);
+            helpButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    InfoPopup infoPopup = new InfoPopup(PlacesActivity.this, false, false, true);
+                    infoPopup.showDialog();
+                }
+            });
+
+
         } else {
             //Ако нема, затражи их
             requestLocationPermissions();
@@ -193,7 +203,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        InfoPopup infoPopup = new InfoPopup(PlacesActivity.this, false, false);
+        InfoPopup infoPopup = new InfoPopup(PlacesActivity.this, false, false, false);
         infoPopup.showDialog();
     }
 
