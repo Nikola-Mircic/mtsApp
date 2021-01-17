@@ -1,6 +1,8 @@
 package com.app.mtsapp;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -82,10 +84,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (sharedPreferences.getBoolean("trackerSwitch", true)) {
-            ServiceHandler.startTrackingService(MainActivity.this);
-
-            sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            NotificationChannel channel = manager.getNotificationChannel("trackingchannel");
+            if (channel == null) {
+                ServiceHandler.startTrackingService(MainActivity.this);
+                sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
+            }
         }
     }
 

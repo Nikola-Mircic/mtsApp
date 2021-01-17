@@ -64,7 +64,6 @@ public class NotificationSender {
     }
 
     public void showNotification(int notificationId) {
-
         if (notificationId > 3 || notificationId < 0)
             notificationId = 0;
 
@@ -89,7 +88,7 @@ public class NotificationSender {
         notificationLayout.setImageViewBitmap(R.id.notifcationIcon, notificationIcons[notificationId]);
 
         //Подешавања обавештења
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "trackingchannel")
                 .setSmallIcon(smallNotificationIcons[notificationId]) //Мала иконица нотификације (бела са провидном позадином)
                 .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
                 .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
@@ -101,5 +100,26 @@ public class NotificationSender {
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(notificationId, builder.build());
+    }
+
+    public void showNotification(String title, String text) {
+        //Отвори MainActivity кад корисник притисне нотификацију
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+
+        //Подешавања нотификације
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
+                .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
+                .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setPriority(NotificationCompat.PRIORITY_MAX);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+
+        notificationManager.notify(5, builder.build());
     }
 }

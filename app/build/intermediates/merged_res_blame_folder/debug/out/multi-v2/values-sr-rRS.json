@@ -1,31 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr-rRS\\values-sr-rRS.xml",
+            "outputFile": "E:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr-rRS\\values-sr-rRS.xml",
             "map": [
                 {
-                    "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\values-sr-rRS\\strings.xml",
+                    "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\values-sr-rRS\\array.xml",
                     "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,23,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1524,-1,-1,-1,-1,-1",
-                        "endColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,103,-1,-1,-1,-1,-1",
-                        "endOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1623,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "794,849,946,988,1047,1097,1160,1235,1280,1367,1401,1459,1510,1597,1855,1913,1954,2058,2128,2176,2244,2309",
-                        "endColumns": "54,96,41,58,49,62,74,44,86,33,57,50,86,257,57,40,103,69,47,67,64,34",
-                        "endOffsets": "844,941,983,1042,1092,1155,1230,1275,1362,1396,1454,1505,1592,1850,1908,1949,2053,2123,2171,2239,2304,2339"
-                    }
-                },
-                {
-                    "source": "G:\\Nikola\\programiranje\\Android_Studio\\mtsApp\\app\\src\\main\\res\\values-sr-rRS\\array.xml",
-                    "from": {
-                        "startLines": "-1,-1",
-                        "startColumns": "-1,-1",
-                        "startOffsets": "-1,-1"
+                        "startLines": "7,2",
+                        "startColumns": "4,4",
+                        "startOffsets": "248,57",
+                        "endLines": "16,6",
+                        "endColumns": "19,19",
+                        "endOffsets": "805,242"
                     },
                     "to": {
                         "startLines": "2,12",
@@ -34,6 +20,23 @@
                         "endLines": "11,16",
                         "endColumns": "19,19",
                         "endOffsets": "603,789"
+                    }
+                },
+                {
+                    "source": "E:\\Programing\\Projects\\mtsApp\\app\\src\\main\\res\\values-sr-rRS\\strings.xml",
+                    "from": {
+                        "startLines": "8,12,14,9,3,6,17,16,15,11,2,5,13,19,18,7,23,20,4,21,22,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "374,561,747,430,116,268,924,878,790,526,57,216,659,1059,1000,332,1524,1318,167,1389,1458,490",
+                        "endColumns": "54,96,41,58,49,62,74,44,86,33,57,50,86,257,57,40,103,69,47,67,64,34",
+                        "endOffsets": "424,653,784,484,161,326,994,918,872,555,110,262,741,1312,1053,368,1623,1383,210,1452,1518,520"
+                    },
+                    "to": {
+                        "startLines": "17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "794,849,946,988,1047,1097,1160,1235,1280,1367,1401,1459,1510,1597,1855,1913,1954,2058,2128,2176,2244,2309",
+                        "endColumns": "54,96,41,58,49,62,74,44,86,33,57,50,86,257,57,40,103,69,47,67,64,34",
+                        "endOffsets": "844,941,983,1042,1092,1155,1230,1275,1362,1396,1454,1505,1592,1850,1908,1949,2053,2123,2171,2239,2304,2339"
                     }
                 }
             ]
