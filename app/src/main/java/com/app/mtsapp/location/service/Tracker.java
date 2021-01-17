@@ -75,8 +75,8 @@ public class Tracker extends Service implements LocationListener {
         //Program pokrene LocationFinder koji pri svakom apdejtu lokacije obavestava korisnika
         finder = new LocationFinder(context);
         finder.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        finder.setInterval(20 * 1000);
-        finder.setFastInterval(15 * 1000);
+        finder.setInterval(30 * 1000);
+        finder.setFastInterval(20 * 1000);
         finder.setOnUpdateEvent(new EventHandler() {
             @Override
             public void handle(Location location) {
@@ -112,12 +112,14 @@ public class Tracker extends Service implements LocationListener {
             return;
 
         //Ako se korisnik i dalje krece ili je servis tek poceo sa radom promeni poslednju zapamcenu lokaciju i izadje iz funkcije
-        if (lastLocation != null) {
-            if (lastLocation.distanceTo(location) > 60) {
-                lastLocation = new SavedLocation("last", location);
-                return;
-            }
+        if (lastLocation == null){
+            lastLocation = new SavedLocation("last", location);
+            return;
+        }else if (lastLocation.distanceTo(location) > 60) {
+            lastLocation = new SavedLocation("last", location);
+            return;
         }
+        
         lastLocation = new SavedLocation("last", location);
 
         List<SavedLocation> list = LocationSystem.loadLocations(context);
@@ -131,7 +133,7 @@ public class Tracker extends Service implements LocationListener {
         System.out.println("[MRMI]: udaljenost:" + dist);
 
         //Ukoliko je korisnik stao u blizini neke sacuvane lokacije salje se notifikacija sa podsetnikom
-        if (dist < 50)
+        if (dist < 75)
             sendAdequateNotification(nearestLocation.getName());
         else {
             sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
