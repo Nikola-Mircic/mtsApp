@@ -38,6 +38,8 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        ServiceHandler.activityTest |= 2;
+
         Button serbianLatinButton = findViewById(R.id.serbianLatinButton), serbianCyrillicButton = findViewById(R.id.serbianCyrillicButton);
         ImageButton englishButton = findViewById(R.id.englishButton);
         //Постави језик на енглески
@@ -190,5 +192,11 @@ public class Settings extends AppCompatActivity {
         } else {
             notificationThree.setBackgroundResource(notificationToggleIcons[5]);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ServiceHandler.activityTest &= 5;
+        super.onDestroy();
     }
 }

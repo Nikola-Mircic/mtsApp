@@ -1,4 +1,4 @@
-#Sun Jan 17 18:31:25 CET 2021
+#Mon Jan 18 21:23:48 CET 2021
 base.0=E\:\\Programing\\Projects\\mtsApp\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

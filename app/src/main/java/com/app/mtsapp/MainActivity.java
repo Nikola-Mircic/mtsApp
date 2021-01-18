@@ -2,8 +2,6 @@ package com.app.mtsapp;
 
 import android.Manifest;
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                100);
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION, Manifest.permission.FOREGROUND_SERVICE};
+        ActivityCompat.requestPermissions(MainActivity.this, permissions, 100);
 
         //Учитај језик активитија
         LanguageManager languageManager = new LanguageManager(MainActivity.this);
@@ -50,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
 
+        ServiceHandler.activityTest |= 4;
         sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
 
         //Ако је потребно, промени дневни савет приказан на екрану
@@ -90,21 +88,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            NotificationChannel channel = manager.getNotificationChannel("trackingchannel");
-            if (channel == null) {
-                ServiceHandler.startTrackingService(MainActivity.this);
-                sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
-            }
-        } else {
+        if (sharedPreferences.getInt("trackerRunning", -1) == -1) {
             ServiceHandler.startTrackingService(MainActivity.this);
-            sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
         }
     }
 
     @Override
     protected void onDestroy() {
+        ServiceHandler.activityTest &= 3;
         super.onDestroy();
     }
 

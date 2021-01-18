@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import com.app.mtsapp.location.LocationFinder;
 import com.app.mtsapp.location.LocationSystem;
 import com.app.mtsapp.location.SavedLocation;
+import com.app.mtsapp.location.service.ServiceHandler;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
@@ -78,6 +79,8 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
+
+        ServiceHandler.activityTest |= 1;
 
         unnamedLocationName = this.getResources().getString(R.string.unnamedLocation);
         noLocationNameToast = this.getResources().getString(R.string.noLocationNameToast);
@@ -416,5 +419,11 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             //Зумирај мапу на тренутну локацију
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 17));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ServiceHandler.activityTest &= 0;
+        super.onDestroy();
     }
 }

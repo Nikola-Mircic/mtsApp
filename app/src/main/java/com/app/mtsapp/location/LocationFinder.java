@@ -1,12 +1,14 @@
 package com.app.mtsapp.location;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
@@ -29,6 +31,7 @@ public class LocationFinder implements Runnable {
     private int interval;
     private int fastInterval;
     private int priority;
+    private String[] permissions;
 
     private Location currentLocation;//Trenutna lokacija
 
@@ -47,6 +50,7 @@ public class LocationFinder implements Runnable {
         interval = 10 * 1000;
         fastInterval = 5 * 1000;
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY;
+        permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     }
 
     public void start() {
@@ -72,6 +76,7 @@ public class LocationFinder implements Runnable {
         }
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void run() {
         locationRequest = new LocationRequest();
@@ -96,16 +101,22 @@ public class LocationFinder implements Runnable {
         };
 
         flpClient = LocationServices.getFusedLocationProviderClient(context);
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (hasAllPermissions()) {
             flpClient.requestLocationUpdates(locationRequest, locationCallback, context.getMainLooper());
-        }else{
-            if(context instanceof Activity){
+        } else {
+            if (context instanceof Activity) {
                 Activity temp = (Activity) context;
-                ActivityCompat.requestPermissions(temp, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_PERMISSSION_CODE);
+                ActivityCompat.requestPermissions(temp, permissions, LOCATION_PERMISSSION_CODE);
             }
         }
+    }
 
+    private boolean hasAllPermissions() {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this.context, permission) != PackageManager.PERMISSION_GRANTED)
+                return false;
+        }
+        return true;
     }
 
     public void setOnUpdateEvent(EventHandler event) {
