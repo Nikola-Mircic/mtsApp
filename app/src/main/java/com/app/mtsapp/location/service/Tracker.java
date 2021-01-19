@@ -9,11 +9,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -30,7 +29,7 @@ import com.google.android.gms.location.LocationRequest;
 
 import java.util.List;
 
-public class Tracker extends Service implements LocationListener {
+public class Tracker extends Service {
     private boolean shouldStop = false;
 
     private LocationFinder finder;
@@ -56,7 +55,7 @@ public class Tracker extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Context context = this.getApplicationContext();//Ova linija je tu da malo ulepsa kod ( da ne pozivam stalno ovu funkciju)
+        final Context context = this.getApplicationContext();//Ova linija je tu da malo ulepsa kod ( da ne pozivam stalno ovu funkciju)
 
         LanguageManager languageManager = new LanguageManager(this);
         languageManager.checkLocale();
@@ -86,6 +85,18 @@ public class Tracker extends Service implements LocationListener {
             @Override
             public void handle(Location location) {
                 notifyUser(location);
+                if (ServiceHandler.activityTest == 0 && finder.getPriority() != LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY) {
+                    finder.stop();
+                    finder.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+                    finder.start();
+                    Toast.makeText(context, "Service optimized", Toast.LENGTH_SHORT).show();
+                }
+                if (ServiceHandler.activityTest != 0 && finder.getPriority() == LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY) {
+                    finder.stop();
+                    finder.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                    finder.start();
+                    Toast.makeText(context, "Service is normal again", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         finder.start();
@@ -101,11 +112,6 @@ public class Tracker extends Service implements LocationListener {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        notifyUser(location);
     }
 
     private void notifyUser(Location location) {
@@ -135,7 +141,7 @@ public class Tracker extends Service implements LocationListener {
             return;
 
         double dist = nearestLocation.distanceTo(location);
-        System.out.println("[MRMI]: udaljenost:" + dist);
+        System.out.println("[MRMI]: udaljenost:" + dist + ((finder.getPriority() == LocationRequest.PRIORITY_HIGH_ACCURACY) ? " HighAccuracy" : " BalancedBattery"));
 
         //Ukoliko je korisnik stao u blizini neke sacuvane lokacije salje se notifikacija sa podsetnikom
         if (dist < 75)
@@ -170,25 +176,9 @@ public class Tracker extends Service implements LocationListener {
         //Pri prekidu servisa,gasi se kanal napravljen na pocetku i prekida se periodicno lociranje (linija 134)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager manager = getSystemService(NotificationManager.class);
-            NotificationChannel channel = manager.getNotificationChannel("trackingchannel");
-            channel.setImportance(NotificationManager.IMPORTANCE_NONE);
+            manager.deleteNotificationChannel("trackingchannel");
         }
         finder.stop();
         super.onDestroy();
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
     }
 }
