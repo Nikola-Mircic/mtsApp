@@ -14,9 +14,9 @@ import androidx.annotation.NonNull;
 
 public class InfoPopup extends Dialog {
     Context context;
-    private boolean isRulebookDialog;
-    private boolean shouldQuitApp;
-    private boolean isHelpDialog;
+    private final boolean isRulebookDialog;
+    private final boolean shouldQuitApp;
+    private final boolean isHelpDialog;
 
     public InfoPopup(@NonNull Context contextArg, boolean isRulebookDialogArg, boolean shouldQuitAppArg, boolean isHelpDialogArg) {
         super(contextArg);

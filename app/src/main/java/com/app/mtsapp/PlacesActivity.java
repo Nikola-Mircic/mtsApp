@@ -57,7 +57,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
     private Location currentLocation; //Тренутна локација уређаја
     private String currentLocationName; //Име које се чува на маркеру при чувању локације
-    private String unnamedLocationName; //Име које се додели локацији када корисник не унесе ниједно
 
     //Toast упозорења
     private String noLocationNameToast;
@@ -79,7 +78,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
 
-        unnamedLocationName = this.getResources().getString(R.string.unnamedLocation);
         noLocationNameToast = this.getResources().getString(R.string.noLocationNameToast);
         deniedLocationPermsToast = this.getResources().getString(R.string.deniedLocationPermissionsToast);
         retryCurrentLocationToast = this.getResources().getString(R.string.retryCurrentLocationToast);
@@ -309,7 +307,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 //Стави назив на ? ако корисник није унео назив
                 if (currentLocationName.equals("")) {
-                    currentLocationName = unnamedLocationName;
                     Toast.makeText(PlacesActivity.this, noLocationNameToast, Toast.LENGTH_SHORT).show();
                 } else {
                     settingHomeLocation = isHomeLocationSwitch.isChecked(); //Провери да ли је локација која се уноси кућна

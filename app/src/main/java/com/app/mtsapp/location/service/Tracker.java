@@ -18,6 +18,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.app.mtsapp.LanguageManager;
 import com.app.mtsapp.MainActivity;
 import com.app.mtsapp.NotificationSender;
 import com.app.mtsapp.R;
@@ -56,6 +57,9 @@ public class Tracker extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Context context = this.getApplicationContext();//Ova linija je tu da malo ulepsa kod ( da ne pozivam stalno ovu funkciju)
+
+        LanguageManager languageManager = new LanguageManager(this);
+        languageManager.checkLocale();
 
         String text = getResources().getString(R.string.serviceNotificationText);
 

@@ -11,22 +11,77 @@
         android:id="@+id/help"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.16"
         android:gravity="center"
         android:text="@string/help"
-        android:textSize="24sp" />
+        android:textSize="34sp" />
 
-    <TextView
-        android:id="@+id/rulebookText"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_weight="0.86"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        android:padding="10dp"
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:adjustViewBounds="true"
 
-        android:scrollbars="vertical"
-        android:text="@string/helpText"
-        android:textSize="26sp" />
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/no"
+            android:scaleType="fitCenter"
+
+            android:src="@drawable/add_location" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center"
+            android:text="@string/addMarkerHelp"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:adjustViewBounds="true"
+
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/no"
+            android:scaleType="fitCenter"
+
+            android:src="@drawable/get_current_location" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center"
+            android:text="@string/currentLocationHelp"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.83"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="@string/generalHelp"
+            android:textSize="24sp" />
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/cancelButton"

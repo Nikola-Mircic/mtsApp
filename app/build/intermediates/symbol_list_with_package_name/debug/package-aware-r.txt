@@ -1283,6 +1283,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string addMarker
+string addMarkerHelp
 string app_name
 string backToMenu
 string cancel
@@ -1305,14 +1306,15 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string currentLocationHelp
 string dailyTip
 string deniedLocationPermissionsToast
 string english
 string gcm_fallback_notification_channel_label
+string generalHelp
 string getLocation
 string gpsToast
 string help
-string helpText
 string homeLocation
 string info
 string locationDeletedToast

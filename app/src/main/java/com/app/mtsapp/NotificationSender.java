@@ -75,6 +75,9 @@ public class NotificationSender {
             return;
         }
 
+        LanguageManager languageManager = new LanguageManager(context);
+        languageManager.checkLocale();
+
         //Отвори MainActivity кад корисник притисне нотификацију
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -14,11 +14,11 @@
         android:layout_weight="0.12"
         android:gravity="center"
         android:text="@string/rulebookTitle"
-        android:textSize="24sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:layout_height="100dp"
-        android:layout_weight="0.86"
+        android:layout_weight="0.87"
         android:id="@+id/rulebookText"
         android:layout_width="wrap_content"
 

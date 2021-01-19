@@ -21,19 +21,21 @@
     <string name="markerName">How do you want to call your current location?</string>
     <string name="info">Info</string>
     <string name="homeLocation">Is this your home location?</string>
-    <string name="rulebookTitle">Behaviour advice</string>
-    <string name="rulebookText">Wear a mask when with others or outside.\n\nDisinfect your hands after human contact.\n\nDisinfect your hands when changing locations.\n\nAvoid crowded places.\n\nKeep a distance of at least 2 meters with others.</string>
+    <string name="rulebookTitle">Epidemiological measures</string>
+    <string name="rulebookText">Avoid touching your face, mouth, nose and eyes.\n\nUse masks which cover your nose and mouth while staying in closed spaces.\n\nVentilate rooms you stay in.\n\nWash your hands with soap and water or use a 70% alcohol based disinfectanat.</string>
     <string name="setAppLanguage">Change the app\'s language</string>
     <string name="toggleNotifications">Toggle notifications</string>
     <string name="trackLocation">Track the device\'s location</string>
     <string name="sendDailyNotifications">Send daily notifications with suggestions and tips</string>
     <string name="unnamedLocation">Unnamed location</string>
-    <string name="serviceNotificationText">Caring about your health...</string>
+    <string name="serviceNotificationText">Caring about your health…</string>
     <string name="noLocationNameToast">Input the name of the location!</string>
     <string name="deniedLocationPermissionsToast">Denied location permissions</string>
     <string name="retryCurrentLocationToast">Current location not found, try again</string>
     <string name="gpsToast">GPS location is required for adding a new location</string>
     <string name="locationDeletedToast">Location deleted</string>
     <string name="help">Help</string>
-    <string name="helpText">duvaj</string>
+    <string name="addMarkerHelp">Add your home/frequent locations.</string>
+    <string name="currentLocationHelp">Zoom in on your current location.</string>
+    <string name="generalHelp">Delete a location by holding the name of a location marker.\n\nYou can toggle location tracking and particular notifications in the settings.</string>
 </resources>

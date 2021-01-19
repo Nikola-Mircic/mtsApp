@@ -16,18 +16,21 @@
     <string name="markerName">Kako želite da nazovete Vašu trenutnu lokaciju?</string>
     <string name="info">Informacije</string>
     <string name="homeLocation">Da li je ovo Vaša kućna lokacija?</string>
-    <string name="rulebookTitle">Saveti ponašanja</string>
-    <string name="rulebookText">Nosite masku kada ste sa drugima ili napolju.\n\nDezinfikujte ruke nakon ljudskog kontakta.\n\nDezinfikujte ruke kada promenite lokaciju.\n\nIzbegavajte krcata mesta.\n\nDržite distancu od barem 2 metra od drugih ljudi.</string>
+    <string name="rulebookTitle">Epidemiološke mere</string>
+    <string name="rulebookText">Izbegavajte dodirivanje lica, usta, nosa i očiju.\n\nKoristite maske koje prekrivaju nos i usta kada boravite u zatvorenim prostorijama.\n\nČesto provetravajte prostorije u kojima boravite.\n\nČesto perite ruke sapunom i vodom ili koristite sredstvo za dezinfekciju na bazi 70% alkohola.</string>
     <string name="setAppLanguage">Izaberite jezik aplikacije</string>
     <string name="toggleNotifications">Podesite obaveštenja</string>
     <string name="trackLocation">Prati lokaciju uređaja</string>
     <string name="sendDailyNotifications">Šalji svakodnevna obaveštenja sa predlozima i savetima</string>
     <string name="unnamedLocation">Neimenovana lokacija</string>
-    <string name="serviceNotificationText">Brinemo o Vašem zdravlju...</string>
+    <string name="serviceNotificationText">Brinemo o Vašem zdravlju…</string>
     <string name="noLocationNameToast">Unesite naziv lokacije!</string>
     <string name="deniedLocationPermissionsToast">Dozvole za lokacije su odbijene</string>
     <string name="retryCurrentLocationToast">Trenutna lokacija nije pronađena, pokušajte ponovo</string>
     <string name="gpsToast">GPS lokacija je neophodna za dodavanje nove lokacije</string>
     <string name="locationDeletedToast">Izbrisana lokacija</string>
     <string name="help">Pomoć</string>
+    <string name="addMarkerHelp">Dodajte kućnu/česte lokacije.</string>
+    <string name="currentLocationHelp">Zumirajte na Vašu trenutnu lokaciju.</string>
+    <string name="generalHelp">Izbrišite lokaciju tako što duže držite naziv obeleživača lokacije.\n\nMožete da palite i gasite praćenje lokacije i pojedina obaveštenja u podešavanjima.</string>
 </resources>
