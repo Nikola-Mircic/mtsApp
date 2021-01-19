@@ -831,7 +831,9 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
-drawable add_location
+drawable add_location_v2
+drawable app_icon
+drawable app_small_icon
 drawable border
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -871,6 +873,8 @@ drawable get_current_location
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable hands_notification_disabled
+drawable help_background
+drawable help_icon
 drawable home_location
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -899,6 +903,7 @@ drawable settings_background
 drawable settings_v2
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable tracker_large_icon
 drawable uk_flag
 id ALT
 id CTRL
@@ -1325,6 +1330,7 @@ string noLocationNameToast
 string notifyUser
 string openPlaces
 string quitApp
+string renameLocationToast
 string retryCurrentLocationToast
 string rulebookText
 string rulebookTitle
@@ -1340,7 +1346,6 @@ string status_bar_notification_info_overflow
 string title_activity_places
 string toggleNotifications
 string trackLocation
-string unnamedLocation
 string yes
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

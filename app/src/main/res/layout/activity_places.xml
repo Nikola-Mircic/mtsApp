@@ -22,7 +22,7 @@
         android:background="#00FFFFFF"
         android:contentDescription="@string/addMarker"
         android:scaleType="fitCenter"
-        android:src="@drawable/add_location" />
+        android:src="@drawable/add_location_v2" />
 
     <ImageButton
         android:id="@+id/currentLocationButton"
@@ -47,5 +47,5 @@
         android:background="#00FFFFFF"
         android:contentDescription="@string/addMarker"
         android:scaleType="fitCenter"
-        android:src="@android:drawable/ic_menu_help" />
+        android:src="@drawable/help_icon" />
 </RelativeLayout>

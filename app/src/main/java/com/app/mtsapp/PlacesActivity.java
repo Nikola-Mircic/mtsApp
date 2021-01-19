@@ -63,6 +63,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     private String deniedLocationPermsToast;
     private String retryCurrentLocationToast;
     private String gpsToast;
+    private String renameLocationToast;
 
     private List<SavedLocation> savedLocations;
     private LocationSystem locationSystem;
@@ -82,6 +83,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         deniedLocationPermsToast = this.getResources().getString(R.string.deniedLocationPermissionsToast);
         retryCurrentLocationToast = this.getResources().getString(R.string.retryCurrentLocationToast);
         gpsToast = this.getResources().getString(R.string.gpsToast);
+        renameLocationToast = this.getResources().getString(R.string.renameLocationToast);
 
         //Ако апликација има дозволе потребне за узимање локације
         if (hasLocationPermission()) {
@@ -102,7 +104,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             addMarkerButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    gpsAddLocation(); //Упали GPS локацију на уређају и ако је могуће маркира тренутну локацију на мапи
+                    requestGoogleLocation(true); //Упали GPS локацију на уређају и ако је могуће маркира тренутну локацију на мапи
                 }
             });
 
@@ -114,8 +116,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                     infoPopup.showDialog();
                 }
             });
-
-
         } else {
             //Ако нема, затражи их
             requestLocationPermissions();
@@ -149,7 +149,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         currentLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAndZoomCurrentLocation();
+                requestGoogleLocation(false);
             }
         });
 
@@ -234,9 +234,9 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         }
     }
 
-    /*Проверава да ли је GPS локација уређаја упаљења. Ако јесте, дода маркер на тренутној локацији а ако није затражи од корисника да дозволи
-    апликацији да користи GPS локацију уређаја*/
-    private void gpsAddLocation() {
+    /*Проверава да ли је GPS локација уређаја упаљења. Ако није затражи од корисника да дозволи апликацији да користи GPS локацију уређаја а ако јесте:
+    1) ако је showLocationPopup true онда приказује мени за додавање локације, а ако није зумира на тренутну локацију (функција дугмета за добијање тренутне локације)*/
+    private void requestGoogleLocation(final boolean showLocationPopup) {
         //Направи захтев за проверу и добијање GPS локације уређаја
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(5000).setFastestInterval(2000);
@@ -254,7 +254,11 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                     //Ако је GPS локација већ упаљења неће се throw-ати било какав exception
                     System.out.println("[MRMI]: GPS локација је већ упаљена, додајем маркер");
                     if (currentLocation != null) {
-                        showLocationNamePopup();
+                        if (showLocationPopup) {
+                            showLocationNamePopup();
+                        } else {
+                            getAndZoomCurrentLocation();
+                        }
                     } else {
                         Toast.makeText(PlacesActivity.this, retryCurrentLocationToast, Toast.LENGTH_SHORT).show();
                     }
@@ -308,6 +312,8 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 //Стави назив на ? ако корисник није унео назив
                 if (currentLocationName.equals("")) {
                     Toast.makeText(PlacesActivity.this, noLocationNameToast, Toast.LENGTH_SHORT).show();
+                } else if (locationSystem.getLocation(currentLocationName) != null) {
+                    Toast.makeText(PlacesActivity.this, renameLocationToast, Toast.LENGTH_SHORT).show();
                 } else {
                     settingHomeLocation = isHomeLocationSwitch.isChecked(); //Провери да ли је локација која се уноси кућна
                     addMarker(); //Додај маркер нове унете локације

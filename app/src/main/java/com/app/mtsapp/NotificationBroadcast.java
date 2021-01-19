@@ -28,6 +28,6 @@ public class NotificationBroadcast extends BroadcastReceiver {
         }
 
         NotificationSender sender = new NotificationSender(context);
-        sender.showNotification("Coro-No", dailyTips[randomIndex]);
+        sender.showNotification(dailyTips[randomIndex]);
     }
 }

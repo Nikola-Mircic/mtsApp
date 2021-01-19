@@ -22,15 +22,15 @@
     <string name="toggleNotifications">Подесите обавештења</string>
     <string name="trackLocation">Прати локацију уређаја</string>
     <string name="sendDailyNotifications">Шаљи свакодневна обавештења са предлозима и саветима</string>
-    <string name="unnamedLocation">Неименована локација</string>
     <string name="serviceNotificationText">Бринемо о Вашем здрављу…</string>
     <string name="noLocationNameToast">Унесите назив локације!</string>
     <string name="deniedLocationPermissionsToast">Дозволе за лоакције су одбијене</string>
     <string name="retryCurrentLocationToast">Тренутна локација није пронађена, покушајте поново</string>
     <string name="gpsToast">GPS локација је неопходна за додавање нове локације</string>
-    <string name="locationDeletedToast">Избрисана локација</string>
+    <string name="locationDeletedToast">Локација избрисана</string>
     <string name="help">Помоћ</string>
     <string name="addMarkerHelp">Додајте кућну/честе локације.</string>
     <string name="currentLocationHelp">Зумирајте на Вашу тренутну локацију.</string>
     <string name="generalHelp">Избришите локацију тако што дуже држите назив обележивача локације.\n\nМожете да палите и гасите праћење локације и поједина обавештења у подешавањима.</string>
+    <string name="renameLocationToast">Унесите јединствено име локације.</string>
 </resources>

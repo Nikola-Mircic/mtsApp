@@ -27,7 +27,6 @@
     <string name="toggleNotifications">Toggle notifications</string>
     <string name="trackLocation">Track the device\'s location</string>
     <string name="sendDailyNotifications">Send daily notifications with suggestions and tips</string>
-    <string name="unnamedLocation">Unnamed location</string>
     <string name="serviceNotificationText">Caring about your health…</string>
     <string name="noLocationNameToast">Input the name of the location!</string>
     <string name="deniedLocationPermissionsToast">Denied location permissions</string>
@@ -38,4 +37,5 @@
     <string name="addMarkerHelp">Add your home/frequent locations.</string>
     <string name="currentLocationHelp">Zoom in on your current location.</string>
     <string name="generalHelp">Delete a location by holding the name of a location marker.\n\nYou can toggle location tracking and particular notifications in the settings.</string>
+    <string name="renameLocationToast">Input a unique location name</string>
 </resources>

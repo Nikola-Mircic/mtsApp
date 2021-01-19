@@ -63,6 +63,7 @@ public class NotificationSender {
         }
     }
 
+    //Када је дат id намештају се одговарајућа мала и велика иконица и текст за прављење нотификације
     public void showNotification(int notificationId) {
         if (notificationId > 3 || notificationId < 0)
             notificationId = 0;
@@ -79,7 +80,7 @@ public class NotificationSender {
         languageManager.checkLocale();
 
         //Отвори MainActivity кад корисник притисне нотификацију
-        Intent intent = new Intent(context, MainActivity.class);
+        /*Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
@@ -102,27 +103,59 @@ public class NotificationSender {
                 .setPriority(NotificationCompat.PRIORITY_MAX);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(notificationId, builder.build());
+        notificationManager.notify(notificationId, builder.build());*/
+        buildNotification(notificationId, smallNotificationIcons[notificationId], notificationIcons[notificationId], notificationDescriptions[notificationId]);
     }
 
-    public void showNotification(String title, String text) {
+    public void showNotification(String text) {
         //Отвори MainActivity кад корисник притисне нотификацију
-        Intent intent = new Intent(context, MainActivity.class);
+        /*Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
+        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
+        notificationLayout.setTextViewText(R.id.notificationText, title);
+        notificationLayout.setTextViewText(R.id.notificationTitle, text);
+        notificationLayout.setImageViewBitmap(R.id.notifcationIcon, BitmapFactory.decodeResource(context.getResources(), R.drawable.app_icon));
+
         //Подешавања нотификације
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
-                .setContentTitle(title)
-                .setContentText(text)
+                .setSmallIcon(R.drawable.app_small_icon)
                 .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
                 .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
+                .setCustomContentView(notificationLayout)
                 .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setPriority(NotificationCompat.PRIORITY_MAX);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
-        notificationManager.notify(5, builder.build());
+        notificationManager.notify(5, builder.build());*/
+        buildNotification(5, R.drawable.app_small_icon, BitmapFactory.decodeResource(context.getResources(), R.drawable.tracker_large_icon), text);
+    }
+
+    //Направи и прикаже нотификацију са датим ID-ем, малом и великом иконицом и текстом
+    private void buildNotification(int notificationId, int smallIcon, Bitmap largeIcon, String notificationText) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+
+        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
+        notificationLayout.setTextViewText(R.id.notificationTitle, context.getResources().getString(R.string.app_name));
+        notificationLayout.setTextViewText(R.id.notificationText, notificationText);
+        notificationLayout.setImageViewBitmap(R.id.notifcationIcon, largeIcon);
+
+        //Подешавања обавештења
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(smallIcon) //Мала иконица нотификације (бела са провидном позадином)
+                .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
+                .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setCustomContentView(notificationLayout)
+                .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setPriority(NotificationCompat.PRIORITY_MAX);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(notificationId, builder.build());
     }
 }

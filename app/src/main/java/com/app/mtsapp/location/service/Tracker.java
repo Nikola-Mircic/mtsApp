@@ -8,18 +8,20 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.app.mtsapp.LanguageManager;
-import com.app.mtsapp.MainActivity;
 import com.app.mtsapp.NotificationSender;
+import com.app.mtsapp.PlacesActivity;
 import com.app.mtsapp.R;
 import com.app.mtsapp.location.EventHandler;
 import com.app.mtsapp.location.LocationFinder;
@@ -57,18 +59,27 @@ public class Tracker extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         final Context context = this.getApplicationContext();//Ova linija je tu da malo ulepsa kod ( da ne pozivam stalno ovu funkciju)
 
+        //Провери учитан језик апликације због текста нотификације
         LanguageManager languageManager = new LanguageManager(this);
         languageManager.checkLocale();
 
-        String text = getResources().getString(R.string.serviceNotificationText);
-
-        Intent nIntent = new Intent(context, MainActivity.class);
+        //Подешавања нотификације која се не склања
+        String notificationText = getResources().getString(R.string.serviceNotificationText); //Наслов
+        Intent nIntent = new Intent(context, PlacesActivity.class); //Упали екран са мапом када се стисне нотификација
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nIntent, 0);
+
+        //Намести изглед користећи notification_layout - наслов, текст, велика иконица
+        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
+        notificationLayout.setTextViewText(R.id.notificationTitle, "Coro-No");
+        notificationLayout.setTextViewText(R.id.notificationText, notificationText);
+        notificationLayout.setImageViewBitmap(R.id.notifcationIcon, BitmapFactory.decodeResource(context.getResources(), R.drawable.tracker_large_icon));
+
+        //Направи нотификацију
         final Notification notification = new NotificationCompat.Builder(context, "trackingchannel")
-                .setContentTitle("Coro-No")
-                .setContentText(text)//Ovo pise pre nego sto se pronadje prva lokacija
+                .setCustomContentView(notificationLayout)
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.ic_six_feet)
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setSmallIcon(R.drawable.app_small_icon)
                 .build();
 
         //Promenljiva za pracenje brzine kretanja korisnika

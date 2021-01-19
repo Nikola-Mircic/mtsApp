@@ -39,10 +39,9 @@
             android:layout_weight="0.33"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/english"
+            android:background="@drawable/uk_flag"
             android:scaleType="fitCenter"
-            android:src="@drawable/uk_flag" />
+            android:contentDescription="@string/english" />
 
         <Button
             android:id="@+id/serbianLatinButton"
@@ -61,7 +60,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="10dp"
-            android:layout_weight="0.34"
+            android:layout_weight="0.33"
             android:adjustViewBounds="true"
             android:background="@drawable/serbian_flag"
             android:scaleType="fitCenter"
@@ -91,6 +90,7 @@
             android:layout_height="70dp"
             android:layout_margin="20dp"
             android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:background="#00FFFFFF"
             android:textOff=""
             android:textOn="" />
@@ -101,6 +101,7 @@
             android:layout_height="70dp"
             android:layout_margin="20dp"
             android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:background="#00FFFFFF"
             android:textOff=""
             android:textOn="" />
@@ -111,6 +112,7 @@
             android:layout_height="70dp"
             android:layout_margin="20dp"
             android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:background="#00FFFFFF"
             android:textOff=""
             android:textOn="" />

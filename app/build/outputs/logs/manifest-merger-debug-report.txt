@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\0a8cce1dbf7d665def277c8f944e1879\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\aeaa68e4964a39257252366ca2669583\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\4756cdf3dd39e75084da35c59039ffb4\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
@@ -46,33 +46,43 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\mrmi\.gradle\cac
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\17c19a3af6e9abc5019e6dd6bd00f4f8\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\d01558cc4e371501294107d12a16cdf2\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\8e27ec2c2580af870a1b6419698f5081\print-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:3:5-29
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:5:1-75
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:5:18-72
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:6:5-81
 	android:name
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:7:5-85
+	android:name
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:7:22-82
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:8:5-77
+MERGED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:28:5-77
+MERGED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:28:5-77
+	android:name
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:8:22-74
 uses-permission#android.permission.INTERNET
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:7:5-67
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:9:5-67
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\4756cdf3dd39e75084da35c59039ffb4\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\4756cdf3dd39e75084da35c59039ffb4\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\3802e82b3c7ab54db203a0d908aeb67f\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:24:5-67
@@ -80,15 +90,9 @@ MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\mrmi\.gra
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\3c0dc20a0d0306dedbaaac92900ecd00\jetified-play-services-iid-17.0.0\AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\3c0dc20a0d0306dedbaaac92900ecd00\jetified-play-services-iid-17.0.0\AndroidManifest.xml:24:5-67
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:7:22-64
-uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:9:5-81
-MERGED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:27:5-81
-MERGED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:27:5-81
-	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:9:22-78
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:9:22-64
 application
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:11:5-44:19
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:12:5-49:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\0a8cce1dbf7d665def277c8f944e1879\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\0a8cce1dbf7d665def277c8f944e1879\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\4756cdf3dd39e75084da35c59039ffb4\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
@@ -122,59 +126,65 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\mr
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.1] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\548ef083f0388b45ca4dc05947a319ea\core-1.3.1\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:16:9-35
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:14:9-41
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:15:9-54
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:16:9-54
 	android:icon
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:13:9-43
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:17:9-40
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:18:9-40
 meta-data#com.google.android.geo.API_KEY
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:19:9-21:52
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:20:9-22:52
 	android:value
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:21:13-49
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:22:13-49
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:20:13-58
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:21:13-58
 activity#com.app.mtsapp.Settings
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:23:9-46
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:24:9-46
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:23:19-43
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:24:19-43
 activity#com.app.mtsapp.PlacesActivity
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:25:9-27:61
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:26:9-28:61
 	android:label
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:27:13-58
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:28:13-58
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:26:13-43
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:27:13-43
 activity#com.app.mtsapp.MainActivity
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:29:9-35:20
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:30:9-36:20
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:29:19-47
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:30:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:30:13-34:29
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:31:17-69
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:31:25-66
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:33:17-77
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:33:27-74
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:27-74
 service#com.app.mtsapp.location.service.Tracker
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:37:9-61
-	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:37:18-58
-receiver#com.app.mtsapp.NotificationBroadcast
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:39:9-42:40
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:38:9-42:56
 	android:enabled
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:41:13-35
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:40:13-35
 	android:exported
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:42:13-37
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:41:13-37
+	android:foregroundServiceType
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:42:13-53
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:40:13-50
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:39:13-53
+receiver#com.app.mtsapp.NotificationBroadcast
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:44:9-47:40
+	android:enabled
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:46:13-35
+	android:exported
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:45:13-50
 uses-sdk
 INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
@@ -313,10 +323,10 @@ uses-permission#android.permission.WAKE_LOCK
 ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:25:5-68
 	android:name
 		ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:25:22-65
-uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:28:5-77
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:27:5-81
 	android:name
-		ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:28:22-74
+		ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:27:22-78
 provider#androidx.work.impl.WorkManagerInitializer
 ADDED from [androidx.work:work-runtime:2.4.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\005063d6bc2577bdb998a1fe39c6ab1c\work-runtime-2.4.0\AndroidManifest.xml:31:9-37:35
 	android:authorities
