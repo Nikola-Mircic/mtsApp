@@ -37,6 +37,7 @@ public class Tracker extends Service {
     private LocationFinder finder;
 
     private SavedLocation lastLocation;
+    private SavedLocation lastVisitedLocation;
 
     //Референца SharedPreferences-a: лаког начина чувања простих података, овде због слања адекватне нотификације при промени локације
     private SharedPreferences sharedPreferences;
@@ -156,30 +157,33 @@ public class Tracker extends Service {
 
         //Ukoliko je korisnik stao u blizini neke sacuvane lokacije salje se notifikacija sa podsetnikom
         if (dist < 75)
-            sendAdequateNotification(nearestLocation.getName());
+            sendAdequateNotification(nearestLocation);
         else {
-            sendAdequateNotification("");
+            sendAdequateNotification(new SavedLocation("", location));
         }
     }
 
     //Пошаље одговарајућу нотификацију зависно од тренутне и претходне сачуване локације
-    private void sendAdequateNotification(String currentLocationName) {
+    private void sendAdequateNotification(SavedLocation currentLocation) {
+        String currentLocationName = currentLocation.getName();
         String lastSavedLocationName = sharedPreferences.getString("LastSavedLocationName", ""); //Пронађи последњу сачувану локацију на уређају
         NotificationSender notificationSender = new NotificationSender(Tracker.this);
 
         System.out.println("[MRMI]: Претходна: " + lastSavedLocationName + " Тренутна: " + currentLocationName);
-        if (currentLocationName.equals("") || (lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
+        if ((currentLocationName.equals("") && currentLocation.distanceToSL(lastVisitedLocation) > 50) || (lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
             notificationSender.showNotification(0); //Покажи нотификацију за стављање маске кад корисник изађе из куће
-            sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
         }
+
         if (currentLocationName.equals("home") && !lastSavedLocationName.equals("home")) {
             notificationSender.showNotification(1); //Покажи нотификацију за дезинфекцију одеће и маске кад се корисник врати кући
-            sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
         }
+
         if (!lastSavedLocationName.equals("home") && !currentLocationName.equals("home") && !lastSavedLocationName.equals(currentLocationName)) {
             notificationSender.showNotification(2); //Покажи нотификацију за дезинфекцију руку кад пређе из објекта у објекат
-            sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
         }
+
+        sharedPreferences.edit().putString("LastSavedLocationName", currentLocationName).apply(); //Промени име последње сачуване локације
+        lastVisitedLocation = currentLocation;
     }
 
     @Override
