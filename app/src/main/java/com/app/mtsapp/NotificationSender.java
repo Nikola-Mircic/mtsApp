@@ -29,6 +29,9 @@ public class NotificationSender {
 
         createNotificationChannel();
 
+        LanguageManager languageManager = new LanguageManager(context);
+        languageManager.checkLocale();
+
         notificationDescriptions = context.getResources().getStringArray(R.array.notificationMessages); //Постављање вредности текста обавештења
 
         //Постављање битмапова великих иконица обавештења
@@ -76,60 +79,10 @@ public class NotificationSender {
             return;
         }
 
-        LanguageManager languageManager = new LanguageManager(context);
-        languageManager.checkLocale();
-
-        //Отвори MainActivity кад корисник притисне нотификацију
-        /*Intent intent = new Intent(context, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-
-        String notificationTitle = "Coro-No warning:", notificationText = notificationDescriptions[notificationId];
-
-        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
-        notificationLayout.setTextViewText(R.id.notificationText, notificationText);
-        notificationLayout.setTextViewText(R.id.notificationTitle, notificationTitle);
-        notificationLayout.setImageViewBitmap(R.id.notifcationIcon, notificationIcons[notificationId]);
-
-        //Подешавања обавештења
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(smallNotificationIcons[notificationId]) //Мала иконица нотификације (бела са провидном позадином)
-                .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
-                .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
-                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-                .setCustomContentView(notificationLayout)
-                .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setPriority(NotificationCompat.PRIORITY_MAX);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(notificationId, builder.build());*/
         buildNotification(notificationId, smallNotificationIcons[notificationId], notificationIcons[notificationId], notificationDescriptions[notificationId]);
     }
 
     public void showNotification(String text) {
-        //Отвори MainActivity кад корисник притисне нотификацију
-        /*Intent intent = new Intent(context, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-
-        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
-        notificationLayout.setTextViewText(R.id.notificationText, title);
-        notificationLayout.setTextViewText(R.id.notificationTitle, text);
-        notificationLayout.setImageViewBitmap(R.id.notifcationIcon, BitmapFactory.decodeResource(context.getResources(), R.drawable.app_icon));
-
-        //Подешавања нотификације
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.app_small_icon)
-                .setContentIntent(pendingIntent) //Шта се догоди кад корисник притисне нотификацију
-                .setAutoCancel(true) //Избриши нотификацију кад је корисник притисне
-                .setCustomContentView(notificationLayout)
-                .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setPriority(NotificationCompat.PRIORITY_MAX);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-
-        notificationManager.notify(5, builder.build());*/
         buildNotification(5, R.drawable.app_small_icon, BitmapFactory.decodeResource(context.getResources(), R.drawable.tracker_large_icon), text);
     }
 

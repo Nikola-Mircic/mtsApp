@@ -69,8 +69,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     private LocationSystem locationSystem;
     private LocationFinder locationFinder;
 
-    private boolean settingHomeLocation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LanguageManager languageManager = new LanguageManager(PlacesActivity.this);
@@ -112,8 +110,8 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             helpButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    InfoPopup infoPopup = new InfoPopup(PlacesActivity.this, false, false, true);
-                    infoPopup.showDialog();
+                    InfoPopup infoPopup = new InfoPopup(PlacesActivity.this);
+                    infoPopup.showHelpDialog();
                 }
             });
         } else {
@@ -201,8 +199,8 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        InfoPopup infoPopup = new InfoPopup(PlacesActivity.this, false, false, false);
-        infoPopup.showDialog();
+        InfoPopup infoPopup = new InfoPopup(PlacesActivity.this);
+        infoPopup.showBackButtonDialog(false);
     }
 
     //=================== ПРОВЕРАВАЊЕ И ДОБИЈАЊЕ ДОЗВОЛА ЗА ЛОКАЦИЈУ И ПАЉЕЊЕ ЛОКАЦИЈЕ НА УРЕЂАЈУ =============================
@@ -255,7 +253,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                     System.out.println("[MRMI]: GPS локација је већ упаљена, додајем маркер");
                     if (currentLocation != null) {
                         if (showLocationPopup) {
-                            showLocationNamePopup();
+                            showAddLocationPopup();
                         } else {
                             getAndZoomCurrentLocation();
                         }
@@ -283,8 +281,23 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         });
     }
 
-    //Прикаже прозор за унос имена локације
-    private void showLocationNamePopup() {
+    //Обрађује одлуке корисника при дијалогу за коришћење GPS лоакције уређаја
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == gpsRequestCode) {
+            //Ако је корисник одбио коришћење GPS локације обавести га о неопходности коришћења њих за додавање тренутне локације
+            if (resultCode != Activity.RESULT_OK) {
+                Toast.makeText(this, gpsToast, Toast.LENGTH_LONG).show();
+            } else {
+                //Ако је пристао мораће да сачека пар секунди да се GPS повеже са уређајем и да поново стисне дугме за додавање тренутне локације
+                System.out.println("[MRMI]: Упаљена GPS локациај уређаја");
+            }
+        }
+    }
+
+    //Прикаже прозор за унос локације
+    private void showAddLocationPopup() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -315,8 +328,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 } else if (locationSystem.getLocation(currentLocationName) != null) {
                     Toast.makeText(PlacesActivity.this, renameLocationToast, Toast.LENGTH_SHORT).show();
                 } else {
-                    settingHomeLocation = isHomeLocationSwitch.isChecked(); //Провери да ли је локација која се уноси кућна
-                    addMarker(); //Додај маркер нове унете локације
+                    saveLocation(isHomeLocationSwitch.isChecked()); ////Провери да ли је локација која се уноси кућна и додаје је у систем као и њен маркер
 
                     dialog.dismiss();
                 }
@@ -326,30 +338,14 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
         dialog.show();
     }
 
-    //Обрађује одлуке корисника при дијалогу за коришћење GPS лоакције уређаја
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == gpsRequestCode) {
-            //Ако је корисник одбио коришћење GPS локације обавести га о неопходности коришћења њих за додавање тренутне локације
-            if (resultCode != Activity.RESULT_OK) {
-                Toast.makeText(this, gpsToast, Toast.LENGTH_LONG).show();
-            } else {
-                //Ако је пристао мораће да сачека пар секунди да се GPS повеже са уређајем и да поново стисне дугме за додавање тренутне локације
-                System.out.println("[MRMI]: Упаљена GPS локациај уређаја");
-            }
-        }
-    }
-
-
     //=================== ДОДАВАЊЕ МАРКЕРА И ДОБИЈАЊЕ ТРЕНУТНЕ ЛОКАЦИЈЕ =============================
 
     private void getCurrentLocation() {
         currentLocation = locationFinder.getCurrentLocation();
     }
 
-    //Дода маркер на тренутној лоакцији уређаја
-    private void addMarker() {
+    //Дода маркер на тренутној лоакцији уређаја и сачува је у листи локација
+    private void saveLocation(boolean settingHomeLocation) {
         //Ако су пронађене тренутне координате уређаја
         if (currentLocation != null) {
             LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()); //Узми тренутне координате
@@ -368,7 +364,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 }
 
                 //Постави посебну иконицу кућног маркера и назови маркер "home" у систему локација ради лакшег проналажења
-                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("home_location", 50, 50)));
+                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcon("home_location", 50, 50)));
                 currentLocationName = "home";
             }
             googleMap.addMarker(markerOptions); //Прикажи маркер одабраних подешавања
@@ -399,7 +395,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
                 LatLng currentLatLng = new LatLng(savedLocation.getLatitude(), savedLocation.getLongitude());
                 MarkerOptions markerOptions = new MarkerOptions().position(currentLatLng).title(savedLocation.getName()).draggable(true); //Постави позицију, назив и особине маркера
                 if (savedLocation.getName().equals("home")) {
-                    markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("home_location", 50, 50)));
+                    markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcon("home_location", 50, 50)));
                 }
                 googleMap.addMarker(markerOptions); //Постави маркер учитане локације на мапу
                 System.out.println("[MRMI]: Учитао локацију " + savedLocation.getName() + " на координатама " + savedLocation.getLatitude() + " , " + savedLocation.getLongitude());
@@ -408,7 +404,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     }
 
     //Преувелича иконицу маркера за локацију
-    public Bitmap resizeMapIcons(String iconName, int width, int height) {
+    public Bitmap resizeMapIcon(String iconName, int width, int height) {
         Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(iconName, "drawable", getPackageName()));
         return Bitmap.createScaledBitmap(imageBitmap, width, height, false);
     }

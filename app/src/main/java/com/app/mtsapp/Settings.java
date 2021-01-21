@@ -162,7 +162,7 @@ public class Settings extends AppCompatActivity {
         notificationOne.setChecked(sharedPreferences.getBoolean("notificationOne", true));
         notificationTwo.setChecked(sharedPreferences.getBoolean("notificationTwo", true));
         notificationThree.setChecked(sharedPreferences.getBoolean("notificationThree", true));
-        setNotificationIcons();
+        setNotificationButtonIcons();
         trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", true));
         dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", true));
     }
@@ -171,12 +171,12 @@ public class Settings extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        InfoPopup infoPopup = new InfoPopup(Settings.this, false, false, false);
-        infoPopup.showDialog();
+        InfoPopup infoPopup = new InfoPopup(Settings.this);
+        infoPopup.showBackButtonDialog(false);
     }
 
     //Постави иконице сва 3 дугмета за нотификације
-    private void setNotificationIcons() {
+    private void setNotificationButtonIcons() {
         if (notificationOne.isChecked()) {
             notificationOne.setBackgroundResource(notificationToggleIcons[0]);
         } else {

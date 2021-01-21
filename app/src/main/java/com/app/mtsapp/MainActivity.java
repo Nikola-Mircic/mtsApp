@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InfoPopup infoPopup = new InfoPopup(MainActivity.this, true, false, false);
-                infoPopup.showDialog();
+                InfoPopup infoPopup = new InfoPopup(MainActivity.this);
+                infoPopup.showRulebookDialog();
             }
         });
 
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //Прикажи упозорење
-        InfoPopup infoPopup = new InfoPopup(MainActivity.this, false, true, false);
-        infoPopup.showDialog();
+        InfoPopup infoPopup = new InfoPopup(MainActivity.this);
+        infoPopup.showBackButtonDialog(true);
     }
 
     //Проверава да ли треба да се промени приказани дневни савет

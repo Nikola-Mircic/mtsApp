@@ -10,29 +10,14 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 public class InfoPopup extends Dialog {
-    Context context;
-    private final boolean isRulebookDialog;
-    private final boolean shouldQuitApp;
-    private final boolean isHelpDialog;
+    private Context context;
 
-    public InfoPopup(@NonNull Context contextArg, boolean isRulebookDialogArg, boolean shouldQuitAppArg, boolean isHelpDialogArg) {
+    public InfoPopup(Context contextArg) {
         super(contextArg);
         context = contextArg;
-        isRulebookDialog = isRulebookDialogArg;
-        shouldQuitApp = shouldQuitAppArg;
-        isHelpDialog = isHelpDialogArg;
-    }
-
-    public void showDialog() {
-        if (isRulebookDialog)
-            showRulebookDialog();
-        else if (isHelpDialog)
-            showHelpDialog();
-        else
-            showBackButtonDialog();
+        LanguageManager languageManager = new LanguageManager(context);
+        languageManager.checkLocale();
     }
 
     //Приказиује прозорчић са информацијама и правилима понашања током пандемије
@@ -74,7 +59,7 @@ public class InfoPopup extends Dialog {
     }
 
     //Прикажe прозор који пита корисника да ли жели да изађе из апликације/врати се на главни мени (зависно од boolean-a quit)
-    public void showBackButtonDialog() {
+    public void showBackButtonDialog(final boolean shouldQuitApp) {
 
         //Постави изглед прозорчића
         final Dialog dialog = new Dialog(context);
