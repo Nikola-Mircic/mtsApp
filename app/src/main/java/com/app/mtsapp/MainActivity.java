@@ -1,15 +1,11 @@
 package com.app.mtsapp;
 
 import android.Manifest;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -55,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         //Ако је потребно, промени дневни савет приказан на екрану
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
-
-        setDailyNotifications();
 
         //Дугмићи и њихова функционалност
         ImageButton mapsButton, settingsButton, infoButton;
@@ -176,21 +170,5 @@ public class MainActivity extends AppCompatActivity {
 
         currentTipIndex = randomIndex; //Промени индекс тренутног савета
         dailyTipTextView.setText(dailyTips[randomIndex]); //Прикажи изабран насумичан савет
-    }
-
-    //Упали дневне нотификације
-    private void setDailyNotifications() {
-        sharedPreferences.edit().putBoolean("sendDailyNotifications", true).apply();
-        Intent temp = new Intent(getApplicationContext(), MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, temp, 0);
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, 12);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-
-        AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        Log.i("AlarmSchedule", "Alarm manager is set!!");
     }
 }

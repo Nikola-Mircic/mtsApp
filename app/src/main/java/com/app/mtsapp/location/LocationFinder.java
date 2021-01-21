@@ -20,7 +20,7 @@ import com.google.android.gms.location.LocationServices;
 public class LocationFinder implements Runnable {
     private static final String TAG = "LocationFinder";//Tag koji se koristi za ispisivanje
 
-    private Context context;//Pamti vrednost konteksta kojeg koristi za trazenje lokacije
+    private final Context context;//Pamti vrednost konteksta kojeg koristi za trazenje lokacije
 
     private final int LOCATION_PERMISSSION_CODE = 100;
 
@@ -31,7 +31,7 @@ public class LocationFinder implements Runnable {
     private int interval;
     private int fastInterval;
     private int priority;
-    private String[] permissions;
+    private final String[] permissions;
 
     private Location currentLocation;//Trenutna lokacija
 

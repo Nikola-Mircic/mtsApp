@@ -11,7 +11,7 @@ import android.util.DisplayMetrics;
 import java.util.Locale;
 
 public class LanguageManager {
-    private Context context;
+    private final Context context;
 
     public LanguageManager(Context c) {
         context = c;
