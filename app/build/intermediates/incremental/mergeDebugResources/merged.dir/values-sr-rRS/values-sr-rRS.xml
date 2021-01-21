@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dailyTips">
+        <item>Немојте ићи у крцата места.</item>
+        <item>Останите безбедни.</item>
+        <item>Контактирајте се са лекаром ако мислите да имате симптом COVID-19-a.</item>
+        <item>Избегавајте коришћење таксија и јавног превоза.</item>
+        <item>Дезинфикујте руке након доласка у контакт за било чиме.</item>
+        <item>Увек носите резервну маску.</item>
+        <item>Не делите чаше/флашице/есцајг са другима.</item>
+        <item>Будите стрпљиви, вакцине ускоро стижу.</item>
+    </string-array>
+    <string-array name="notificationMessages">
+        <item>Стави маску!</item>
+        <item>Дезинфикуј маску и одећу!</item>
+        <item>Дезинфикуј руке!</item>
+    </string-array>
+    <string name="addMarker">Додај обележивач</string>
+    <string name="addMarkerHelp">Додајте кућну/честе локације.</string>
+    <string name="backToMenu">Да ли сте сигурни да желите да се вратите на главни мени?</string>
+    <string name="cancel">Откажи</string>
+    <string name="check">Провери учитане локације</string>
+    <string name="currentLocationHelp">Зумирајте на Вашу тренутну локацију.</string>
+    <string name="dailyTip">Дневни савет</string>
+    <string name="deniedLocationPermissionsToast">Дозволе за лоакције су одбијене</string>
+    <string name="generalHelp">Избришите локацију тако што дуже држите назив обележивача локације.\n\nМожете да палите и гасите праћење локације и поједина обавештења у подешавањима.</string>
+    <string name="getLocation">Узми тренутну локацију</string>
+    <string name="gpsToast">GPS локација је неопходна за додавање нове локације</string>
+    <string name="help">Помоћ</string>
+    <string name="homeLocation">Да ли је ово Ваша кућна локација?</string>
+    <string name="info">Информације</string>
+    <string name="locationDeletedToast">Локација избрисана</string>
+    <string name="markerName">Како желите да назовете Вашу тренутну локацију?</string>
+    <string name="no">Не</string>
+    <string name="noLocationNameToast">Унесите назив локације!</string>
+    <string name="notifyUser">Обавести корисника</string>
+    <string name="openPlaces">Отвори мапе</string>
+    <string name="quitApp">Да ли сте сигурни да желите да угасите апликацију?</string>
+    <string name="renameLocationToast">Унесите јединствено име локације.</string>
+    <string name="retryCurrentLocationToast">Тренутна локација није пронађена, покушајте поново</string>
+    <string name="rulebookText">Избегавајте додиривање лица, уста, носа и очију.\n\nКористите маске које прекривају нос и уста када боравите у затвореним просторијама.\n\nЧесто проветравајте просторије у којима боравите.\n\nЧесто перите руке сапуном и водом или користите средство за дезинфекцију на бази 70% алкохола.</string>
+    <string name="rulebookTitle">Епидемиолошке мере</string>
+    <string name="save">Сачувај</string>
+    <string name="sendDailyNotifications">Шаљи свакодневна обавештења са предлозима и саветима</string>
+    <string name="serviceNotificationText">Бринемо о Вашем здрављу…</string>
+    <string name="setAppLanguage">Изаберите језик апликације</string>
+    <string name="settings">Подешавања</string>
+    <string name="toggleNotifications">Подесите обавештења</string>
+    <string name="trackLocation">Прати локацију уређаја</string>
+    <string name="yes">Да</string>
+</resources>
