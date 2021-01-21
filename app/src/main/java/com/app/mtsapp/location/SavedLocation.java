@@ -5,25 +5,14 @@ import android.location.Location;
 import java.io.Serializable;
 
 public class SavedLocation implements Serializable{
-    private static int id = 1;
-
     private String name;
     private double altitude,latitude,longitude;
-
-    public SavedLocation() {
-        this("#" + id, 0, 0, 0);
-    }
-
-    public SavedLocation(Location location) {
-        this("#" + id, location.getAltitude(), location.getLatitude(), location.getLongitude());
-    }
 
     public SavedLocation(String name,Location location){
         this(name, location.getAltitude(), location.getLatitude(), location.getLongitude());
     }
 
     public SavedLocation(String name, double altitude, double latitude, double longitude) {
-        ++this.id;
         this.setName(name);
         this.setAltitude(altitude);
         this.setLatitude(latitude);
@@ -43,7 +32,7 @@ public class SavedLocation implements Serializable{
         return temp.distanceTo(location);
     }
 
-    public double distanceToSL(SavedLocation location) {
+    public double distanceTo(SavedLocation location) {
         if (location == null) {
             return -1.0;
         }
@@ -54,9 +43,9 @@ public class SavedLocation implements Serializable{
         temp.setAltitude(this.altitude);
 
         Location temp2 = new Location("temp2");
-        temp2.setLatitude(this.latitude);
-        temp2.setLongitude(this.longitude);
-        temp2.setAltitude(this.altitude);
+        temp2.setLatitude(location.latitude);
+        temp2.setLongitude(location.longitude);
+        temp2.setAltitude(location.altitude);
 
         return temp.distanceTo(temp2);
     }

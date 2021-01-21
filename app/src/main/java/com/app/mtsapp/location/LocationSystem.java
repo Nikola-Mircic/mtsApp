@@ -160,46 +160,18 @@ public class LocationSystem {
         return null;
     }
 
-    public SavedLocation findNearestLocation(Location current){
-        double dLat,dLong,dAlt;
-        double minDist = -1;
-        SavedLocation near = null;
-
-        for(SavedLocation sl : locations){
-            dLat = sl.getLatitude()-current.getLatitude();
-            dLong = sl.getLongitude()-current.getLongitude();
-            dAlt = sl.getAltitude()-current.getAltitude();
-            if(dist(dLat, dLong, dAlt)<minDist || minDist == -1){
-                minDist = dist(dLat, dLong, dAlt);
-                near = sl;
-            }
-        }
-
-        return near;
-    }
-
     public static SavedLocation findNearestLocation(Context context, List<SavedLocation> locations, Location current){
-        double dLat,dLong,dAlt;
         double minDist = -1;
         SavedLocation near = null;
 
         for(SavedLocation sl : locations){
-            dLat = sl.getLatitude()-current.getLatitude();
-            dLong = sl.getLongitude()-current.getLongitude();
-            dAlt = sl.getAltitude()-current.getAltitude();
-            if(dist(dLat, dLong, dAlt)<minDist || minDist == -1){
-                minDist = dist(dLat, dLong, dAlt);
+            if(sl.distanceTo(current)<minDist || minDist == -1){
+                minDist = sl.distanceTo(current);
                 near = sl;
             }
         }
 
         return near;
-    }
-
-    private static double dist(double dLat, double dLong, double dAlt){
-        double dist = Math.sqrt(dLat*dLat + dLong*dLong)*6371000;
-
-        return Math.sqrt(dist*dist + dAlt*dAlt);
     }
 }
 

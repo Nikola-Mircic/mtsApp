@@ -101,13 +101,11 @@ public class Tracker extends Service {
                     finder.stop();
                     finder.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
                     finder.start();
-                    Toast.makeText(context, "Service optimized", Toast.LENGTH_SHORT).show();
                 }
                 if (ServiceHandler.activityTest != 0 && finder.getPriority() == LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY) {
                     finder.stop();
                     finder.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
                     finder.start();
-                    Toast.makeText(context, "Service is normal again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -117,6 +115,7 @@ public class Tracker extends Service {
          * kada se servis pokrene, pokrene se i ona notifikacija koja ne moze da se skloni
         * */
         startForeground(4, notification);
+
         return Service.START_NOT_STICKY;
     }
 
@@ -149,8 +148,9 @@ public class Tracker extends Service {
         SavedLocation nearestLocation = LocationSystem.findNearestLocation(context, list, location);
 
         //Ukoliko nema sacuvanih lokacija,nearestLocation je null pa ce izaci iz funkcije
-        if (nearestLocation == null)
+        if (nearestLocation == null){
             return;
+        }
 
         double dist = nearestLocation.distanceTo(location);
         System.out.println("[MRMI]: udaljenost:" + dist + ((finder.getPriority() == LocationRequest.PRIORITY_HIGH_ACCURACY) ? " HighAccuracy" : " BalancedBattery"));
@@ -170,7 +170,7 @@ public class Tracker extends Service {
         NotificationSender notificationSender = new NotificationSender(Tracker.this);
 
         System.out.println("[MRMI]: Претходна: " + lastSavedLocationName + " Тренутна: " + currentLocationName);
-        if ((currentLocationName.equals("") && currentLocation.distanceToSL(lastVisitedLocation) > 50) || (lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
+        if ((currentLocationName.equals("") && (currentLocation.distanceTo(lastVisitedLocation) > 50 || lastVisitedLocation==null)) || (lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
             notificationSender.showNotification(0); //Покажи нотификацију за стављање маске кад корисник изађе из куће
         }
 
@@ -193,6 +193,8 @@ public class Tracker extends Service {
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.deleteNotificationChannel("trackingchannel");
         }
+        sharedPreferences.edit().putBoolean("trackerRunning", false).apply();
+        sharedPreferences.edit().putBoolean("trackerSwitch", false).apply();
         finder.stop();
         super.onDestroy();
     }

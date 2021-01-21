@@ -5,7 +5,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +49,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("en", true);
+                ServiceHandler.stopTrackingService(Settings.this);
+                ServiceHandler.startTrackingService(Settings.this);
             }
         });
         //Постави језик на српску латиницу
@@ -54,6 +58,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("sr", true);
+                ServiceHandler.stopTrackingService(Settings.this);
+                ServiceHandler.startTrackingService(Settings.this);
             }
         });
         //Постави језик на српску ћирилицу
@@ -61,6 +67,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("sr-rRS", true);
+                ServiceHandler.stopTrackingService(Settings.this);
+                ServiceHandler.startTrackingService(Settings.this);
             }
         });
 
@@ -133,24 +141,12 @@ public class Settings extends AppCompatActivity {
 
         dailyNotificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                sharedPreferencesEditor.putBoolean("sendDailyNotifications", isChecked).apply();
-                Intent temp = new Intent(getApplicationContext(), MainActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, temp, 0);
                 if (isChecked) {
-                    Calendar c = Calendar.getInstance();
-
-                    c.set(Calendar.HOUR_OF_DAY, 17);
-                    c.set(Calendar.MINUTE, 45);
-                    c.set(Calendar.SECOND, 0);
-
-                    AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-
-                    manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-                    Log.i("AlarmSchedule", "Alarm manager is set!!");
+                    ServiceHandler.startDailyNotification(getApplicationContext());
                 } else {
-                    AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                    manager.cancel(pendingIntent);
+                    ServiceHandler.stopDailyNotification(getApplicationContext());
                 }
+                sharedPreferencesEditor.putBoolean("sendDailyNotifications", isChecked).apply();
             }
         });
     }
@@ -163,8 +159,8 @@ public class Settings extends AppCompatActivity {
         notificationTwo.setChecked(sharedPreferences.getBoolean("notificationTwo", true));
         notificationThree.setChecked(sharedPreferences.getBoolean("notificationThree", true));
         setNotificationIcons();
-        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", true));
-        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", true));
+        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", false));
+        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", false));
     }
 
     //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
