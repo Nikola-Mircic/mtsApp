@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class InfoPopup extends Dialog {
-    private Context context;
+    private final Context context;
 
     public InfoPopup(Context contextArg) {
         super(contextArg);
