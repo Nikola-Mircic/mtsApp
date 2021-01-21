@@ -20,7 +20,6 @@ import java.util.Objects;
 public class LocationSystem {
     private Activity activity;
     private List<SavedLocation> locations;
-    private List<List<SavedLocation>> distance;
 
     public LocationSystem(Activity activity){
         this.locations = new ArrayList<>();
@@ -30,17 +29,6 @@ public class LocationSystem {
     public void addLocation(String name,Location location){
         SavedLocation temp = new SavedLocation(name,location);
         locations.add(temp);
-    }
-
-    public void addLocation(SavedLocation sl){
-        for(SavedLocation temp : locations) {
-            if (sl.getName().equals(temp.getName())) {
-                //if(sl.getName().equals(sl.getName())) {
-                Toast.makeText(activity, "Location already exists", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-        locations.add(sl);
     }
 
     public void saveLocations(){
@@ -160,12 +148,12 @@ public class LocationSystem {
         return null;
     }
 
-    public static SavedLocation findNearestLocation(Context context, List<SavedLocation> locations, Location current){
+    public static SavedLocation findNearestLocation(List<SavedLocation> locations, Location current) {
         double minDist = -1;
         SavedLocation near = null;
 
-        for(SavedLocation sl : locations){
-            if(sl.distanceTo(current)<minDist || minDist == -1){
+        for (SavedLocation sl : locations) {
+            if (sl.distanceTo(current) < minDist || minDist == -1) {
                 minDist = sl.distanceTo(current);
                 near = sl;
             }

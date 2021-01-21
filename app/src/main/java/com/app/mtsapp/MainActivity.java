@@ -20,8 +20,6 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
-
     //Дневни савети
     private TextView dailyTipTextView;
     private String[] dailyTips; //Дневни савети који се приказују
@@ -51,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         //Ако је потребно, промени дневни савет приказан на екрану
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
+
+        ServiceHandler.startDailyNotification(getApplicationContext());
 
         //Дугмићи и њихова функционалност
         ImageButton mapsButton, settingsButton, infoButton;
@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 grantResults[1] == PackageManager.PERMISSION_GRANTED){
             if(sharedPreferences.getBoolean("firstRun",true)){
                 ServiceHandler.startTrackingService(MainActivity.this);
-                ServiceHandler.startDailyNotification(getApplicationContext());
                 sharedPreferences.edit().putBoolean("firstRun",false).apply();
             }
         }

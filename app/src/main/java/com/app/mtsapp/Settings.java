@@ -40,6 +40,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("en", true);
+                ServiceHandler.stopTrackingService(Settings.this);
+                ServiceHandler.startTrackingService(Settings.this);
             }
         });
         //Постави језик на српску латиницу
@@ -47,6 +49,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("sr", true);
+                ServiceHandler.stopTrackingService(Settings.this);
+                ServiceHandler.startTrackingService(Settings.this);
             }
         });
         //Постави језик на српску ћирилицу
@@ -54,6 +58,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("sr-rRS", true);
+                ServiceHandler.stopTrackingService(Settings.this);
+                ServiceHandler.startTrackingService(Settings.this);
             }
         });
 
@@ -144,8 +150,8 @@ public class Settings extends AppCompatActivity {
         notificationTwo.setChecked(sharedPreferences.getBoolean("notificationTwo", true));
         notificationThree.setChecked(sharedPreferences.getBoolean("notificationThree", true));
         setNotificationButtonIcons();
-        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", true));
-        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", true));
+        trackerSwitch.setChecked(sharedPreferences.getBoolean("trackerSwitch", false));
+        dailyNotificationsSwitch.setChecked(sharedPreferences.getBoolean("sendDailyNotifications", false));
     }
 
     //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад

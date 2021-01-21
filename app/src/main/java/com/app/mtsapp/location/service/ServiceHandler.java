@@ -8,15 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.SystemClock;
-import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
 
 import com.app.mtsapp.NotificationBroadcast;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Calendar;
 
 public class ServiceHandler {
     public static int activityTest = 0;
@@ -62,7 +57,7 @@ public class ServiceHandler {
             manager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, SystemClock.uptimeMillis(), pendingIntent);
         }
 
-        sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
+        sharedPreferences.edit().putBoolean("sendDailyNotifications", true).apply();
     }
 
     public static void stopDailyNotification(Context context){
@@ -74,6 +69,6 @@ public class ServiceHandler {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
 
-        sharedPreferences.edit().putBoolean("trackerSwitch", false).apply();
+        sharedPreferences.edit().putBoolean("sendDailyNotifications", false).apply();
     }
 }

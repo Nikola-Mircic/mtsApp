@@ -18,11 +18,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
 public class LocationFinder implements Runnable {
-    private static final String TAG = "LocationFinder";//Tag koji se koristi za ispisivanje
-
     private final Context context;//Pamti vrednost konteksta kojeg koristi za trazenje lokacije
-
-    private final int LOCATION_PERMISSSION_CODE = 100;
 
     private FusedLocationProviderClient flpClient;//Objekat koji pokrece pretragu lokacije
     private LocationRequest locationRequest;//Objekat koji salje zahtev za dobijanje lokacije i prosledjuje je do objekta povratnog poziva
@@ -106,6 +102,7 @@ public class LocationFinder implements Runnable {
         } else {
             if (context instanceof Activity) {
                 Activity temp = (Activity) context;
+                int LOCATION_PERMISSSION_CODE = 100;
                 ActivityCompat.requestPermissions(temp, permissions, LOCATION_PERMISSSION_CODE);
             }
         }

@@ -51,16 +51,17 @@
             </intent-filter>
         </activity>
 
+        <receiver
+            android:name="com.app.mtsapp.NotificationBroadcast"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
+
         <service
             android:name="com.app.mtsapp.location.service.Tracker"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="location" />
-
-        <receiver
-            android:name="com.app.mtsapp.NotificationBroadcast"
-            android:enabled="true"
-            android:exported="false" />
 
         <!-- Needs to be explicitly declared on P+ -->
         <uses-library

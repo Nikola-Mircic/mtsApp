@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +28,7 @@ import androidx.core.content.ContextCompat;
 import com.app.mtsapp.location.LocationFinder;
 import com.app.mtsapp.location.LocationSystem;
 import com.app.mtsapp.location.SavedLocation;
+import com.app.mtsapp.location.service.ServiceHandler;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
@@ -370,9 +372,18 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             googleMap.addMarker(markerOptions); //Прикажи маркер одабраних подешавања
 
             System.out.println("[МРМИ]: Чувам локацију имена " + currentLocationName);
+
             //Додај и сачувај локацију у систему локација
             locationSystem.addLocation(currentLocationName, currentLocation);
             locationSystem.saveLocations();
+
+            //Рестартуј трекер ако је упаљен ради рачунања нове додате локације
+            SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+            if (sharedPreferences.getBoolean("trackerRunning", true)) {
+                ServiceHandler.stopTrackingService(PlacesActivity.this);
+                ServiceHandler.startTrackingService(PlacesActivity.this);
+            }
+
         } else {
             System.out.println("[MRMI]: Не постоје тренутне координате уређаја");
         }

@@ -878,7 +878,6 @@ drawable help_icon
 drawable home_location
 drawable ic_launcher_background
 drawable ic_launcher_foreground
-drawable ic_six_feet
 drawable main_background_v3
 drawable mask_notification_disabled
 drawable mask_small_icon
@@ -1088,7 +1087,6 @@ id notifcationIcon
 id notificationOne
 id notificationText
 id notificationThree
-id notificationTitle
 id notificationTwo
 id notification_background
 id notification_main_column

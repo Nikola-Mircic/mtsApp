@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\c23ac7361e14676298c0e950b521a256\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\de764edda33b17fb9d06a14a4e53a0f5\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\e585b43046a97c257ac890a4c181a7ad\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
@@ -46,20 +46,20 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\mrmi\.gradle\cac
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\74e49187be9d4a3305cb9096c6672569\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\6b5a39552abd9bb503ed0b1317c9c088\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\8572b57db130876ab851cf0959810a04\print-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
 	package
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:3:5-29
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-51:12
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:1-52:12
 		INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:2:11-69
@@ -92,7 +92,7 @@ MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\mrmi\.gra
 	android:name
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:9:22-64
 application
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:12:5-49:19
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:12:5-50:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\c23ac7361e14676298c0e950b521a256\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\c23ac7361e14676298c0e950b521a256\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmi\.gradle\caches\transforms-2\files-2.1\e585b43046a97c257ac890a4c181a7ad\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
@@ -167,24 +167,24 @@ category#android.intent.category.LAUNCHER
 ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:34:27-74
-service#com.app.mtsapp.location.service.Tracker
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:38:9-42:56
+receiver#com.app.mtsapp.NotificationBroadcast
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:38:9-42:20
 	android:enabled
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:40:13-35
 	android:exported
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:41:13-37
-	android:foregroundServiceType
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:42:13-53
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:41:13-36
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:39:13-53
-receiver#com.app.mtsapp.NotificationBroadcast
-ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:44:9-47:40
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:39:13-50
+service#com.app.mtsapp.location.service.Tracker
+ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:44:9-48:56
 	android:enabled
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:46:13-35
 	android:exported
 		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:47:13-37
+	android:foregroundServiceType
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:48:13-53
 	android:name
-		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:45:13-50
+		ADDED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml:45:13-53
 uses-sdk
 INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\Nikola\programiranje\Android_Studio\mtsApp\app\src\main\AndroidManifest.xml

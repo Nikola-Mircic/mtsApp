@@ -14,7 +14,6 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -32,8 +31,6 @@ import com.google.android.gms.location.LocationRequest;
 import java.util.List;
 
 public class Tracker extends Service {
-    private boolean shouldStop = false;
-
     private LocationFinder finder;
 
     private SavedLocation lastLocation;
@@ -41,6 +38,8 @@ public class Tracker extends Service {
 
     //Референца SharedPreferences-a: лаког начина чувања простих података, овде због слања адекватне нотификације при промени локације
     private SharedPreferences sharedPreferences;
+
+    private List<SavedLocation> list;
 
     @Override
     public void onCreate() {
@@ -71,7 +70,6 @@ public class Tracker extends Service {
 
         //Намести изглед користећи notification_layout - наслов, текст, велика иконица
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
-        notificationLayout.setTextViewText(R.id.notificationTitle, "Coro-No");
         notificationLayout.setTextViewText(R.id.notificationText, notificationText);
         notificationLayout.setImageViewBitmap(R.id.notifcationIcon, BitmapFactory.decodeResource(context.getResources(), R.drawable.tracker_large_icon));
 
@@ -87,6 +85,8 @@ public class Tracker extends Service {
         lastLocation = null;
 
         sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
+
+        list = LocationSystem.loadLocations(context);
 
         //Program pokrene LocationFinder koji pri svakom apdejtu lokacije obavestava korisnika
         finder = new LocationFinder(context);
@@ -127,7 +127,6 @@ public class Tracker extends Service {
 
     private void notifyUser(Location location) {
         Log.i("Tracker", "----> Updated location!!");
-        Context context = getApplicationContext();
 
         //Ako ne moze da dobije trenutnu lokaciju samo izadje iz funkcije
         if (location == null)
@@ -144,8 +143,7 @@ public class Tracker extends Service {
         
         lastLocation = new SavedLocation("last", location);
 
-        List<SavedLocation> list = LocationSystem.loadLocations(context);
-        SavedLocation nearestLocation = LocationSystem.findNearestLocation(context, list, location);
+        SavedLocation nearestLocation = LocationSystem.findNearestLocation(list, location);
 
         //Ukoliko nema sacuvanih lokacija,nearestLocation je null pa ce izaci iz funkcije
         if (nearestLocation == null){

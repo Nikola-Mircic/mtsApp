@@ -93,7 +93,6 @@ public class NotificationSender {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
-        notificationLayout.setTextViewText(R.id.notificationTitle, context.getResources().getString(R.string.app_name));
         notificationLayout.setTextViewText(R.id.notificationText, notificationText);
         notificationLayout.setImageViewBitmap(R.id.notifcationIcon, largeIcon);
 
