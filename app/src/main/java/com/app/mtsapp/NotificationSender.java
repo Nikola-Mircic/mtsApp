@@ -106,6 +106,7 @@ public class NotificationSender {
                 .setCustomContentView(notificationLayout)
                 .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setVibrate(new long[]{2, 10, 2, 5, 2})
                 .setPriority(NotificationCompat.PRIORITY_MAX);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);

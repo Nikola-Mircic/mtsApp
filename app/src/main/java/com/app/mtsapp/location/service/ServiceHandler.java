@@ -1,12 +1,22 @@
 package com.app.mtsapp.location.service;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.SystemClock;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
+import com.app.mtsapp.NotificationBroadcast;
+
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Calendar;
 
 public class ServiceHandler {
     public static int activityTest = 0;
@@ -18,11 +28,10 @@ public class ServiceHandler {
      * */
     public static void startTrackingService(@NotNull Activity instance) {
         SharedPreferences sharedPreferences = instance.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
-        if (sharedPreferences.getInt("trackerRunning", -1) == 1) {
-            Toast.makeText(instance, "Service is already running...", Toast.LENGTH_SHORT).show();
+        if (sharedPreferences.getBoolean("trackerRunning", false)) {
             return;
         }
-        sharedPreferences.edit().putInt("trackerRunning", 1).apply();
+        sharedPreferences.edit().putBoolean("trackerRunning", true).apply();
         sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
         Intent service = new Intent(instance.getApplicationContext(), Tracker.class);
         instance.startService(service);
@@ -36,9 +45,35 @@ public class ServiceHandler {
      * */
     public static void stopTrackingService(@NotNull Activity instance) {
         SharedPreferences sharedPreferences = instance.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
-        sharedPreferences.edit().putInt("trackerRunning", 0).apply();
+        sharedPreferences.edit().putBoolean("trackerRunning", false).apply();
         sharedPreferences.edit().putBoolean("trackerSwitch", false).apply();
         Intent service = new Intent(instance.getApplicationContext(), Tracker.class);
         instance.stopService(service);
+    }
+
+    public static void startDailyNotification(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
+        Intent temp = new Intent(context, NotificationBroadcast.class);
+        temp.setPackage("com.app.mtsapp");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, temp, 0);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            manager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, SystemClock.uptimeMillis(), pendingIntent);
+        }
+
+        sharedPreferences.edit().putBoolean("trackerSwitch", true).apply();
+    }
+
+    public static void stopDailyNotification(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
+        Intent temp = new Intent(context, NotificationBroadcast.class);
+        temp.setPackage("com.app.mtsapp");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, temp, 0);
+
+        AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        manager.cancel(pendingIntent);
+
+        sharedPreferences.edit().putBoolean("trackerSwitch", false).apply();
     }
 }

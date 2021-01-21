@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -87,9 +89,18 @@ public class MainActivity extends AppCompatActivity {
                 infoPopup.showRulebookDialog();
             }
         });
+    }
 
-        if (sharedPreferences.getInt("trackerRunning", -1) == -1) {
-            ServiceHandler.startTrackingService(MainActivity.this);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[1] == PackageManager.PERMISSION_GRANTED){
+            if(sharedPreferences.getBoolean("firstRun",true)){
+                ServiceHandler.startTrackingService(MainActivity.this);
+                ServiceHandler.startDailyNotification(getApplicationContext());
+                sharedPreferences.edit().putBoolean("firstRun",false).apply();
+            }
         }
     }
 
