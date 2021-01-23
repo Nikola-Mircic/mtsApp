@@ -194,7 +194,6 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
     public void onInfoWindowLongClick(Marker marker) {
         marker.remove();
         locationSystem.removeLocation(marker.getTitle());
-        locationSystem.saveLocations();
     }
 
     //Питај корисника да ли жели да изађе са тренутног екрана када притисне дугме за враћање назад
@@ -357,9 +356,10 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             //Ако се мења кућна лоакција
             if (settingHomeLocation) {
                 //Ако већ постоји кућна локација сачувана у систему
-                if (locationSystem.getLocation("home") != null) {
+                SavedLocation temp = locationSystem.findHomeLocation();
+                if (temp != null) {
                     //Избриши стару кућну локацију и поново прикажи маркере
-                    locationSystem.removeLocation("home");
+                    locationSystem.removeLocation(temp.getName());
                     locationSystem.saveLocations();
                     googleMap.clear();
                     loadMarkersFromSavedLocations();
@@ -367,23 +367,15 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 //Постави посебну иконицу кућног маркера и назови маркер "home" у систему локација ради лакшег проналажења
                 markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcon("home_location", 50, 50)));
-                currentLocationName = "home";
             }
             googleMap.addMarker(markerOptions); //Прикажи маркер одабраних подешавања
 
             System.out.println("[МРМИ]: Чувам локацију имена " + currentLocationName);
 
             //Додај и сачувај локацију у систему локација
-            locationSystem.addLocation(currentLocationName, currentLocation);
+            SavedLocation sl = new SavedLocation(currentLocationName, currentLocation).setHome(settingHomeLocation);
+            locationSystem.addLocation(sl);
             locationSystem.saveLocations();
-
-            //Рестартуј трекер ако је упаљен ради рачунања нове додате локације
-            SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-            if (sharedPreferences.getBoolean("trackerRunning", true)) {
-                ServiceHandler.stopTrackingService(PlacesActivity.this);
-                ServiceHandler.startTrackingService(PlacesActivity.this);
-            }
-
         } else {
             System.out.println("[MRMI]: Не постоје тренутне координате уређаја");
         }
@@ -405,7 +397,7 @@ public class PlacesActivity extends AppCompatActivity implements OnMapReadyCallb
             for (SavedLocation savedLocation : savedLocations) {
                 LatLng currentLatLng = new LatLng(savedLocation.getLatitude(), savedLocation.getLongitude());
                 MarkerOptions markerOptions = new MarkerOptions().position(currentLatLng).title(savedLocation.getName()).draggable(true); //Постави позицију, назив и особине маркера
-                if (savedLocation.getName().equals("home")) {
+                if (savedLocation.isHome()) {
                     markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcon("home_location", 50, 50)));
                 }
                 googleMap.addMarker(markerOptions); //Постави маркер учитане локације на мапу

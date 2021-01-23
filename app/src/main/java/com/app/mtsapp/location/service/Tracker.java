@@ -39,8 +39,6 @@ public class Tracker extends Service {
     //Референца SharedPreferences-a: лаког начина чувања простих података, овде због слања адекватне нотификације при промени локације
     private SharedPreferences sharedPreferences;
 
-    private List<SavedLocation> list;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -85,8 +83,6 @@ public class Tracker extends Service {
         lastLocation = null;
 
         sharedPreferences.edit().putString("LastSavedLocationName", "").apply();
-
-        list = LocationSystem.loadLocations(context);
 
         //Program pokrene LocationFinder koji pri svakom apdejtu lokacije obavestava korisnika
         finder = new LocationFinder(context);
@@ -135,6 +131,7 @@ public class Tracker extends Service {
         //Ako se korisnik i dalje krece ili je servis tek poceo sa radom promeni poslednju zapamcenu lokaciju i izadje iz funkcije
         if (lastLocation == null){
             lastLocation = new SavedLocation("last", location);
+            lastVisitedLocation = new SavedLocation("visited",location);
             return;
         }else if (lastLocation.distanceTo(location) > 60) {
             lastLocation = new SavedLocation("last", location);
@@ -143,6 +140,7 @@ public class Tracker extends Service {
         
         lastLocation = new SavedLocation("last", location);
 
+        List<SavedLocation> list = LocationSystem.loadLocations(getApplicationContext());
         SavedLocation nearestLocation = LocationSystem.findNearestLocation(list, location);
 
         //Ukoliko nema sacuvanih lokacija,nearestLocation je null pa ce izaci iz funkcije
@@ -168,15 +166,15 @@ public class Tracker extends Service {
         NotificationSender notificationSender = new NotificationSender(Tracker.this);
 
         System.out.println("[MRMI]: Претходна: " + lastSavedLocationName + " Тренутна: " + currentLocationName);
-        if ((currentLocationName.equals("") && (currentLocation.distanceTo(lastVisitedLocation) > 50 || lastVisitedLocation==null)) || (lastSavedLocationName.equals("home")) && !currentLocationName.equals("home")) {
+        if ((currentLocationName.equals("") && (currentLocation.distanceTo(lastVisitedLocation) > 50 || lastVisitedLocation==null)) || (lastVisitedLocation.isHome()) && !currentLocation.isHome()) {
             notificationSender.showNotification(0); //Покажи нотификацију за стављање маске кад корисник изађе из куће
         }
 
-        if (currentLocationName.equals("home") && !lastSavedLocationName.equals("home")) {
+        if (currentLocation.isHome() && !lastVisitedLocation.isHome()) {
             notificationSender.showNotification(1); //Покажи нотификацију за дезинфекцију одеће и маске кад се корисник врати кући
         }
 
-        if (!lastSavedLocationName.equals("home") && !currentLocationName.equals("home") && !lastSavedLocationName.equals(currentLocationName)) {
+        if (!lastVisitedLocation.isHome() && !currentLocation.isHome() && !lastSavedLocationName.equals(currentLocationName)) {
             notificationSender.showNotification(2); //Покажи нотификацију за дезинфекцију руку кад пређе из објекта у објекат
         }
 

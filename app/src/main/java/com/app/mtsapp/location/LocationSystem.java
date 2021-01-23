@@ -31,6 +31,10 @@ public class LocationSystem {
         locations.add(temp);
     }
 
+    public void addLocation(SavedLocation location){
+        this.locations.add(location);
+    }
+
     public void saveLocations(){
         File dir = new File(activity.getFilesDir(), "saved_loc");
         if(!dir.exists()){
@@ -143,6 +147,14 @@ public class LocationSystem {
     public SavedLocation getLocation(String name){
         for(SavedLocation sl : locations){
             if(sl.getName().equals(name))
+                return sl;
+        }
+        return null;
+    }
+
+    public SavedLocation findHomeLocation(){
+        for(SavedLocation sl : locations){
+            if(sl.isHome())
                 return sl;
         }
         return null;

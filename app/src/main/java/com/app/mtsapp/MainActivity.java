@@ -30,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION, Manifest.permission.FOREGROUND_SERVICE};
-        ActivityCompat.requestPermissions(MainActivity.this, permissions, 100);
+        sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("firstRun",true)){
+            String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION, Manifest.permission.FOREGROUND_SERVICE};
+            ActivityCompat.requestPermissions(MainActivity.this, permissions, 100);
+        }
 
         //Учитај језик активитија
         LanguageManager languageManager = new LanguageManager(MainActivity.this);
@@ -44,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Закључај екран у portrait mode
 
         ServiceHandler.activityTest |= 4;
-        sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
 
         //Ако је потребно, промени дневни савет приказан на екрану
         dailyTipTextView = findViewById(R.id.dailyTipText);

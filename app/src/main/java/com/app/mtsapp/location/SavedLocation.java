@@ -8,6 +8,8 @@ public class SavedLocation implements Serializable{
     private String name;
     private double altitude,latitude,longitude;
 
+    private boolean home;
+
     public SavedLocation(String name,Location location){
         this(name, location.getAltitude(), location.getLatitude(), location.getLongitude());
     }
@@ -80,5 +82,14 @@ public class SavedLocation implements Serializable{
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public boolean isHome() {
+        return home;
+    }
+
+    public SavedLocation setHome(boolean home) {
+        this.home = home;
+        return this;
     }
 }
