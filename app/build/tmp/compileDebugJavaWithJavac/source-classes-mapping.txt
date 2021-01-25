@@ -1,36 +1,16 @@
-com/app/mtsapp/InfoPopup.java
- com.app.mtsapp.InfoPopup
- com.app.mtsapp.InfoPopup$1
- com.app.mtsapp.InfoPopup$2
- com.app.mtsapp.InfoPopup$3
- com.app.mtsapp.InfoPopup$4
-com/app/mtsapp/location/LocationSystem.java
- com.app.mtsapp.location.LocationSystem
+com/app/mtsapp/LanguageManager.java
+ com.app.mtsapp.LanguageManager
+com/app/mtsapp/BuildConfig.java
+ com.app.mtsapp.BuildConfig
+com/app/mtsapp/location/EventHandler.java
+ com.app.mtsapp.location.EventHandler
 com/app/mtsapp/location/LocationFinder.java
  com.app.mtsapp.location.LocationFinder
  com.app.mtsapp.location.LocationFinder$1
-com/app/mtsapp/MainActivity.java
- com.app.mtsapp.MainActivity
- com.app.mtsapp.MainActivity$1
- com.app.mtsapp.MainActivity$2
- com.app.mtsapp.MainActivity$3
-com/app/mtsapp/location/EventHandler.java
- com.app.mtsapp.location.EventHandler
-com/app/mtsapp/LanguageManager.java
- com.app.mtsapp.LanguageManager
-com/app/mtsapp/PlacesActivity.java
- com.app.mtsapp.PlacesActivity
- com.app.mtsapp.PlacesActivity$1
- com.app.mtsapp.PlacesActivity$2
- com.app.mtsapp.PlacesActivity$3
- com.app.mtsapp.PlacesActivity$4
- com.app.mtsapp.PlacesActivity$5
- com.app.mtsapp.PlacesActivity$6
- com.app.mtsapp.PlacesActivity$7
-com/app/mtsapp/BuildConfig.java
- com.app.mtsapp.BuildConfig
-com/app/mtsapp/location/SavedLocation.java
- com.app.mtsapp.location.SavedLocation
+com/app/mtsapp/location/LocationSystem.java
+ com.app.mtsapp.location.LocationSystem
+com/app/mtsapp/location/service/ServiceHandler.java
+ com.app.mtsapp.location.service.ServiceHandler
 com/app/mtsapp/Settings.java
  com.app.mtsapp.Settings
  com.app.mtsapp.Settings$1
@@ -41,12 +21,32 @@ com/app/mtsapp/Settings.java
  com.app.mtsapp.Settings$6
  com.app.mtsapp.Settings$7
  com.app.mtsapp.Settings$8
-com/app/mtsapp/location/service/ServiceHandler.java
- com.app.mtsapp.location.service.ServiceHandler
+com/app/mtsapp/NotificationBroadcast.java
+ com.app.mtsapp.NotificationBroadcast
+com/app/mtsapp/location/SavedLocation.java
+ com.app.mtsapp.location.SavedLocation
+com/app/mtsapp/InfoPopup.java
+ com.app.mtsapp.InfoPopup
+ com.app.mtsapp.InfoPopup$1
+ com.app.mtsapp.InfoPopup$2
+ com.app.mtsapp.InfoPopup$3
+ com.app.mtsapp.InfoPopup$4
+com/app/mtsapp/PlacesActivity.java
+ com.app.mtsapp.PlacesActivity
+ com.app.mtsapp.PlacesActivity$1
+ com.app.mtsapp.PlacesActivity$2
+ com.app.mtsapp.PlacesActivity$3
+ com.app.mtsapp.PlacesActivity$4
+ com.app.mtsapp.PlacesActivity$5
+ com.app.mtsapp.PlacesActivity$6
+ com.app.mtsapp.PlacesActivity$7
 com/app/mtsapp/location/service/Tracker.java
  com.app.mtsapp.location.service.Tracker
  com.app.mtsapp.location.service.Tracker$1
-com/app/mtsapp/NotificationBroadcast.java
- com.app.mtsapp.NotificationBroadcast
+com/app/mtsapp/MainActivity.java
+ com.app.mtsapp.MainActivity
+ com.app.mtsapp.MainActivity$1
+ com.app.mtsapp.MainActivity$2
+ com.app.mtsapp.MainActivity$3
 com/app/mtsapp/NotificationSender.java
  com.app.mtsapp.NotificationSender

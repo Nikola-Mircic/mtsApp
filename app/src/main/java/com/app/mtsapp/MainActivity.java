@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         dailyTipTextView = findViewById(R.id.dailyTipText);
         checkDailyTip();
 
-        ServiceHandler.startDailyNotification(getApplicationContext());
-
         //Дугмићи и њихова функционалност
         ImageButton mapsButton, settingsButton, infoButton;
 

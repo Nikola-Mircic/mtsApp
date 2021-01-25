@@ -101,7 +101,7 @@ public class InfoPopup extends Dialog {
                     intent.addCategory(Intent.CATEGORY_HOME);
                     context.startActivity(intent);
                     ((Activity) context).finish();
-                    System.exit(0);
+                    //System.exit(0);
                 } else {
                     //Ако не треба, врати се на мени
                     dialog.dismiss();

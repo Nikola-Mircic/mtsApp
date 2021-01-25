@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="notificationMessages">
-        <item>Stavi masku!</item>
-        <item>Dezinfikuj masku i odeću!</item>
-        <item>Dezinfikuj ruke!</item>
+        <item>Stavite masku!</item>
+        <item>Presvucite se i dezinfikujte masku!</item>
+        <item>Dezinfikujte ruke!</item>
     </string-array>
     <string-array name="dailyTips">
-        <item>Nemojte ići u krcata mesta.</item>
+        <item>Izbegavajte gužvu.</item>
         <item>Ostanite bezbedni.</item>
-        <item>Kontaktirajte se sa lekarom ako mislite da imate simptom COVID-19-a.</item>
+        <item>Kontaktirajte se sa lekarom ako mislite da imate simptom virusa COVID-19.</item>
         <item>Izbegavajte korišćenje taksija i javnog prevoza.</item>
-        <item>Dezinfikujte ruke nakon dolaska u kontakt sa bilo čime.</item>
+        <item>Izbegavajte kontakt sa kovid-pozitivnim osobama.</item>
         <item>Uvek nosite rezervnu masku.</item>
-        <item>Ne delite čaše/flašice/escajg sa drugima.</item>
+        <item>Ne delite flašice i pribor sa drugima.</item>
         <item>Budite strpljivi, vakcine uskoro stižu.</item>
+        <item>Držite distancu od barem 2 metra kada komunicirate sa ljudima.</item>
     </string-array>
 </resources>

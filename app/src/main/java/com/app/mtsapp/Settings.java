@@ -33,6 +33,15 @@ public class Settings extends AppCompatActivity {
 
         ServiceHandler.activityTest |= 2;
 
+        //Референцирај шерд префс и тогл дугмиће за нотификације
+        final SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        sharedPreferencesEditor = sharedPreferences.edit();
+        notificationOne = findViewById(R.id.notificationOne);
+        notificationTwo = findViewById(R.id.notificationTwo);
+        notificationThree = findViewById(R.id.notificationThree);
+        trackerSwitch = findViewById(R.id.trackerSwitch);
+        dailyNotificationsSwitch = findViewById(R.id.dailyNotificationsSwitch);
+
         Button serbianLatinButton = findViewById(R.id.serbianLatinButton), serbianCyrillicButton = findViewById(R.id.serbianCyrillicButton);
         ImageButton englishButton = findViewById(R.id.englishButton);
         //Постави језик на енглески
@@ -40,8 +49,6 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("en", true);
-                ServiceHandler.stopTrackingService(Settings.this);
-                ServiceHandler.startTrackingService(Settings.this);
             }
         });
         //Постави језик на српску латиницу
@@ -49,8 +56,6 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("sr", true);
-                ServiceHandler.stopTrackingService(Settings.this);
-                ServiceHandler.startTrackingService(Settings.this);
             }
         });
         //Постави језик на српску ћирилицу
@@ -58,8 +63,6 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 languageManager.setLocale("sr-rRS", true);
-                ServiceHandler.stopTrackingService(Settings.this);
-                ServiceHandler.startTrackingService(Settings.this);
             }
         });
 
@@ -71,15 +74,6 @@ public class Settings extends AppCompatActivity {
                 R.drawable.clothes_notification_disabled,
                 R.drawable.hands_notification_disabled
         };
-
-        //Референцирај шерд префс и тогл дугмиће за нотификације
-        SharedPreferences sharedPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-        sharedPreferencesEditor = sharedPreferences.edit();
-        notificationOne = findViewById(R.id.notificationOne);
-        notificationTwo = findViewById(R.id.notificationTwo);
-        notificationThree = findViewById(R.id.notificationThree);
-        trackerSwitch = findViewById(R.id.trackerSwitch);
-        dailyNotificationsSwitch = findViewById(R.id.dailyNotificationsSwitch);
 
         loadButtonStates(); //Учита сачувана стања дугмића за нотификације сачувана у уређају
 

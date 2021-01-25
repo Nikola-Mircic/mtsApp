@@ -2,17 +2,18 @@
 <resources>
     <string-array name="notificationMessages">
         <item>Put on your mask!</item>
-        <item>Disinfect your mask and clothes!</item>
+        <item>Change your clothes and disinfect your mask!</item>
         <item>Disinfect your hands!</item>
     </string-array>
     <string-array name="dailyTips">
-        <item>Do not go to crowded places.</item>
+        <item>Avoid crowded places.</item>
         <item>Stay safe.</item>
         <item>Contact your local hospital if you think you have any COVID-19 symptom.</item>
         <item>Refrain from using taxis or public transport.</item>
-        <item>Disinfect your hands after coming into contact with anything.</item>
+        <item>Avoid contact with covid-positive people.</item>
         <item>Always bring a backup mask.</item>
-        <item>Do not share glasses/bottles/cutlery with others.</item>
+        <item>Do not share bottles and silverware with others.</item>
         <item>Be patient, vaccines are coming soon.</item>
+        <item>Keep a distance of at least 2 meters when communicating with people.</item>
     </string-array>
 </resources>
